@@ -2,7 +2,6 @@ class Service < ApplicationRecord
   belongs_to :user
   has_many :reviews
   has_many :bookings
-  # We need to allow only Users with Provider:true
 
   CATEGORIES = ["Food & Drinks", "Healthcare", "Personal Services", "Rentals", "Trips", "Practical Matters"]
 
