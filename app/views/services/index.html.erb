@@ -1,16 +1,21 @@
-
-
 <% @categories.each do |category| %>
-<div class="container">
-  <div class="card bg-dark text-white m-5 imgBx">
-    <div class="col-12 coi-lg-12">
-      <img class="card-img" src="https://images.pling.com/img/00/00/50/03/31/1242146/1047dd0339458047d0c8a589a874e1b9d767.jpg" alt="Card image">
-      <div class="card-img-overlay">
-        <h5 class="card-title contentBx">
-        <%= category %>
-        </h5>
+<div class="col-12 col-lg-12">
+  <div class="container">
+    <div class="card">
+      <img class="card-img" src="https://www.pcclean.io/wp-content/uploads/2020/4/qIZNRz.jpg" alt="Card img" >
+      <div class="overlay">
+        <span><%= category %></span>
       </div>
     </div>
   </div>
 </div>
 <% end %>
+
+
+
+
+
+
+<%# <% @categories.each do |category| %>
+<%# <%= category %>
+<%# <% end %>
