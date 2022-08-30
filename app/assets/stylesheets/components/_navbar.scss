@@ -1,6 +1,10 @@
+
+
 .navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+  background: $allivublue;
+  justify-content: space-evenly;
+  display:flex;
+
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +13,16 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.icone-navbaractive {
+  color: white;
+  fill: white;
+  font-size: 29px;
+}
+
+.icone-navbar {
+  color: $allivulightblue;
+  fill: $allivulightblue;
+  font-size: 29px;
 }
