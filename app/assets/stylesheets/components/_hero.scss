@@ -1,0 +1,23 @@
+.img-container{
+  width: 100vw;
+  height: 25vh;
+  padding: 50px;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.service-head {
+  margin: 1.3rem 0;
+}
+
+.service-head-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.description {
+  font-weight: bold;
+}
