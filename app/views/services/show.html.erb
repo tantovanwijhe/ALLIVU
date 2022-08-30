@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="daughter">
+    <h2><%= @service.name.capitalize %></h2>
+    <h4 class="price mt-3"><strong> Price: <%= @service.price %> </strong></h4>
+      <div class="col-12 col-lg-8">
+        <p>Description: <%= @service.description %></p>
+      </div>
+
+    <% if @service.user == current_user%>
+        <div class="col-12 col-lg-4" style= “display: none”>
+          <% else %>
+            <div class="col-12 col-lg-4">
+              <%= simple_form_for [@service, @booking] do |f| %>
+                <div class="row p-3 rounded">
+                  <div class="form-floating col-6 col-lg-12 mb-lg-2">
+                      <%= f.input :start_date, html5: true, class: "form-control mb-2 mb-lg-0"%>
+                  </div>
+                  <div class="form-floating col-6 col-lg-12 mb-lg-2">
+                      <%= f.input :end_date, html5: true, class: "form-control mb-2 mb-lg-0" %>
+                  </div>
+                  <div class="col-12 col-lg-12">
+                    <%= f.submit "Make booking", class: "btn btn-primary mb-2 mb-lg-0 w-100" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <button class="button">Click me?</button>
+  </div>
+</div>
