@@ -1,0 +1,16 @@
+.wrappernavbar {
+  height: 160px;
+  border: 1px solid rgb(228, 228, 228);
+  display: flex;
+  overflow-x: auto;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.wrappernavbar .box {
+  min-width: 110px;
+  height: 110px;
+  line-height: 110px;
+  text-align: center;
+  margin-left: 10px;
+}

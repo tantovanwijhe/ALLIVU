@@ -1,0 +1,36 @@
+
+<nav class="fixed-bottom navbar-lewagon">
+    <div class="row">
+        <div class="col">
+          <%= link_to "root_path" do %>
+            <i class="fa-solid fa-house icone-navbaractive"></i>
+            <div class="link-navbar">Home</div>
+          <% end %>
+        </div>
+        <div class="col">
+          <i class="fa-regular fa-heart icone-navbar"></i>
+          <div class="link-navbar">Planning</div>
+
+        </div>
+        <div class="col">
+          <i class="fa-regular fa-envelope icone-navbar"></i>
+          <div class="link-navbar">Messages</div>
+        </div>
+        <div class="col">
+          <% if user_signed_in? %>
+            <%= link_to "user_session_path" do %>
+              <i class="fa-regular fa-user icone-navbar"></i>
+              <div class="link-navbar">Account</div>
+            <% end %>
+            <% else %>
+                <%= link_to "new_user_session_path" do %>
+                  <i class="fa-regular fa-user icone-navbar"></i>
+                  <div class="link-navbar">Account</div>
+                <% end %>
+          <% end %>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+</nav>
