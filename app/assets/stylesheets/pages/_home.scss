@@ -1,1 +1,31 @@
 // Specific CSS for your home-page
+.row {
+  text-align: center;
+  justify-content: space-between;
+
+}
+.home-scroll {
+  border: 1px solid rgb(255, 255, 255);
+  display: flex;
+  overflow-x: auto;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+
+}
+.home-scroll .box {
+  width: 350px;
+  height: 350px;
+  line-height: 350px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  margin-top: 10px;
+  border-radius: 25px;
+  box-shadow: 2px 2px 0px 0px rgba(118, 118, 118, 0.2);
+}
+h3 {
+  font-size: 25px;
+}
+.logo {
+  font-size: 100px;
+}
