@@ -1,32 +1,48 @@
-<div class="container">
-  <div class="daughter">
-    <h2><%= @service.name.capitalize %></h2>
-    <h4 class="price mt-3"><strong> Price: <%= @service.price %> </strong></h4>
-      <div class="col-12 col-lg-8">
-        <p>Description: <%= @service.description %></p>
-      </div>
+<%# <div class="col-12 col-lg-12"> %>
+  <%# <div class="container"> %>
 
-    <% if @service.user == current_user%>
-        <div class="col-12 col-lg-4" style= “display: none”>
-          <% else %>
-            <div class="col-12 col-lg-4">
-              <%= simple_form_for [@service, @booking] do |f| %>
-                <div class="row p-3 rounded">
-                  <div class="form-floating col-6 col-lg-12 mb-lg-2">
-                      <%= f.input :start_date, html5: true, class: "form-control mb-2 mb-lg-0"%>
-                  </div>
-                  <div class="form-floating col-6 col-lg-12 mb-lg-2">
-                      <%= f.input :end_date, html5: true, class: "form-control mb-2 mb-lg-0" %>
-                  </div>
-                  <div class="col-12 col-lg-12">
-                    <%= f.submit "Make booking", class: "btn btn-primary mb-2 mb-lg-0 w-100" %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
+  <!-- Hero Image Section Start-->
+    <div class="container img-container" style="background-image: url(https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH" alt="Service image");>
+    </div>
+  <!-- Hero Image Section End-->
+
+  <div class="container px-4">
+  <!-- Service info Start-->
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-8">
+        <!-- Description-head Start-->
+        <div class="service-head">
+          <div class="service-head-details">
+            <h2><strong><%= @service.name.capitalize %></strong></h2>
+            <h4>$<%= @service.price.to_i %></h4>
+          </div>
+            <h5>Guide: user_id: xxx</h5>
+            <h6>56 Reviews</h6>
         </div>
+        <!-- Description-head End-->
 
-        <button class="button">Click me?</button>
+        <div>
+        <!-- Description-body Start-->
+          <div class="row justify-content-center pb-4">
+            <button class="button-wide"><strong>Reserve</strong></button>
+          </div>
+          <h5 class="description mb-2">Description</h5>
+          <p><%= @service.description %></p>
+        </div>
+        <!-- Description-body End-->
+      </div>
+  <!-- Service info End-->
+
+
+          <% if @service.user == current_user%>
+              <div class="col-12 col-lg-4"></div>
+                <% else %>
+              <div class="col-12 col-lg-4" style= display:none>
+                <%= render "form", service: @service, booking: @booking %>
+              </div>
+            <% end %>
+              </div>
+
+      </div>
+    </div>
   </div>
-</div>
