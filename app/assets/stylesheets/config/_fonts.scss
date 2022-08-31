@@ -1,6 +1,6 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Roboto:wght@400;700&display=swap');
 @import "colors";
 
 // Define fonts for body and headers
@@ -21,8 +21,53 @@ $logo-font: "Leckerli One", "Helvetica", "sans-serif";
 
 .logo {
   font-family: 'Leckerli One', cursive;
-  size: 95px;
+  font-size: 45px;
   color: $allivublue;
 }
 
+.h1allivu-landing {
+  font-family: 'Roboto', bold;
+  font-size: 48px;
+  color: $allivublue;
+  font-weight:bold;
+}
 
+.h1allivu {
+  font-family: 'Roboto', bold;
+  font-size: 36px;
+  color: black;
+  font-weight:bold;
+}
+
+.h2allivu {
+  font-family: 'Roboto', bold;
+  font-size: 28px;
+  color: $allivugray;
+  font-weight:bold;
+}
+
+.h3allivu {
+  font-family: 'Roboto', bold;
+  font-size: 24px;
+  color: $allivulightgray;
+  font-weight:bold;
+}
+
+.pallivu {
+  font-family: 'Roboto';
+  font-size: 22px;
+  color: $allivulightgray;
+}
+
+.pallivu-small {
+  font-family: 'Roboto';
+  font-size: 18px;
+  color: $allivulightgray;
+}
+
+.linkallivu {
+  font-family: 'Roboto';
+  font-size: 22px;
+  color: $allivulightblue;
+  text-decoration: none;
+}
