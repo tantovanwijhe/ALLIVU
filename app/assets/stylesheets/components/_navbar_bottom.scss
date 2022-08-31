@@ -1,9 +1,11 @@
 
-
 .navbar-lewagon {
   background: $allivublue;
-  justify-content: space-evenly;
-  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  padding-left: 10%;
+  align-items: center;
+
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -25,3 +27,11 @@
   fill: $allivulightblue;
   font-size: 29px;
 }
+
+.link-navbar {
+  font-family: 'Roboto';
+  font-size: 12px;
+  color: $allivulightblue;
+  text-decoration: none;
+}
+

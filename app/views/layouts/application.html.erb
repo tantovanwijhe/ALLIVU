@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/96a7218982.js" crossorigin="anonymous"></script>
 
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,10 +16,11 @@
 
   <body>
 <%= render "shared/flashes" %>
+<%= render "shared/navbar_top" %>
 
     <%= yield %>
   </body>
-  <%= render "shared/navbar" %>
+  <%= render "shared/navbar_bottom" %>
 
 
 </html>
