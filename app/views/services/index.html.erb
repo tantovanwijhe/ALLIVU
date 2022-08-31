@@ -1,21 +1,20 @@
-<% @categories.each do |category| %>
+<%= render 'shared/top_navbar' %>
+<div style="margin-top:50px;">
+<% @services.each do |service| %>
+<%= service.category %>
 <div class="col-12 col-lg-12">
   <div class="container">
+  <%= link_to service_path(service) do %>
     <div class="card">
-      <img class="card-img" src="https://www.pcclean.io/wp-content/uploads/2020/4/qIZNRz.jpg" alt="Card img" >
+      <img class="card-img" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
       <div class="overlay">
-        <span><%= category %></span>
+      <%# <%= link_to services_path(query: category) do %>
+        <span><%= service.name %></span>
+        <%# <% end %>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
 <% end %>
-
-
-
-
-
-
-<%# <% @categories.each do |category| %>
-<%# <%= category %>
-<%# <% end %>
+</div>
