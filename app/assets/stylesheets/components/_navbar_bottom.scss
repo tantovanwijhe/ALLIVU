@@ -5,7 +5,7 @@
   padding: 16px;
   padding-left: 10%;
   align-items: center;
-
+  margin: 0 auto;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -20,12 +20,14 @@
   color: white;
   fill: white;
   font-size: 29px;
+  margin: 0 auto;
 }
 
 .icone-navbar {
   color: $allivulightblue;
   fill: $allivulightblue;
   font-size: 29px;
+  margin: 0 auto;
 }
 
 .link-navbar {
@@ -34,4 +36,3 @@
   color: $allivulightblue;
   text-decoration: none;
 }
-
