@@ -5,7 +5,6 @@
   width: 128px;
   height: 36px;
   border: none;
-
   font-weight: bold;
   font-size: 16px;
 }
@@ -20,4 +19,38 @@
   font-weight: bold;
   font-size: 16px;
   margin: 0.5rem 0
+}
+
+.parent {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 15px;
+}
+
+.parent button {
+  background-color: #6C9A8B;
+  color: white;
+  border: none;
+  padding-bottom: 50px;
+  font-size: 31px;
+  height: 30px;
+  width: 40px;
+  box-shadow: 0 2px 4px darkslategray;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.parent button:active {
+  background-color: #4c806f;
+  box-shadow: 0 0 2px darkslategray;
+  transform: translateY(2px);
+}
+
+.parent button:not(:first-child) {
+  margin-top: 10px;
+}
+
+.round-6 {
+  border-radius: 70%;
 }

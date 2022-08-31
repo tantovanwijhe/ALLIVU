@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "profile", to: "pages#profile"
+  get "categories", to: "services#categories"
 
   resources :services, only: %i[index new create show edit] do
     collection do

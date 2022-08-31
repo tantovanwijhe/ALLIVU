@@ -5,6 +5,10 @@ class ServicesController < ApplicationController
   end
 
   def index
+    @services = Service.where(category: params[:query])
+  end
+
+  def categories
     @categories = Service::CATEGORIES
   end
 end
