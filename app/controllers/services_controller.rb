@@ -12,4 +12,10 @@ class ServicesController < ApplicationController
   def categories
     @categories = Service::CATEGORIES
   end
+
+  private
+
+  def service_params
+    params.require(:service).permit(:name, :category, :description, :price, :location, :photos [])
+  end
 end
