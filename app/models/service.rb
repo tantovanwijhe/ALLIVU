@@ -9,5 +9,5 @@ class Service < ApplicationRecord
   validates :name, presence: true
   validates :category, inclusion: { in: CATEGORIES }, presence: true
   validates :price, :location, :description, presence: true
-  validates :photos, presence: true
+  # validates :photos, presence: true
 end

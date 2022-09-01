@@ -11,6 +11,11 @@ class ServicesController < ApplicationController
 
   def categories
     @categories = Service::CATEGORIES
+    if params[:query].present?
+      @categories = Service.where(location: params[:query])
+    else
+      @categories = Service::CATEGORIES
+    end
   end
 
   def new
