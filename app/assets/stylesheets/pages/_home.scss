@@ -1,4 +1,6 @@
 // Specific CSS for your home-page
+
+
 .row {
   text-align: center;
   justify-content: space-between;
@@ -26,6 +28,21 @@
 h3 {
   font-size: 25px;
 }
-.logo {
-  font-size: 100px;
+// .logo {
+//   font-size: 100px;
+//   margin-top: 20px;
+// }
+p {
+  font-weight: bolder;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: -10px;
+  font-size: 18px;
+}
+.banner {
+  min-width: 100%;
+  height: 150px;
+  background-image: url('banner.png');
+  background-repeat: no-repeat;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }

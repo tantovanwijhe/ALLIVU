@@ -1,15 +1,18 @@
+<%= render 'shared/navbar_pages' %>
+
 <!-- Hero Image Section Start-->
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block w-100" src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH" alt="First slide">
+      <% if @service.photos.any? %>
+        <%=cl_image_tag @service.photos.first.key, height: 300, crop: :fill %>
       </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="https://source.unsplash.com/random" alt="Second slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="https://source.unsplash.com/random" alt="Third slide">
-      </div>
+        <% @service.photos.drop(1).each do |photo| %>
+          <div class="carousel-item">
+            <%= cl_image_tag photo.key, height: 300, crop: :fill %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -20,9 +23,6 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
-  <%# <div class="container img-container" style="background-image: url(https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH" alt="Service image");>
-  </div> %>
 
   <!-- Hero Image Section End-->
 

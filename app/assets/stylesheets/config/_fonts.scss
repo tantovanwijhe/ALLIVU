@@ -25,6 +25,12 @@ $logo-font: "Leckerli One", "Helvetica", "sans-serif";
   color: $allivublue;
 }
 
+.logonav {
+  font-family: 'Leckerli One', cursive;
+  font-size: 30px;
+  color: $allivublue;
+}
+
 .h1-allivu-landing {
   font-family: 'Roboto', bold;
   font-size: 48px;
@@ -68,6 +74,11 @@ $logo-font: "Leckerli One", "Helvetica", "sans-serif";
 .link-allivu {
   font-family: 'Roboto';
   font-size: 22px;
-  color: $allivulightblue;
+  color: $allivublue;
+  text-decoration: none;
+}
+
+.allivu-overblue{
+  color: $allivublue;
   text-decoration: none;
 }
