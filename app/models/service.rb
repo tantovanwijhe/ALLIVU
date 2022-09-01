@@ -12,5 +12,4 @@ class Service < ApplicationRecord
   validates :price, :location, :description, presence: true
   after_validation :geocode, if: :will_save_change_to_location?
   # validates :photos, presence: true
-  validates :photos, presence: true
 end

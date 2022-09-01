@@ -3,18 +3,18 @@
   <% @services.each do |service| %>
     <div class="container">
       <%= link_to service_path(service), :class =>"card-link" do %>
-      <div class="card categoryy">
-        <img class="card-img" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
-        <div class="overlay serv">
-          <h1><%= service.name %></h1>
-          <div class="row">
-            <% service.reviews.each do |review|%>
-              <p><%= review.rating %> &#9733</p>
-            <% end %>
-            <h2><%= service.price.round%> € </h2>
+        <div class="card categoryy">
+          <img class="card-img" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
+          <div class="overlay serv">
+            <h1><%= service.name %></h1>
+            <div class="row">
+              <% service.reviews.each do |review|%>
+                <p><%= review.rating %> &#9733</p>
+              <% end %>
+              <h2><%= service.price.round%> € </h2>
+            </div>
           </div>
         </div>
-      </div>
       <% end %>
     </div>
   <% end %>
