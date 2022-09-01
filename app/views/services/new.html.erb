@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Add a new Service</h2>
+  <%= simple_form_for(@service) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :category, collection: Service::CATEGORIES%>
+    <%= f.input :description %>
+    <%= f.input :price %>
+    <%= f.input :location %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.submit "Finish" %>
+  <% end %>
+</div>

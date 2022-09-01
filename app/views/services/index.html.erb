@@ -1,20 +1,21 @@
 <%= render 'shared/navbar_pages' %>
-<div style="margin-top:50px;">
-<% @services.each do |service| %>
-<%= service.category %>
-<div class="col-12 col-lg-12">
-  <div class="container">
-  <%= link_to service_path(service) do %>
-    <div class="card">
-      <img class="card-img" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
-      <div class="overlay">
-      <%# <%= link_to services_path(query: category) do %>
-        <span><%= service.name %></span>
-        <%# <% end %>
+<div style="margin-top:30px; margin-bottom:90px;">
+  <% @services.each do |service| %>
+    <div class="container">
+      <%= link_to service_path(service), :class =>"card-link" do %>
+      <div class="card categoryy">
+        <img class="card-img" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
+        <div class="overlay serv">
+          <h1><%= service.name %></h1>
+          <div class="row">
+            <% service.reviews.each do |review|%>
+              <p><%= review.rating %> &#9733</p>
+            <% end %>
+            <h2><%= service.price.round%> € </h2>
+          </div>
+        </div>
       </div>
+      <% end %>
     </div>
-    <% end %>
-  </div>
-</div>
-<% end %>
+  <% end %>
 </div>
