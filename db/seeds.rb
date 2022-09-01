@@ -1,106 +1,98 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
-# We DO NOT want to destroy Users.
-# puts "Deleting User database..."
-# User.destroy_all
-
-# Review.destroy_all
-# Booking.destroy_all
-# UserReview.destroy_all
-
 # --------------------------------------
 
-# RUN THIS ONCE
-# puts 'Creating 8 Providers...'
+# RUN THIS ONCE, THEN COMMENT OUT
+puts 'Creating 8 Providers...'
 
-# provider_5 = User.new(
-#   email: "patrick@allivu.pro",
-#   password: "password",
-#   first_name: "Patrick",
-#   last_name: "Cailliau",
-#   username: "patrickcailliau",
-#   location: "Kuta, Bali",
-#   provider: true
-# )
-# provider_6 = User.new(
-#   email: "denise@allivu.pro",
-#   password: "password",
-#   first_name: "Denise",
-#   last_name: "Cantor",
-#   username: "denisecantor",
-#   location: "Denpasar, Bali",
-#   provider: true
-# )
+provider_5 = User.new(
+  email: "patrick@allivu.pro",
+  password: "password",
+  first_name: "Patrick",
+  last_name: "Cailliau",
+  username: "patrickcailliau",
+  location: "Kuta, Bali",
+  provider: true
+)
+provider_6 = User.new(
+  email: "denise@allivu.pro",
+  password: "password",
+  first_name: "Denise",
+  last_name: "Cantor",
+  username: "denisecantor",
+  location: "Denpasar, Bali",
+  provider: true
+)
 
-# provider_7 = User.new(
-#   email: "bono@allivu.pro",
-#   password: "password",
-#   first_name: "Bono",
-#   last_name: "Castellar",
-#   username: "bono",
-#   location: "Ubud, Bali",
-#   provider: true
-# )
-# provider_8 = User.new(
-#   email: "cole@allivu.pro",
-#   password: "password",
-#   first_name: "Cole",
-#   last_name: "Gendron",
-#   username: "colegendron",
-#   location: "Seminyak, Bali",
-#   provider: true
-# )
+provider_7 = User.new(
+  email: "bono@allivu.pro",
+  password: "password",
+  first_name: "Bono",
+  last_name: "Castellar",
+  username: "bonocasapepe",
+  location: "Ubud, Bali",
+  provider: true
+)
+provider_8 = User.new(
+  email: "cole@allivu.pro",
+  password: "password",
+  first_name: "Cole",
+  last_name: "Gendron",
+  username: "colegendron",
+  location: "Seminyak, Bali",
+  provider: true
+)
 
-# provider_9 = User.new(
-#   email: "paula@allivu.pro",
-#   password: "password",
-#   first_name: "Paula",
-#   last_name: "Greetham",
-#   username: "paulagreetham",
-#   location: "Kuta, Bali",
-#   provider: true
-# )
+provider_9 = User.new(
+  email: "paula@allivu.pro",
+  password: "password",
+  first_name: "Paula",
+  last_name: "Greetham",
+  username: "paulagreetham",
+  location: "Kuta, Bali",
+  provider: true
+)
 
-# provider_10 = User.new(
-#   email: "lisa@allivu.pro",
-#   password: "password",
-#   first_name: "Lisa",
-#   last_name: "Luz",
-#   username: "lisaluz",
-#   location: "Denpasar, Bali",
-#   provider: true
-# )
+provider_10 = User.new(
+  email: "lisa@allivu.pro",
+  password: "password",
+  first_name: "Lisa",
+  last_name: "Luz",
+  username: "lisaluz",
+  location: "Denpasar, Bali",
+  provider: true
+)
 
-# provider_11 = User.new(
-#   email: "cristopher@allivu.pro",
-#   password: "password",
-#   first_name: "Cristopher",
-#   last_name: "Nunu",
-#   username: "cristophernunu",
-#   location: "Ubud, Bali",
-#   provider: true
-# )
-# provider_12 = User.new(
-#   email: "andy@allivu.pro",
-#   password: "password",
-#   first_name: "Andy",
-#   last_name: "Ottiger",
-#   username: "andyottiger",
-#   location: "Seminyak, Bali",
-#   provider: true
-# )
+provider_11 = User.new(
+  email: "cristopher@allivu.pro",
+  password: "password",
+  first_name: "Cristopher",
+  last_name: "Nunu",
+  username: "cristophernunu",
+  location: "Ubud, Bali",
+  provider: true
+)
+provider_12 = User.new(
+  email: "andy@allivu.pro",
+  password: "password",
+  first_name: "Andy",
+  last_name: "Ottiger",
+  username: "andyottiger",
+  location: "Seminyak, Bali",
+  provider: true
+)
 
-# provider_5.save!
-# provider_6.save!
-# provider_7.save!
-# provider_8.save!
-# provider_9.save!
-# provider_10.save!
-# provider_11.save!
-# provider_12.save!
+provider_5.save!
+provider_6.save!
+provider_7.save!
+provider_8.save!
+provider_9.save!
+provider_10.save!
+provider_11.save!
+provider_12.save!
 
-# puts 'Providers created!'
+puts 'Providers created!'
 
 # ------------------------------------------------------------------------------
 puts "Deleting Services database..."
@@ -247,7 +239,7 @@ apv = Service.new(
   category: "Vehicle Rentals",
   description: "Suits for big family or group, Power steering, Dual SRS Airbag, Air-conditioning, Electric windows, Child safety door lock, Safety belts, Radio, CD-player, AUX & USB port.",
   price: 30,
-  location: "Kerobokan, Bali",
+  location: "Denpasar, Bali",
   user: User.find(10)
 )
 
@@ -256,7 +248,7 @@ agya = Service.new(
   category: "Vehicle Rentals",
   description: "Suits for couple or small family, Power steering, Dual SRS Airbag, Air-conditioning, Electric windows, Child safety door lock, Safety belts, Radio, CD-player, AUX & USB port.",
   price: 30,
-  location: "Kerobokan, Bali",
+  location: "Kuta, Bali",
   user: User.find(10)
 )
 
@@ -265,7 +257,7 @@ scoopy = Service.new(
   category: "Vehicle Rentals",
   description: "Oh look at this pretty thing! The Honda Scoopy is lightweight, automatic and ideal for short distances. To the beach, yoga class or your favourite warung? Pop your phone in the holder on the handlebar and off you go.",
   price: 10,
-  location: "Kerobokan, Bali",
+  location: "Legian, Bali",
   user: User.find(10)
 )
 
@@ -274,7 +266,7 @@ pcx = Service.new(
   category: "Vehicle Rentals",
   description: "The new (2022) Honda PCX160 lets you stand out both on the road for comfort and ride quality with its all-new premium and elegant design. Experience it's improved performance whilst enjoying its spacious design.",
   price: 15,
-  location: "Kerobokan, Bali",
+  location: "Petitenget, Bali",
   user: User.find(10)
 )
 
@@ -344,7 +336,7 @@ nailart = Service.new(
   category: "Beauty",
   description: " I will introduce you to my magic world of nails and design. I will propose you 2 hours of special treat for your hands and nails ,and optionally one hour of teaching you how to do yourself your manicure looking amazing by yourself.",
   price: 36,
-  location: "Canggu, Bali",
+  location: "Pererenan, Bali",
   user: User.find(14)
 )
 
