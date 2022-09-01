@@ -1,6 +1,10 @@
 <!-- app/views/articles/_form.html.erb -->
-<%= simple_form_for(xxx) do |f| %>
-  <!-- [...] -->
+<%= simple_form_for(@service) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :category, collection: Service::CATEGORIES%>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.input :location %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <!-- [...] -->
+  <%= f.submit "Finish" %>
 <% end %>
