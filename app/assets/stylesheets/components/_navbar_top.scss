@@ -1,16 +1,56 @@
+.navbartop {
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
 .wrappernavbar {
-  height: 160px;
+  height: 120px;
+  width: 100vw;
   border: 1px solid rgb(228, 228, 228);
   display: flex;
-  overflow-x: auto;
+  overflow-x: scroll;
   justify-content: space-around;
   align-items: center;
+  overflow-y: hidden;
+  float: left;
+  white-space: nowrap;
+  padding-left: 43rem;
+  padding-right: 43rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.box:first-child{
+  padding-left: 2rem;;
 }
 
 .wrappernavbar .box {
   min-width: 110px;
-  height: 110px;
-  line-height: 110px;
+  max-height: 110px;
   text-align: center;
   margin-left: 10px;
+  padding: 5px;
+  flex-direction: column;
+  }
+
+/* Style buttons */
+.btnnavbar{
+  background-color: transparent;/* Blue background */
+  border: none; /* Remove borders */
+  color: $allivugray; /* White text */
+   /* Some padding */
+   /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Darker background on mouse-over */
+.btnnavbar:hover {
+  color: $allivublue;
+  background-color: transparent;
+  text-decoration: none;
+
 }
