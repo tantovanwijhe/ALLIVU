@@ -3,7 +3,7 @@ class Service < ApplicationRecord
   belongs_to :user
   has_many :reviews
   has_many :bookings
-
+  has_many_attached :photos
 
   CATEGORIES = ["Food & Drinks", "Healthcare", "Personal Services", "Rentals", "Trips", "Practical Matters"]
 
@@ -12,4 +12,5 @@ class Service < ApplicationRecord
   validates :price, :location, :description, presence: true
   after_validation :geocode, if: :will_save_change_to_location?
   # validates :photos, presence: true
+  validates :photos, presence: true
 end

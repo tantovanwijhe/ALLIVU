@@ -1,0 +1,79 @@
+.navbar-lewagonn {
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0px;
+
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99999999;
+
+}
+
+.navbar-lewagonn .navbar-collapse {
+  flex-grow: 0;
+}
+
+.top-navv {
+  padding-top: 15px;
+  font-size: 2px;
+}
+
+.top-navv h3 {
+  padding-top: 15px;
+}
+
+.search-form .form-grouppages {
+  float: right !important;
+  transition: all 0.35s, border-radius 0s;
+  width: 42px;
+  height: 42px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
+.search-form .form-grouppages input.form-control {
+  padding-right: 20px;
+  border: 0 none;
+  background: transparent;
+  box-shadow: none;
+  display:block;
+}
+
+.search-form .form-grouppages:hover,
+.search-form .form-grouppages.hover {
+  width: 70%;
+  border-radius: 4px 25px 25px 4px;
+}
+.search-form .form-grouppages span.form-control-feedback {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  z-index: 2;
+  display: block;
+  width: 44px;
+  height: 44px;
+  line-height: 34px;
+  text-align: center;
+  color: $allivulightblue;
+  left: initial;
+  font-size: 18px;
+}
+
+#back {
+  position: absolute;
+  top: 0rem;
+  left: 1rem;
+  margin-top: 1px;
+}
+
+.searchbar{
+  width: 100%;
+  text-align: right;
+  margin-top: 2rem;
+}

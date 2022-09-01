@@ -1,13 +1,15 @@
 .categoryy{
-  // flex-flow: row;
   width: cover;
   height: cover;
-  // margin: 20px 0px 20px 0px;
-  // position: relative;
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   border-radius: 15px;
+  border-color:azure;
+}
+
+.card-link:hover{
+  color: blue;
 }
 
 .overlay{
@@ -15,14 +17,39 @@
   width: 100%;
   height: 100%;
 }
+
+.serv{
+  position: relative;
+  padding: 0px 25px 0px 25px;
+}
+
+.serv h1{
+  font-weight: 350;
+  font-size:x-large
+}
+.serv h2{
+  text-align: left;
+  font-weight: bold;
+  color: black;
+  padding-left: 15px;
+}
+
+.serv p{
+  text-align: left;
+  padding-left: 15px;
+  font-weight: 400;
+  font-size: large;
+  color: rgba(48, 138, 108, 1);
+}
+
 .overlay span{
-  // transform: translate(-50%, -50%);
   font-weight: bold;
   font-size: 25px;
   color: rgb(13, 13, 13);
   font-family: Sans-serif;
   padding: 20px;
 }
+
 .categoryy:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
