@@ -8,9 +8,11 @@
         <div class="overlay serv">
           <h1><%= service.name %></h1>
           <div class="row">
+          <% array = [] %>
             <% service.reviews.each do |review|%>
-              <p><%= review.rating %> &#9733</p>
+              <% array << review.rating %>
             <% end %>
+              <p><%= '%.1f' % (array.sum(0.0) / array.size) %> &#9733</p>
             <h2><%= service.price.round%> € </h2>
           </div>
         </div>

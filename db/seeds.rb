@@ -2,16 +2,16 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
 # We DO NOT want to destroy Users.
+# puts "Deleting User database..."
 # User.destroy_all
 
 # Review.destroy_all
 # Booking.destroy_all
 # UserReview.destroy_all
 
-# UNCOMMENT BELOW WHEN PUSHING TO MASTER
 # --------------------------------------
-# puts "Deleting User database..."
-# Service.destroy_all
+
+# RUN THIS ONCE
 # puts 'Creating 8 Providers...'
 
 # provider_5 = User.new(
@@ -103,6 +103,9 @@
 # puts 'Providers created!'
 
 # ------------------------------------------------------------------------------
+puts "Deleting Services database..."
+Service.destroy_all
+
 puts 'Creating "Tours" Services!'
 
 snorkel = Service.new(
@@ -309,20 +312,6 @@ puts '"Vehicle Rentals" services Created'
 # ------------------------------------------------------------------------------
 puts 'Creating "Beauty" Services!'
 
-# CATEGORIES = [
-#   "Tours",
-#   "Sports",
-#   "Vehicle Rentals",
-#   "Beauty",
-
-#   "Personal Assistant",
-#   "Private Classes",
-#   "Health",
-#   "Souvenirs",
-#   "Romantic Services",
-#   "Home Entertainment"
-# ]
-
 massage = Service.new(
   name: "Massage at your home",
   category: "Beauty",
@@ -375,9 +364,25 @@ nailart.photos.attach(io: File.open('app/assets/images/seed_img/nailart3.jpg'), 
 
 massage.save!
 skincare.save!
+sound.save!
+nailart.save!
 
 puts '"Beauty" services Created'
 # ------------------------------------------------------------------------------
+
+# CATEGORIES = [
+#   "Tours",
+#   "Sports",
+#   "Vehicle Rentals",
+#   "Beauty",
+
+#   "Personal Assistant",
+#   "Private Classes",
+#   "Health",
+#   "Souvenirs",
+#   "Romantic Services",
+#   "Home Entertainment"
+# ]
 
 # puts 'Services created!'
 
