@@ -5,11 +5,11 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
       <% if @service.photos.any? %>
-        <%=cl_image_tag @service.photos.first.key, height: 300, crop: :fill %>
+        <%=cl_image_tag @service.photos.first.key, height: 300, width: 400, crop: :fill %>
       </div>
         <% @service.photos.drop(1).each do |photo| %>
           <div class="carousel-item">
-            <%= cl_image_tag photo.key, height: 300, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
           </div>
         <% end %>
       <% end %>
