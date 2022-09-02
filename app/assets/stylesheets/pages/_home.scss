@@ -6,38 +6,82 @@
   justify-content: space-between;
 
 }
+
 .home-scroll {
-  border: 1px solid rgb(255, 255, 255);
   display: flex;
   overflow-x: auto;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-
 }
+.toprated {
+  margin-right: 287px;
+  margin-bottom: -11px;
+  color: gray;
+}
+
 .home-scroll .box {
   width: 350px;
-  height: 350px;
+  height: 200px;
+  display: flex;
+  // flex-direction: column;
+  align-items: center;
+  // justify-content: center;
   line-height: 350px;
   text-align: center;
   background-color: rgb(255, 255, 255);
   margin-top: 10px;
-  border-radius: 25px;
+  border-radius: 15px;
   box-shadow: 2px 2px 0px 0px rgba(118, 118, 118, 0.2);
+  background-image: url();
+  background-size: cover;
 }
-h3 {
-  font-size: 25px;
+
+.w-box {
+  align-content: center;
+  width: 60%;
+  height: 80%;
+  opacity: 0.8;
+  background-color: white;
+  border-radius: 15px;
+  margin-left: 18px;
+  margin: 10px;
+  padding-left: 0px;
+
+
+  #service-name {
+    color: black;
+    font-size: 18px;
+  }
+  #reviewer-location {
+    color: orange;
+    margin-top: -9px;
+    font-size: 12px;
+  }
+  #card-review {
+    margin-top: -4px;
+    font-size: 8px;
+  }
+  h4 {
+    font-size: 14px;
+  }
 }
+
+// h3 {
+//   font-size: 20px;
+// }
+
+
 // .logo {
 //   font-size: 100px;
 //   margin-top: 20px;
 // }
-p {
-  font-weight: bolder;
-  font-family: 'Raleway', sans-serif;
-  margin-bottom: -10px;
-  font-size: 18px;
-}
+// p {
+//   font-weight: bolder;
+//   font-family: 'Raleway', sans-serif;
+//   margin-bottom: -10px;
+//   font-size: 18px;
+// }
 .banner {
   min-width: 100%;
   height: 150px;
