@@ -1,13 +1,12 @@
 <%= render 'shared/navbar_pages' %>
 <div class="container">
-  <h1><%= "Hello #{current_user.first_name}!"%></h1>
+  <h1><%= "Hello #{current_user.first_name}"%></h1>
   <p>Joined in <%= "#{current_user.created_at.year}" %> </p>
-  <a href=#>Edit profile</a>
+  <p class="link-allivu"><%= link_to "Edit profile", edit_user_registration_path %></p>
   <h6><%= "#{current_user.user_reviews.count} Reviews" %></h6>
   <hr>
-
   <!-- Upcoming bookings start -->
-  <h4>Bookings</h4>
+  <h4>Upcoming Bookings</h4>
     <% @bookings = Booking.where(user_id: current_user) %>
       <% @bookings.each do |booking| %>
         <div class="card-product">
@@ -20,6 +19,6 @@
         </div>
       <% end %>
   <!-- Upcoming bookings end -->
-  
+
   <hr>
 </div>

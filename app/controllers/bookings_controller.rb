@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
     @booking.service = Service.find(params[:service_id])
     @booking.user = current_user
     if @booking.save
-      redirect_to root_path
+      redirect_to user_path
     else
       render :new, status: :unprocessable_entity
     end
