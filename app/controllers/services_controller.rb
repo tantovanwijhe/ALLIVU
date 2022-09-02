@@ -19,13 +19,14 @@ class ServicesController < ApplicationController
   end
 
   def categories
-    @services = Service.where(location: params[:query])
+    # @services = Service.where(location: params[:query])
+    @services = Service.where("location LIKE ?", "%#{params[:query]}%")
 
     if params[:query].present?
-        @categories = @services.map do |service|
-          service.category
-        end
-        @categories = @categories.uniq
+      @categories = @services.map do |service|
+        service.category
+      end
+      @categories = @categories.uniq
     else
       @categories = Service::CATEGORIES
     end
