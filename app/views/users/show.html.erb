@@ -1,25 +1,25 @@
+<%= render 'shared/navbar_pages' %>
 <div class="container">
-  <h1>User Dashboard</h1>
-
-  <%= "Welcome #{current_user.username}!"%>
+  <h1><%= "Hello #{current_user.first_name}!"%></h1>
+  <p>Joined in <%= "#{current_user.created_at.year}" %> </p>
+  <a href=#>Edit profile</a>
+  <h6><%= "#{current_user.user_reviews.count} Reviews" %></h6>
   <hr>
-  <h4>Your upcoming bookings</h4>
-  <div class="cards">
+
+  <!-- Upcoming bookings start -->
+  <h4>Bookings</h4>
     <% @bookings = Booking.where(user_id: current_user) %>
       <% @bookings.each do |booking| %>
-        <div class="card">
-          <%=cl_image_tag booking.service.photos.first.key, height: 300, width: 400, crop: :fill %>
-          <div class="card-body">
-            <h5 class="card-title"><%= booking.service.name %></h5>
-            <p>Category: <%= booking.service.category %></p>
-            <p>Price: $<%= booking.service.price.round %></p>
-            <p>Date:
-              <%= booking.start_date.strftime("%e/%m/%Y") %> to <%=booking.end_date.strftime("%e/%m/%Y") %>
-            </p>
+        <div class="card-product">
+        <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
+          <div class="card-product-infos">
+            <h4><%= booking.service.name %></h4>
+            <p class="card-desc-p-allivu-sm">Provider: <%= User.find(booking.service.user_id).first_name %></p>
+            <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime("%e, %Y") %></p>
           </div>
         </div>
-        <br>
       <% end %>
-    <hr>
-  </div>
+  <!-- Upcoming bookings end -->
+  
+  <hr>
 </div>
