@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get "profile", to: "pages#profile"
   get "categories", to: "services#categories"
+  get "users/account", to: "users#show", as: :user
 
   resources :services, only: %i[index new create show edit] do
     collection do

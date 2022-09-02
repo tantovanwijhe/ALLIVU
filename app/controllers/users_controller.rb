@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   # user_params for setting up Cloudinary
+  def show
+    @user = current_user.services
+  end
 
   private
 

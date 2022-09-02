@@ -70,8 +70,38 @@
   padding-top: 40px;
 }
 
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-desc-p-allivu-sm {
+  font-size: 16px;
+  margin: none;
+  font-weight: lighter;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+
 .category-cards{
   padding: 10px;
   border-style: hidden;
-
 }
