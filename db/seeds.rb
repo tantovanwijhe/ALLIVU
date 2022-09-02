@@ -4,95 +4,95 @@
 # --------------------------------------
 
 # RUN THIS ONCE, THEN COMMENT OUT
-puts 'Creating 8 Providers...'
+# puts 'Creating 8 Providers...'
 
-provider_5 = User.new(
-  email: "patrick@allivu.pro",
-  password: "password",
-  first_name: "Patrick",
-  last_name: "Cailliau",
-  username: "patrickcailliau",
-  location: "Kuta, Bali",
-  provider: true
-)
-provider_6 = User.new(
-  email: "denise@allivu.pro",
-  password: "password",
-  first_name: "Denise",
-  last_name: "Cantor",
-  username: "denisecantor",
-  location: "Denpasar, Bali",
-  provider: true
-)
+# provider_5 = User.new(
+#   email: "patrick@allivu.pro",
+#   password: "password",
+#   first_name: "Patrick",
+#   last_name: "Cailliau",
+#   username: "patrickcailliau",
+#   location: "Kuta, Bali",
+#   provider: true
+# )
+# provider_6 = User.new(
+#   email: "denise@allivu.pro",
+#   password: "password",
+#   first_name: "Denise",
+#   last_name: "Cantor",
+#   username: "denisecantor",
+#   location: "Denpasar, Bali",
+#   provider: true
+# )
 
-provider_7 = User.new(
-  email: "bono@allivu.pro",
-  password: "password",
-  first_name: "Bono",
-  last_name: "Castellar",
-  username: "bonocasapepe",
-  location: "Ubud, Bali",
-  provider: true
-)
-provider_8 = User.new(
-  email: "cole@allivu.pro",
-  password: "password",
-  first_name: "Cole",
-  last_name: "Gendron",
-  username: "colegendron",
-  location: "Seminyak, Bali",
-  provider: true
-)
+# provider_7 = User.new(
+#   email: "bono@allivu.pro",
+#   password: "password",
+#   first_name: "Bono",
+#   last_name: "Castellar",
+#   username: "bonocasapepe",
+#   location: "Ubud, Bali",
+#   provider: true
+# )
+# provider_8 = User.new(
+#   email: "cole@allivu.pro",
+#   password: "password",
+#   first_name: "Cole",
+#   last_name: "Gendron",
+#   username: "colegendron",
+#   location: "Seminyak, Bali",
+#   provider: true
+# )
 
-provider_9 = User.new(
-  email: "paula@allivu.pro",
-  password: "password",
-  first_name: "Paula",
-  last_name: "Greetham",
-  username: "paulagreetham",
-  location: "Kuta, Bali",
-  provider: true
-)
+# provider_9 = User.new(
+#   email: "paula@allivu.pro",
+#   password: "password",
+#   first_name: "Paula",
+#   last_name: "Greetham",
+#   username: "paulagreetham",
+#   location: "Kuta, Bali",
+#   provider: true
+# )
 
-provider_10 = User.new(
-  email: "lisa@allivu.pro",
-  password: "password",
-  first_name: "Lisa",
-  last_name: "Luz",
-  username: "lisaluz",
-  location: "Denpasar, Bali",
-  provider: true
-)
+# provider_10 = User.new(
+#   email: "lisa@allivu.pro",
+#   password: "password",
+#   first_name: "Lisa",
+#   last_name: "Luz",
+#   username: "lisaluz",
+#   location: "Denpasar, Bali",
+#   provider: true
+# )
 
-provider_11 = User.new(
-  email: "cristopher@allivu.pro",
-  password: "password",
-  first_name: "Cristopher",
-  last_name: "Nunu",
-  username: "cristophernunu",
-  location: "Ubud, Bali",
-  provider: true
-)
-provider_12 = User.new(
-  email: "andy@allivu.pro",
-  password: "password",
-  first_name: "Andy",
-  last_name: "Ottiger",
-  username: "andyottiger",
-  location: "Seminyak, Bali",
-  provider: true
-)
+# provider_11 = User.new(
+#   email: "cristopher@allivu.pro",
+#   password: "password",
+#   first_name: "Cristopher",
+#   last_name: "Nunu",
+#   username: "cristophernunu",
+#   location: "Ubud, Bali",
+#   provider: true
+# )
+# provider_12 = User.new(
+#   email: "andy@allivu.pro",
+#   password: "password",
+#   first_name: "Andy",
+#   last_name: "Ottiger",
+#   username: "andyottiger",
+#   location: "Seminyak, Bali",
+#   provider: true
+# )
 
-provider_5.save!
-provider_6.save!
-provider_7.save!
-provider_8.save!
-provider_9.save!
-provider_10.save!
-provider_11.save!
-provider_12.save!
+# provider_5.save!
+# provider_6.save!
+# provider_7.save!
+# provider_8.save!
+# provider_9.save!
+# provider_10.save!
+# provider_11.save!
+# provider_12.save!
 
-puts 'Providers created!'
+# puts 'Providers created!'
 
 # ------------------------------------------------------------------------------
 puts "Deleting Services database..."
