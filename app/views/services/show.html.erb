@@ -67,7 +67,7 @@
       <hr>
   <!-- Location end-->
   <!-- Form start-->
-      <h5 class="p-allivu"><strong>Select date</strong></h5>
+      <h5 class="p-allivu"><strong>Make a booking</strong></h5>
       <% if @service.user == current_user%>
         <div class="col-12 col-lg-4">
           </div>
@@ -81,17 +81,19 @@
       <br>
   <!-- Form end-->
   <!-- Review section start-->
+      <% if @service.reviews.present? %>
       <h5 class="p-allivu"><strong>Reviews</strong></h5>
       <br>
-      <% @service.reviews.each do |serve| %>
-      <div class="bezier card mb-3 ">
-        <div class="card-header"><%= "#{serve.booking.user.first_name} #{serve.booking.user.last_name}" %>
+        <% @service.reviews.each do |serve| %>
+        <div class="bezier card mb-3 ">
+          <div class="card-header"><%= "#{serve.booking.user.first_name} #{serve.booking.user.last_name}" %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= "#{serve.rating.to_i} stars" %></h5>
+            <p class="card-text"><%= serve.comment %></p>
+          </div>
         </div>
-        <div class="card-body">
-          <h5 class="card-title"><%= "#{serve.rating.to_i} stars" %></h5>
-          <p class="card-text"><%= serve.comment %></p>
-        </div>
-      </div>
+        <% end %>
       <% end %>
       <hr>
   <!-- Review section End-->
