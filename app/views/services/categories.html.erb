@@ -1,17 +1,29 @@
 <%= render 'shared/navbar_pages' %>
 <div style="margin-top:50px;">
-  <% @categories.each do |category| %>
-    <div class="col-12 col-lg-12">
-      <div class="container">
-        <%= link_to services_path(query: category) do %>
-          <div class="card categoryy">
-            <img class="card-img" src="https://www.pcclean.io/wp-content/uploads/2020/4/qIZNRz.jpg" alt="Card img" >
-            <div class="overlay">
-              <span><%= category %></span>
+  <% if @categories.is_a?(Array) %>
+    <% @categories.each do |cat| %>
+      <div class="col-12 col-lg-12">
+        <div class="container">
+          <%= link_to services_path(query: cat) do %>
+            <div class="card category">
+              <img class="card-img" src="https://www.pcclean.io/wp-content/uploads/2020/4/qIZNRz.jpg" alt="Card img" >
+              <div class="overlay">
+                <span><%= cat %></span>
+              </div>
             </div>
           </div>
+        </div>
         <% end %>
+      <% end %>
+    <% else %>
+      <%= link_to services_path(query: @categories) do %>
+      <div class="card categoryy">
+        <img class="card-img" src="https://www.pcclean.io/wp-content/uploads/2020/4/qIZNRz.jpg" alt="Card img">
+          <div class="overlay">
+            <span><%= @categories %></span>
+          </div>
       </div>
     </div>
+    <% end %>
   <% end %>
 </div>
