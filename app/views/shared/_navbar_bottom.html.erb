@@ -23,12 +23,12 @@
          <% if user_signed_in? %>
             <%= link_to user_path do %>
               <i class="fa-regular fa-user icone-navbar"></i>
-              <div class="link-navbar">Login</div>
+              <div class="link-navbar">Account</div>
             <% end %>
           <% else %>
                 <%= link_to new_user_registration_path do %>
                   <i class="fa-regular fa-user icone-navbar"></i>
-                  <div class="link-navbar">Account</div>
+                  <div class="link-navbar">Log in</div>
                 <% end %>
           <% end %>
         </div>
