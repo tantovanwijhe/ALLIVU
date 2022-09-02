@@ -18,8 +18,9 @@ class ServicesController < ApplicationController
   end
 
   def categories
+    @services = Service.where(location: params[:query])
+
     if params[:query].present?
-        @services = Service.where(location: params[:query])
         @categories = @services.map do |service|
           service.category
         end
