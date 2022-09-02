@@ -169,7 +169,7 @@ trainer = Service.new(
   category: "Sports",
   description: "My passion is to help people change their lives in the simplest and most realistic way possible. I believe everyone deserves the right to good health and to be happy with themselves inside out. I specialise in mobility and helping you stay strong during your time here!",
   price: 22,
-  location: "Kuta, Bali",
+  location: "Kuta, Bali, Indonesia",
   user: User.find(14)
 )
 
