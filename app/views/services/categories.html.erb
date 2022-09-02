@@ -1,4 +1,53 @@
 <%= render 'shared/navbar_pages' %>
+<!-- map-box 
+
+<div class ="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</div>
+<div class="container">
+  <div class="">
+    <div class="box border-0 d-flex category-cards">
+      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true">Food & Drinks <i class="bi bi-cup" style="font-size: 3rem; color: green;"></i></a> <i class="bi bi-arrow-right"></i>
+    </div>
+    <div class="box border-0 d-flex category-cards">
+      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true">Healthcare <i class="bi bi-scissors" style="font-size: 3rem; color: green;"></i></a> <i class="bi bi-arrow-right"></i>
+    </div>
+    <div class="box border-0 d-flex category-cards">
+      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true">Personal Services <i class="bi bi-universal-access" style="font-size: 3rem; color: green;"></i></a> <i class="bi bi-arrow-right"></i>
+    </div>
+    <div class="box border-0 d-flex category-cards">
+      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true">Rentals <i class="bi bi-building" style="font-size: 3rem; color: green;"></i></a> <i class="bi bi-arrow-right"></i>
+    </div>
+    <div class="box border-0 d-flex category-cards">
+      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true">Rentals <i class="bi bi-bicycle" style="font-size: 3rem; color: green;"></i></a> <i class="bi bi-arrow-right"></i>
+    </div>
+    <div class="box border-0 d-flex category-cards">
+      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true">Trips <i class="bi bi-airplane" style="font-size: 3rem; color: green;"></i></a> <i class="bi bi-arrow-right"></i>
+    </div>
+    <div class="box border-0 d-flex category-cards">
+      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true">Pratical Maters <i class="bi bi-magic" style="font-size: 3rem; color: green;"></i></a> <i class="bi bi-arrow-right"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<%# <div style="margin-top:50px;">
+  <% @categories.each do |category| %>
+     <%# <div class="col-12 col-lg-12">
+      <div class="container">
+        <%= link_to services_path(query: category) do %>
+          <%# <div class="card categoryy">
+            <img class="card-img" src="https://www.pcclean.io/wp-content/uploads/2020/4/qIZNRz.jpg" alt="Card img" >
+            <div class="overlay">
+              <span><%= category %></span>
+            <%# </div>
+======= -->
+
 <div style="margin-top:50px;">
   <% if @categories.is_a?(Array) %>
     <% @categories.each do |cat| %>
@@ -11,9 +60,14 @@
                 <span><%= cat %></span>
               </div>
             </div>
+
+<!-- >>>>>>> master -->
           </div>
         </div>
         <% end %>
+<!-- <<<<<<< map-box -->
+      <%# </div>
+<!-- ======= -->
       <% end %>
     <% else %>
       <%= link_to services_path(query: @categories) do %>
@@ -23,7 +77,8 @@
             <span><%= @categories %></span>
           </div>
       </div>
+<!-- >>>>>>> master  -->
     </div>
     <% end %>
   <% end %>
-</div>
+<%# </div> %>
