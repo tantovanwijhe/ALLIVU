@@ -1,5 +1,8 @@
 <%= render 'shared/navbar_pages' %>
+
+
 <div style="margin-top:30px; margin-bottom:90px;">
+<div class = "container"> <h3 class="h3-allivu"> Services in your location </h3> </div>
   <% @services.each do |service| %>
     <div class="container">
       <%= link_to service_path(service), :class =>"card-link" do %>
@@ -18,5 +21,6 @@
         </div>
       <% end %>
     </div>
+
   <% end %>
 </div>
