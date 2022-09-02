@@ -18,8 +18,18 @@ class ServicesController < ApplicationController
   end
 
   def categories
-    @categories = Service::CATEGORIES
+    if params[:query].present?
+        @services = Service.where(location: params[:query])
+        @categories = @services.map do |service|
+          service.category
+        end
+        @categories = @categories.uniq
+    else
+      @categories = Service::CATEGORIES
+    end
+
   end
+
 
   def new
     @service = Service.new

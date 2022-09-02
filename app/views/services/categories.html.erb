@@ -1,4 +1,5 @@
 <%= render 'shared/navbar_pages' %>
+<!-- map-box 
 
 <div class ="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -45,9 +46,39 @@
             <div class="overlay">
               <span><%= category %></span>
             <%# </div>
+======= -->
+
+<div style="margin-top:50px;">
+  <% if @categories.is_a?(Array) %>
+    <% @categories.each do |cat| %>
+      <div class="col-12 col-lg-12">
+        <div class="container">
+          <%= link_to services_path(query: cat) do %>
+            <div class="card category">
+              <img class="card-img" src="https://www.pcclean.io/wp-content/uploads/2020/4/qIZNRz.jpg" alt="Card img" >
+              <div class="overlay">
+                <span><%= cat %></span>
+              </div>
+            </div>
+
+<!-- >>>>>>> master -->
           </div>
+        </div>
         <% end %>
+<!-- <<<<<<< map-box -->
       <%# </div>
+<!-- ======= -->
+      <% end %>
+    <% else %>
+      <%= link_to services_path(query: @categories) do %>
+      <div class="card categoryy">
+        <img class="card-img" src="https://www.pcclean.io/wp-content/uploads/2020/4/qIZNRz.jpg" alt="Card img">
+          <div class="overlay">
+            <span><%= @categories %></span>
+          </div>
+      </div>
+<!-- >>>>>>> master  -->
     </div>
+    <% end %>
   <% end %>
 <%# </div> %>
