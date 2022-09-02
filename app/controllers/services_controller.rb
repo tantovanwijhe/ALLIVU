@@ -7,6 +7,14 @@ class ServicesController < ApplicationController
 
   def index
     @services = Service.where(category: params[:query])
+
+    @markers = @services.geocoded.map do |service|
+      {
+        lat: service.latitude,
+        lng: service.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {service: service})
+      }
+    end
   end
 
   def categories
