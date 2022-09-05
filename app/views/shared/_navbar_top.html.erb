@@ -4,35 +4,55 @@
 </div>
 <div class="navbartop">
   <div class="wrappernavbar">
+  <%= link_to services_path(category: "Private Classes") do %>
     <div class="box">
-      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true"><i class="bi bi-book" style="font-size: 4rem"></i><br>Private <br>Classes</a>
+      <div class="btn-light btn-block btnnavbar" role="button" aria-pressed="true"><i class="bi bi-book" style="font-size: 4rem"></i><br>Private <br>Classes</div>
     </div>
+  <% end %>
+  <%= link_to services_path(category: "Sports") do %>
     <div class="box">
-      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true"><i class="bi bi-heart-pulse" style="font-size: 4rem"></i><br>Sports</a>
+      <div class="btn-light btn-block btnnavbar" role="button" aria-pressed="true"><i class="bi bi-heart-pulse" style="font-size: 4rem"></i><br>Sports</div>
     </div>
-     <div class="box">
-      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true"><i class="bi bi-signpost-2" style="font-size: 4rem"></i><br>Tours</a>
-    </div>
+  <% end %>
+  <%= link_to services_path(category: "Tours") do %>
     <div class="box">
-      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true"><i class="bi bi-scissors" style="font-size: 4rem"></i><br>Beauty</a>
+      <div class="btn-light btn-block btnnavbar" role="button" aria-pressed="true"><i class="bi bi-signpost-2" style="font-size: 4rem"></i><br>Tours</div>
     </div>
+  <% end %>
+  <%= link_to services_path(category: "Beauty") do %>
     <div class="box">
-      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true"><i class="bi bi-universal-access" style="font-size: 4rem"></i><br>Personal <br> Assistant</a>
+      <div class="btn-light btn-block btnnavbar" role="button" aria-pressed="true"><i class="bi bi-scissors" style="font-size: 4rem"></i><br>Beauty</div>
     </div>
+  <% end %>
+  <%= link_to services_path(category: "Personal Assistant") do %>
     <div class="box">
-      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true"><i class="bi bi-car-front-fill" style="font-size: 4rem"></i><br>Vehicle Rent</a>
+      <div class="btn-light btn-block btnnavbar" role="button" aria-pressed="true"><i class="bi bi-universal-access" style="font-size: 4rem"></i><br>Personal <br> Assistant</div>
     </div>
-   <div class="box">
-      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true"><i class="bi bi-balloon-heart" style="font-size: 4rem"></i><br>Souvenirs</a>
-    </div>
+  <% end %>
+  <%= link_to services_path(category: "Vehicle Rentals") do %>
     <div class="box">
-      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true"><i class="bi bi-house-heart" style="font-size: 4rem"></i><br>Home<br>Entertainment</a>
+      <div class="btn-light btn-block btnnavbar" role="button" aria-pressed="true"><i class="bi bi-car-front-fill" style="font-size: 4rem"></i><br>Vehicle Rent</div>
     </div>
+  <% end %>
+  <%= link_to services_path(category: "Souvenirs") do %>
     <div class="box">
-      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true"><i class="bi bi-capsule" style="font-size: 4rem"></i><br>Health</a>
+    <div class="btn-light btn-block btnnavbar" role="button" aria-pressed="true"><i class="bi bi-balloon-heart" style="font-size: 4rem"></i><br>Souvenirs</div>
     </div>
+  <% end %>
+  <%= link_to services_path(category: "Home Entertainment") do %>
     <div class="box">
-      <a class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true"><i class="bi bi-hearts" style="font-size: 4rem"></i><br>Romantic</a>
+      <div class="btn-light btn-block btnnavbar" role="button" aria-pressed="true"><i class="bi bi-house-heart" style="font-size: 4rem"></i><br>Home<br>Entertainment</div>
     </div>
+  <% end %>
+  <%= link_to services_path(category: "Health") do %>
+    <div class="box">
+      <div class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true"><i class="bi bi-capsule" style="font-size: 4rem"></i><br>Health</a>
+    </div>
+  <% end %>
+  <%= link_to services_path(category: "Romantic Services") do %>
+    <div class="box">
+      <div class="btn-light btn-block btnnavbar" href="/services" role="button" aria-pressed="true"><i class="bi bi-hearts" style="font-size: 4rem"></i><br>Romantic</div>
+    </div>
+  <% end %>
   </div>
 </div>

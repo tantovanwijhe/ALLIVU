@@ -7,7 +7,6 @@ class ServicesController < ApplicationController
 
   def index
     @services = Service.where(category: params[:query])
-
     @markers = @services.geocoded.map do |service|
       {
         lat: service.latitude,
@@ -16,12 +15,26 @@ class ServicesController < ApplicationController
         image_url: helpers.asset_url("marker.png")
       }
     end
+    if params[:query].present?
+      sql_query = <<~SQL
+        services.name ILIKE :query
+        OR services.location ILIKE :query
+        OR services.description ILIKE :query
+        OR services.category ILIKE :query
+      SQL
+      @services = Service.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @services = Service.all
+    end
   end
+
+    # @services = Service.where(category: params[:query])
+
 
   def categories
     # @services = Service.where(location: params[:query])
-    @services = Service.where("location LIKE ?", "%#{params[:query]}%")
-
+    sql_query = "location ILIKE :query"
+    @services = Service.where(sql_query, query: "%#{params[:query]}%")
     if params[:query].present?
       @categories = @services.map do |service|
         service.category
@@ -30,7 +43,6 @@ class ServicesController < ApplicationController
     else
       @categories = Service::CATEGORIES
     end
-
   end
 
 

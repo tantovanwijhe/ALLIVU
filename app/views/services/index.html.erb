@@ -2,7 +2,15 @@
 
 
 <div style="margin-top:30px; margin-bottom:90px;">
-<div class = "container"> <h3 class="h3-allivu"> Services in your location </h3> </div>
+<div class = "container"> <h2 class="pl-4 h2-allivu">
+  <% if @services == Service.all %>
+  
+      All the services </h2>
+      <p class="allivu-sm"> No specific matches were found.</p>
+    <% else %>
+      <h2 class="pl-4 h2-allivu"> Available services in <%= :category %> </h2>
+  <% end %>
+  </div>
   <div class="container">
   <% @services.each do |service| %>
       <%= link_to service_path(service), :class =>"card-link" do %>
