@@ -21,9 +21,10 @@
           <div class="card-product">
           <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
             <div class="card-product-infos">
-              <h4><%= booking.service.name %></h4>
+              <h4><%= link_to booking.service.name, service_path(booking.service) %></h4>
               <p class="card-desc-p-allivu-sm">Provider: <%= User.find(booking.service.user_id).first_name %></p>
               <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime("%e, %Y") %></p>
+              <p class="link-allivu"><%= link_to "Manage booking", edit_service_booking_path(id: booking, service_id: booking.service) %></p>
             </div>
           </div>
         <% end %>
@@ -36,11 +37,11 @@
         <% if booking.start_date < Date.today %>
           <div class="card-product">
           <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
-            <div class="card-product-infos">
-              <h4><%= booking.service.name %></h4>
-              <p class="card-desc-p-allivu-sm">Provider: <%= User.find(booking.service.user_id).first_name %></p>
-              <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%b %e ") %>—<%=booking.end_date.strftime(" %b %e, %Y") %></p>
-              <p class="link-allivu"><%= link_to "***Write a Review***", edit_user_registration_path %></p>
+            <div class="card-product-infos py-0 px-4">
+              <h4 class="my-3"><%= link_to booking.service.name, service_path(booking.service) %></h4>
+              <p class="card-desc-p-allivu-sm my-2">Provider: <%= User.find(booking.service.user_id).first_name %></p>
+              <p class="card-desc-p-allivu-sm my-2"><%= booking.start_date.strftime("%b %e ") %>—<%=booking.end_date.strftime(" %b %e, %Y") %></p>
+              <p class="card-desc-p-link-allivu"><%= link_to "Write a Review", new_service_booking_review_path(booking.service, booking) %></p>
             </div>
           </div>
         <% end %>
@@ -49,7 +50,7 @@
   <!-- Review feed -->
   <%  @user_reviews = current_user.user_reviews %>
   <% if @user_reviews.present? %>
-    <h4><strong>Reviews from Providers</strong></h4>
+    <h4><strong>Reviews</strong></h4>
 
     <% @user_reviews.each do |review| %>
     <div class="bezier card mb-3 ">

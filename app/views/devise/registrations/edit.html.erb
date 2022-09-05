@@ -1,4 +1,4 @@
-  <div class="p-5">
+<div class="p-5">
    <div class="d-flex align-items-center justify-content-between">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
     <%= link_to "Back", :back %>
@@ -33,6 +33,6 @@
   <% end %>
 
   <div class="d-flex flex-column align-items-center">
-    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-link" %>
+    <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-link" %>
   </div>
 </div>
