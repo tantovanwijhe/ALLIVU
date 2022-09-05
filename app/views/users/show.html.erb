@@ -1,24 +1,64 @@
 <%= render 'shared/navbar_pages' %>
 <div class="container">
-  <h1><%= "Hello #{current_user.first_name}"%></h1>
-  <p>Joined in <%= "#{current_user.created_at.year}" %> </p>
-  <p class="link-allivu"><%= link_to "Edit profile", edit_user_registration_path %></p>
-  <h6><%= "#{current_user.user_reviews.count} Reviews" %></h6>
+
+  <div class="d-flex justify-content-between align-items-center">
+    <h1 class="h1-allivu my-0"><%= "Hello #{current_user.first_name}"%></h1>
+    <% if current_user.photo.key == nil %>
+     <img class="avatar" <%= image_tag "profile.jpg" %>
+    <% else %>
+      <img class="avatar" <%= cl_image_tag current_user.photo.key %>
+  <% end %>
+  </div>
+    <p>Joined in <%= "#{current_user.created_at.year}" %> </p>
+    <p class="link-allivu"><%= link_to "Manage account", edit_user_registration_path %></p>
+    <h6><%= "#{current_user.user_reviews.count} Reviews" %></h6>
   <hr>
-  <!-- Upcoming bookings start -->
+  <!-- Upcoming bookings -->
   <h4>Upcoming Bookings</h4>
     <% @bookings = Booking.where(user_id: current_user) %>
       <% @bookings.each do |booking| %>
-        <div class="card-product">
-        <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
-          <div class="card-product-infos">
-            <h4><%= booking.service.name %></h4>
-            <p class="card-desc-p-allivu-sm">Provider: <%= User.find(booking.service.user_id).first_name %></p>
-            <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime("%e, %Y") %></p>
+        <% if booking.start_date > Date.today %>
+          <div class="card-product">
+          <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
+            <div class="card-product-infos">
+              <h4><%= booking.service.name %></h4>
+              <p class="card-desc-p-allivu-sm">Provider: <%= User.find(booking.service.user_id).first_name %></p>
+              <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime("%e, %Y") %></p>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-  <!-- Upcoming bookings end -->
-
   <hr>
+  <!-- Past bookings -->
+  <h4>History</h4>
+    <% @bookings = Booking.where(user_id: current_user) %>
+      <% @bookings.each do |booking| %>
+        <% if booking.start_date < Date.today %>
+          <div class="card-product">
+          <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
+            <div class="card-product-infos">
+              <h4><%= booking.service.name %></h4>
+              <p class="card-desc-p-allivu-sm">Provider: <%= User.find(booking.service.user_id).first_name %></p>
+              <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%b %e ") %>—<%=booking.end_date.strftime(" %b %e, %Y") %></p>
+              <p class="link-allivu"><%= link_to "***Write a Review***", edit_user_registration_path %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+  <hr>
+  <!-- Review feed -->
+  <%  @user_reviews = current_user.user_reviews %>
+  <% if @user_reviews.present? %>
+    <h4><strong>Reviews from Providers</strong></h4>
+
+    <% @user_reviews.each do |review| %>
+    <div class="bezier card mb-3 ">
+      <div class="card-header"><%= "#{User.find(Service.find(@bookings.find(13).service_id).user_id).first_name} #{User.find(Service.find(@bookings.find(13).service_id).user_id).last_name}" %></div>
+      <div class="card-body">
+        <h5 class="card-title"><%= "#{review.rating.to_i} stars" %></h5>
+        <p class="card-text"><%= review.comment %></p>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
 </div>
