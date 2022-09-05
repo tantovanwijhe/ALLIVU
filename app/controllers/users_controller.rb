@@ -3,6 +3,14 @@ class UsersController < ApplicationController
     @user = current_user.services
   end
 
+  def provider
+  end
+
+  def service
+    @user = current_user
+    @services = Service.where(user_id: current_user)
+  end
+
   private
 
   def user_params
