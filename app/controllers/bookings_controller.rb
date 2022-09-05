@@ -11,7 +11,18 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @lastbook = Booking.last
+    @lastbook = Booking.last(booking_params)
+  end
+
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @service = Service.find(params[:service_id])
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_params)
+    redirect_to booking_path(@booking)
   end
 
   private
