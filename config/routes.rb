@@ -10,9 +10,10 @@ Rails.application.routes.draw do
     collection do
       get "categories"
     end
-
+    resources :bookings, only: %i[create edit update] do
+      resources :reviews, only: %i[create new edit update]
+    end
     resources :favorites, only: :create
-    resources :bookings, only: %i[create edit update]
   end
   resources :bookings, only: :destroy
   resources :favorites, only: :index
