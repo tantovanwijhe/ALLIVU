@@ -1,17 +1,12 @@
-<%= render "shared/navbar_top" %>
-<div class= "container">
-  <div class="row justify-content-center">
-    <div class="banner">
+<%= render 'shared/navbar_pages' %>
 
-    </div>
-
-
+<% @favorites.each do |favorite| %>
 <div style="margin-top:30px; margin-bottom:90px;">
-  <div class = "container"> <h3 class="h3-allivu"> TOP rated Services </h3> </div>
-    <div class="container d-flex">
-      <% @services.take(5).each do |service| %>
+  <div class = "container"> <h3 class="h3-allivu"> Services in your location </h3> </div>
+    <div class="container">
+      <% @services.each do |service| %>
         <%= link_to service_path(service), :class =>"card-link" do %>
-          <div class="card my-4 land-card">
+          <div class="card categoryy my-4">
             <img class="card-img" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
             <div class="overlay serv">
               <h1><%= service.name %></h1>
@@ -31,3 +26,4 @@
       <% end %>
     </div>
 </div>
+<%= end %>
