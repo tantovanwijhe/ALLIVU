@@ -27,7 +27,7 @@
             <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
               <div class="card-product-infos">
                 <h4><%= link_to "Manage booking", edit_service_booking_path(booking.id, service_id: booking.service) %></h4>
-                <p class="card-desc-p-allivu-sm"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></p>
+                <p class="card-desc-p-allivu-sm"><%= "Booked by: #{booking.user.first_name} #{booking.user.last_name}" %></p>
                 <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime("%e, %Y") %></p>
               </div>
             </div>
