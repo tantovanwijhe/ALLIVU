@@ -3,19 +3,18 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
     @booking = Booking.new
     @lastbook = Booking.last
+
+    @markers =[
+      {
+        lat: @service.latitude,
+        lng: @service.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { service: @service }),
+        image_url: helpers.asset_url("marker.png")
+      }]
   end
 
   def index
     @services = Service.where(category: params[:query])
-
-    @markers = @services.geocoded.map do |service|
-      {
-        lat: service.latitude,
-        lng: service.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {service: service}),
-        image_url: helpers.asset_url("marker.png")
-      }
-    end
   end
 
   def categories
@@ -30,9 +29,7 @@ class ServicesController < ApplicationController
     else
       @categories = Service::CATEGORIES
     end
-
   end
-
 
   def new
     @service = Service.new

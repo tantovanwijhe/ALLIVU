@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[create edit update] do
       resources :reviews, only: %i[create new edit update]
     end
+    resources :favorites, only: :create
   end
   resources :bookings, only: :destroy
+  resources :favorites, only: :index
 end

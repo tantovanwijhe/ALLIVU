@@ -24,6 +24,7 @@
               <h4><%= link_to booking.service.name, service_path(booking.service) %></h4>
               <p class="card-desc-p-allivu-sm">Provider: <%= User.find(booking.service.user_id).first_name %></p>
               <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime("%e, %Y") %></p>
+              <p class="link-allivu"><%= link_to "Manage booking", edit_service_booking_path(id: booking, service_id: booking.service) %></p>
             </div>
           </div>
         <% end %>
