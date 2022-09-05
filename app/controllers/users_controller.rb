@@ -3,8 +3,6 @@ class UsersController < ApplicationController
     @user = current_user.services
   end
 
-  
-
   private
 
   def user_params
