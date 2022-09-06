@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "users/account", to: "users#show", as: :user
   get "users/account/provider", to: "users#provider"
   get "users/account/service", to: "users#service"
+  get "/bookings/confirmation", to: "bookings#confirm"
 
   resources :services, only: %i[index new create show edit update] do
     collection do

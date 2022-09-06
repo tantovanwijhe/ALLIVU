@@ -13,7 +13,7 @@
         <% @services.take(5).each do |service| %>
           <%= link_to service_path(service), :class =>"card-link" do %>
             <div class="card my-4 land-card">
-              <img class="card-img" style="border-radius: 10px;" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
+              <%=cl_image_tag service.photos.first.key, height: 200, width: 300, :style => "border-radius: 10px" , crop: :fill%>
               <div class="overlay serv">
                 <h1><%= service.name %></h1>
                 <div class="row">
