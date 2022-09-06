@@ -1,9 +1,9 @@
 
-<nav class="fixed-bottom navbar-lewagon">
+<div class="fixed-bottom navbar-lewagon">
     <div class="row">
         <div class="col">
           <%= link_to root_path do %>
-            <i class="fa-solid fa-house icone-navbaractive"></i>
+            <i class="fa-solid fa-house icone-navbar"></i>
             <div class="link-navbar">Home</div>
           <% end %>
         </div>
@@ -23,7 +23,7 @@
          <% if user_signed_in? %>
             <%= link_to user_path do %>
               <i class="fa-regular fa-user icone-navbar"></i>
-              <div class="link-navbar">Account</div>
+              <div class="link-navbar"><%= current_user.username %></div>
             <% end %>
           <% else %>
                 <%= link_to new_user_session_path do %>
@@ -36,4 +36,4 @@
 
     </div>
   </a>
-</nav>
+</div>

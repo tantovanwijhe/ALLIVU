@@ -5,13 +5,12 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 export default class extends Controller {
   static values = { apiKey: String }
 
-  static targets = ["location", "danko"]
+  static targets = ["location"]
 
   connect() {
-    console.log("Connect")
-    console.log(this.dankoTarget.dataset.key)
+    console.log(this.locationTarget)
     this.geocoder = new MapboxGeocoder({
-      accessToken: this.dankoTarget.dataset.key,
+      accessToken: this.locationTarget.dataset.key,
       types: "country,region,place,postcode,locality,neighborhood,address"
     })
     this.geocoder.addTo(this.element)

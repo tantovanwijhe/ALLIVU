@@ -16,23 +16,26 @@
   overflow-y: hidden;
   float: left;
   white-space: nowrap;
-  padding-left: 60rem;
-  padding-right: 43rem;
+  padding-left: 75rem;
+  padding-right: 143rem;
   -webkit-overflow-scrolling: touch;
 }
 
 .box:first-child{
-  padding-left: 2rem;;
+  padding-left: 2rem;
+  
 }
 
 .wrappernavbar .box {
-  min-width: 110px;
-  max-height: 110px;
   text-align: center;
-  margin-left: 10px;
-  padding: 5px;
+  margin-left: 25px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
+  display: block;
+  height: max-content;
+  width: fit-content;
+  justify-content: center;
   }
 
 /* Style buttons */
@@ -51,5 +54,4 @@
   color: $allivublue;
   background-color: transparent;
   text-decoration: none;
-
 }

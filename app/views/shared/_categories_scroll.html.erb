@@ -1,0 +1,34 @@
+
+ <div class="wrappernavbar">
+      <% @categories.each do |category| %>
+        <%= link_to services_path(query: category) do %>
+          <div class="box p-allivu-sm" id="link-allivu-categories">
+            <div class="" role="button" aria-pressed="true">
+              <% case %>
+                  <% when category == "Personal Assistant" %>
+                    <i class="bi bi-universal-access <%= 'active' if params[:query] == "Personal Assistant" %>" style="font-size: 3rem"></i>
+                  <% when category == "Vehicle Rentals" %>
+                    <i class="bi bi-car-front-fill <%= 'active' if params[:query] == "Vehicle Rentals" %>"  style="font-size: 3rem"></i>
+                  <% when category == "Tours" %>
+                    <i class="bi bi-signpost-2 <%= 'active' if params[:query] == "Tours" %>" style="font-size: 3rem"></i>
+                  <% when category == "Private Classes" %>
+                  <i class="bi bi-book <%= 'active' if params[:query] == "Tours" %>"  style="font-size: 3rem"></i>
+                  <% when category == "Beauty" %>
+                    <i class="bi bi-scissors <%= 'active' if params[:query] == "Beauty" %>"  style="font-size: 3rem"></i>
+                  <% when category == "Sports" %>
+                    <i class="bi bi-heart-pulse <%= 'active' if params[:query] == "Sports" %>" style="font-size: 3rem"></i>
+                  <% when category == "Souvenirs" %>
+                    <i class="bi bi-balloon-heart <%= 'active' if params[:query] == "Souvenirs" %>" style="font-size: 3rem"></i>
+                  <% when category == "Home Entertainment" %>
+                    <i class="bi bi-house-heart <%= 'active' if params[:query] == "Home Entertainment" %>" style="font-size: 3rem"></i>
+                  <% when category == "Romantic Services" %>
+                    <i class="bi bi-hearts" style="font-size: 3rem <%= 'active' if params[:query] == "Romantic Services" %>"></i>
+                  <% else category == "Health" %>
+                    <i class="bi bi-capsule <%= 'active' if params[:query] == "Health" %>" style="font-size: 3rem"></i>
+                <% end %>
+                <p style="text-decoration: none"><%= category %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+  </div>

@@ -59,3 +59,17 @@
   display: flex;
   flex-direction: row-reverse;
 }
+
+.round-button{
+  width: 40px;
+  height: 40px;
+  border-radius: 60px;
+  font-size: 15px;
+  text-align: center;
+  border-color: $allivugray;
+  border-style: solid;
+  border-width: 1px;
+  background-color: transparent;
+  justify-content: center;
+
+}
