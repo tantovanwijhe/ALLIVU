@@ -1,26 +1,8 @@
-<%= render 'shared/navbar_pages' %>
+<%= render 'shared/navbar_back_pages' %>
 <%= render 'shared/categories_scroll' %>
+<div class = "container">
+<h4 id="h3-allivu" style="padding: 20px; color: #6C9A8B; margin-top: 100px">Your search results by <%= params[:query] %></h4>
 
-<div style="margin-top:30px; margin-bottom:90px;">
-  
-</div>
-
-
-      <% @services.each do |service| %>
-      <div class="card category my-4">
-        <%= link_to service_path(service), :class =>"card-link" do %>
-          <img class="card-img" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
-            <div class="overlay serv">
-            <h1><%= service.name %></h1>
-            <div class="row">
-                <% array = [] %>
-                <% service.reviews.each do |review|%>
-                  <% array << review.rating %>
-                <% end %>
-              <% if array == nil %>
-                <p><%= '%.1f' % (array.sum(0.0) / array.size) %> &#9733</p>
-              <% end %>
-              <h2><%= service.price.round%> € </h2>
-        <% end %>
-      <% end %>
+      
   </div>
+</div>

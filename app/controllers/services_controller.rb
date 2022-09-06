@@ -25,7 +25,6 @@ class ServicesController < ApplicationController
     if params[:query].present?
       sql_query = <<~SQL
         services.name ILIKE :query
-        OR services.location ILIKE :query
         OR services.description ILIKE :query
         OR services.category ILIKE :query
       SQL
@@ -34,9 +33,6 @@ class ServicesController < ApplicationController
       @services = Service.all
     end
   end
-
-    # @services = Service.where(category: params[:query])
-
 
   def categories
     # @services = Service.where(location: params[:query])

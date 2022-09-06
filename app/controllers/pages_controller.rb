@@ -29,4 +29,5 @@ class PagesController < ApplicationController
       @services = Service.all
     end
   end
+  
 end
