@@ -7,7 +7,7 @@
         <%= link_to service_path(service), :class =>"card-link" do %>
           <%# <div class="d-flex justify-content-end"> %>
             <div class="card categoryy my-4">
-              <img class="card-img" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
+              <%=cl_image_tag service.photos.first.key, height: 300, width: 400, crop: :fill %>
               <div class="overlay serv">
                 <h1><%= service.name %></h1>
                 <div class="row">
