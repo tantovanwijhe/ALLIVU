@@ -1,12 +1,37 @@
 <%= render 'shared/navbar_pages' %>
-  <h1 class="pl-4">categories</h1>
+  <h2 class="pl-4 h2-allivu"> Available categories on <%= params[:query] %></h2>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <% if @categories.is_a?(Array) %>
       <% @categories.each do |category| %>
           <%= link_to services_path(query: category) do %>
-            <div class="box border-0 d-flex category-cards">
-              <div class="btn-light btn-block btnnavbar" role="button" aria-pressed="true"><%= category %></div> <i class="bi bi-arrow-right"></i>
+            <div class="box category-cards">
+              <p class= "allivu-overblue" id="link-allivu-categories"><%= category %></p>
+              <div class="btn-light btn-block-categories btnnavbar" role="button" aria-pressed="true">
+                <% case %>
+                  <% when category == "Personal Assistant" %>
+                    <i class="bi bi-universal-access" style="font-size: 3rem"></i>
+                  <% when category == "Vehicle Rentals" %>
+                    <i class="bi bi-car-front-fill" style="font-size: 3rem"></i>
+                  <% when category == "Tours" %>
+                    <i class="bi bi-signpost-2" style="font-size: 3rem"></i>
+                  <% when category == "Private Classes" %>
+                  <i class="bi bi-book" style="font-size: 3rem"></i>
+                  <% when category == "Beauty" %>
+                    <i class="bi bi-scissors" style="font-size: 3rem"></i>
+                  <% when category == "Sports" %>
+                    <i class="bi bi-heart-pulse" style="font-size: 3rem"></i>
+                  <% when category == "Souvenirs" %>
+                    <i class="bi bi-balloon-heart" style="font-size: 3rem"></i>
+                  <% when category == "Home Entertainment" %>
+                    <i class="bi bi-house-heart" style="font-size: 3rem"></i>
+                  <% when category == "Romantic Services" %>
+                    <i class="bi bi-hearts" style="font-size: 3rem"></i>
+                  <% else category == "Health" %>
+                    <i class="bi bi-capsule" style="font-size: 3rem"></i>
+                <% end %>
             </div>
+          </div>
+
         <% end %>
       <% end %>
     <% else %>
@@ -14,7 +39,9 @@
       <div class="card category">
         <img class="card-img" src="https://www.pcclean.io/wp-content/uploads/2020/4/qIZNRz.jpg" alt="Card img">
           <div class="overlay">
-            <span><%= @categories %></span>
+           <div class="box">
+      <a class="btn-light btn-block btnnavbar" role="button" aria-pressed="true"><span><%= category %></span></a>
+    </div>
           </div>
       </div>
     </div>

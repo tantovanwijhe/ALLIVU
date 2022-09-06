@@ -110,6 +110,10 @@
 }
 
 .category-cards{
-  padding: 10px;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
   border-style: hidden;
 }

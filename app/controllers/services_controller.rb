@@ -19,12 +19,30 @@ class ServicesController < ApplicationController
 
   def index
     @services = Service.where(category: params[:query])
+    @markers = @services.geocoded.map do |service|
+      {
+        lat: service.latitude,
+        lng: service.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {service: service}),
+        image_url: helpers.asset_url("marker.png")
+      }
+    end
+    if params[:query].present?
+      sql_query = <<~SQL
+        services.name ILIKE :query
+        OR services.location ILIKE :query
+        OR services.description ILIKE :query
+        OR services.category ILIKE :query
+      SQL
+      @services = Service.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @services = Service.all
+    end
   end
 
   def categories
-    # @services = Service.where(location: params[:query])
-    @services = Service.where("location LIKE ?", "%#{params[:query]}%")
-
+    sql_query = "location ILIKE :query"
+    @services = Service.where(sql_query, query: "%#{params[:query]}%")
     if params[:query].present?
       @categories = @services.map do |service|
         service.category
@@ -43,6 +61,8 @@ class ServicesController < ApplicationController
     @service = Service.new(service_params)
     @service.user = current_user
     if @service.save
+      current_user.update(provider: true)
+      current_user.provider = true
       redirect_to service_path(@service)
     else
       render :new, status: :unprocessable_entity

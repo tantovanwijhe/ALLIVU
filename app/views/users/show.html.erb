@@ -17,57 +17,12 @@
     <h4 class="link-allivu"><%= link_to "Manage services", users_account_service_path %></h4>
   <% end %>
   <!-- Upcoming bookings -->
-  <h4>Upcoming Bookings</h4>
   <% if current_user.provider?  %>
-    <% @services = Service.where(user_id: current_user) %>
-    <% @services.each do |service| %>
-        <% service.bookings.each do |booking| %>
-          <% if booking.start_date > Date.today %>
-            <div class="card-product">
-            <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
-              <div class="card-product-infos">
-                <h4><%= link_to "Manage booking", edit_service_booking_path(booking.id, service_id: booking.service) %></h4>
-                <p class="card-desc-p-allivu-sm"><%= "Booked by: #{booking.user.first_name} #{booking.user.last_name}" %></p>
-                <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime("%e, %Y") %></p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-    <% end %>
+    <%= render 'provider_bookings' %>
   <% else %>
-    <% @bookings = Booking.where(user_id: current_user) %>
-      <% @bookings.each do |booking| %>
-        <% if booking.start_date > Date.today %>
-          <div class="card-product">
-          <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
-            <div class="card-product-infos">
-              <h4><%= link_to booking.service.name, service_path(booking.service) %></h4>
-              <p class="card-desc-p-allivu-sm">Provider: <%= User.find(booking.service.user_id).first_name %></p>
-              <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime("%e, %Y") %></p>
-              <p class="link-allivu"><%= link_to "Manage booking", edit_service_booking_path(id: booking, service_id: booking.service) %></p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+    <%= render 'user_bookings' %>
   <% end %>
-  <hr>
-  <!-- Past bookings -->
-  <h4>History</h4>
-    <% @bookings = Booking.where(user_id: current_user) %>
-      <% @bookings.each do |booking| %>
-        <% if booking.start_date < Date.today %>
-          <div class="card-product">
-          <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
-            <div class="card-product-infos py-0 px-4">
-              <h4 class="my-3"><%= link_to booking.service.name, service_path(booking.service) %></h4>
-              <p class="card-desc-p-allivu-sm my-2">Provider: <%= User.find(booking.service.user_id).first_name %></p>
-              <p class="card-desc-p-allivu-sm my-2"><%= booking.start_date.strftime("%b %e ") %>—<%=booking.end_date.strftime(" %b %e, %Y") %></p>
-              <p class="card-desc-p-link-allivu"><%= link_to "Write a Review", new_service_booking_review_path(booking.service, booking) %></p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-  <hr>
+
   <!-- Review feed -->
   <%  @user_reviews = current_user.user_reviews %>
   <% if @user_reviews.present? %>
@@ -83,12 +38,10 @@
     </div>
     <% end %>
   <% end %>
-
+  <hr>
   <h4>Become a Provider</h4>
     <p class="link-allivu"><%= link_to "Become a provider", users_account_provider_path %></p>
   <hr>
-
-
 
   <div>
     <%= button_to "logout", destroy_user_session_path, method: :delete  %>

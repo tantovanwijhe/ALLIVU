@@ -19,6 +19,8 @@ $logo-font: "Leckerli One", "Helvetica", "sans-serif";
 // }
 // $my-font: "Font Name";
 
+
+
 .logo {
   font-family: 'Leckerli One', cursive;
   font-size: 45px;
@@ -79,7 +81,15 @@ $logo-font: "Leckerli One", "Helvetica", "sans-serif";
   text-decoration: none;
 }
 
-.allivu-overblue{
+.allivu-overblue {
   color: $allivublue;
+  text-decoration: none;
+}
+
+#link-allivu-categories {
+  font-family: 'Roboto';
+  font-weight: lighter;
+  font-size: 18px;
+  color: $allivugray;
   text-decoration: none;
 }
