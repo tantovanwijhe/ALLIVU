@@ -34,11 +34,7 @@ class ServicesController < ApplicationController
     end
   end
 
-    # @services = Service.where(category: params[:query])
-
-
   def categories
-    # @services = Service.where(location: params[:query])
     sql_query = "location ILIKE :query"
     @services = Service.where(sql_query, query: "%#{params[:query]}%")
     if params[:query].present?
@@ -59,6 +55,8 @@ class ServicesController < ApplicationController
     @service = Service.new(service_params)
     @service.user = current_user
     if @service.save
+      current_user.update(provider: true)
+      current_user.provider = true
       redirect_to service_path(@service)
     else
       render :new, status: :unprocessable_entity
