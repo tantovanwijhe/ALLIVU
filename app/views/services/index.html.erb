@@ -1,27 +1,35 @@
 <%= render 'shared/navbar_pages' %>
 
 <div style="margin-top:30px; margin-bottom:90px;">
-  <div class = "container"> <h3 class="h3-allivu"> Services in your location </h3> </div>
-    <div class="container">
-      <% @services.each do |service| %>
-        <%= link_to service_path(service), :class =>"card-link" do %>
-          <div class="card categoryy my-4">
-            <img class="card-img" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
-            <div class="overlay serv">
-              <h1><%= service.name %></h1>
-              <div class="row">
-                <% array = [] %>
-                <% service.reviews.each do |review|%>
-                  <% array << review.rating %>
-                <% end %>
-                <% if array == nil %>
-                  <p><%= '%.1f' % (array.sum(0.0) / array.size) %> &#9733</p>
-                <% end %>
-                <h2><%= service.price.round%> € </h2>
-              </div>
-            </div>
+  <div class = "container"> 
+    <% if @services == Service.all %>
+      <h2 class="pl-4 h2-allivu"> All the services </h2>
+      <p class="allivu-sm"> No specific matches were found.</p>
+    <% else %>
+      <h2 class="pl-4 h2-allivu"> Available services in <%= :category %> </h2>
+    <% end %>
+  </div>
+  
+  <div class="container">
+  <% @services.each do |service| %>
+    <%= link_to service_path(service), :class =>"card-link" do %>
+    <div class="card categoryy my-4">
+      <img class="card-img" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
+        <div class="overlay serv">
+          <h1><%= service.name %></h1>
+          <div class="row">
+            <% array = [] %>
+            <% service.reviews.each do |review|%>
+              <% array << review.rating %>
+            <% end %>
+            <% if array == nil %>
+              <p><%= '%.1f' % (array.sum(0.0) / array.size) %> &#9733</p>
+            <% end %>
+            <h2><%= service.price.round%> € </h2>
+             <% end %>
+            <% end %>
           </div>
-        <% end %>
-      <% end %>
-    </div>
+        </div>
+      </div>
+  </div>
 </div>
