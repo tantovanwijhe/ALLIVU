@@ -39,6 +39,8 @@
             <h6><%= "#{@service.reviews.count} reviews" %></h6>
         </div>
         <hr>
+        <%= button_to "add to favorites", service_favorites_path(@service), method: :post %>
+        <%# <button class="addToFavBtn">Add to Favorites</button> %>
         <!-- Description-head End-->
 
         <div>
@@ -67,13 +69,13 @@
       <hr>
   <!-- Location end-->
   <!-- Form start-->
-      <h5 class="p-allivu"><strong>Make a booking</strong></h5>
-      <% if @service.user == current_user%>
+      <% if @service.user == current_user %>
         <div class="col-12 col-lg-4">
           </div>
         <% else %>
+        <h5 class="p-allivu"><strong>Make a booking</strong></h5>
           <div class="col-12 col-lg-4">
-            <%= render "/shared/form", service: @service, booking: @booking %>
+            <%= render "/shared/booking_form", service: @service, booking: @booking %>
           </div>
         <% end %>
         </div>

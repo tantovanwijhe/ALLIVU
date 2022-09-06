@@ -1,25 +1,24 @@
 <%= render 'shared/navbar_pages' %>
 
-
 <div style="margin-top:30px; margin-bottom:90px;">
-<div class = "container"> <h2 class="pl-4 h2-allivu">
-  <% if @services == Service.all %>
-  
-      All the services </h2>
+  <div class = "container"> 
+    <% if @services == Service.all %>
+      <h2 class="pl-4 h2-allivu"> All the services </h2>
       <p class="allivu-sm"> No specific matches were found.</p>
     <% else %>
       <h2 class="pl-4 h2-allivu"> Available services in <%= :category %> </h2>
-  <% end %>
+    <% end %>
   </div>
+  
   <div class="container">
   <% @services.each do |service| %>
-      <%= link_to service_path(service), :class =>"card-link" do %>
-      <div class="card categoryy my-4">
-        <img class="card-img" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
+    <%= link_to service_path(service), :class =>"card-link" do %>
+    <div class="card categoryy my-4">
+      <img class="card-img" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
         <div class="overlay serv">
           <h1><%= service.name %></h1>
           <div class="row">
-          <% array = [] %>
+            <% array = [] %>
             <% service.reviews.each do |review|%>
               <% array << review.rating %>
             <% end %>
@@ -27,10 +26,10 @@
               <p><%= '%.1f' % (array.sum(0.0) / array.size) %> &#9733</p>
             <% end %>
             <h2><%= service.price.round%> € </h2>
+             <% end %>
+            <% end %>
           </div>
         </div>
-      <% end %>
-    </div>
-
-  <% end %>
+      </div>
+  </div>
 </div>

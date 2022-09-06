@@ -1,0 +1,11 @@
+<div class="container">
+<h1>Manage your services</h1>
+  <% @services.each do |service| %>
+  <div class="card-product">
+    <%=cl_image_tag service.photos.first.key, height: 200, crop: :fill %>
+    <div class="card-product-infos py-0 px-4">
+      <h5><%= link_to service.name, service_path(service) %></h5>
+        <p class="card-desc-p-allivu-sm"><%= "Price: #{service.price}" %></p>
+        <p class="link-allivu"><%= link_to "Manage service", edit_service_path(service) %></p>
+  <% end %>
+</div>
