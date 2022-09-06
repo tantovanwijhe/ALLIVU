@@ -26,7 +26,7 @@
               <h4><%= link_to "Manage booking", edit_service_booking_path(booking.id, service_id: booking.service) %></h4>
               <p class="card-desc-p-allivu-sm"><%= "Booked by: #{booking.user.first_name} #{booking.user.last_name}" %></p>
               <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime("%e, %Y") %></p>
-              <p class="card-desc-p-link-allivu"><%= link_to "Write a Review", new_service_booking_review_path(booking.service, booking) %></p>
+              <p class="card-desc-p-link-allivu"><%= link_to "Write a Review", new_service_booking_user_review_path(booking.service, booking) %></p>
             </div>
           </div>
         <% end %>
