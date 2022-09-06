@@ -39,9 +39,23 @@
             <h6><%= "#{@service.reviews.count} reviews" %></h6>
         </div>
         <hr>
-        <%= button_to "add to favorites", service_favorites_path(@service), method: :post %>
-        <%# <button class="addToFavBtn">Add to Favorites</button> %>
-        <!-- Description-head End-->
+
+
+
+        <%if @favorite_services.include?(@service)%>
+          <%= button_to service_favorite_path(@service, @favorite), method: :delete do%>
+            <i class="bi bi-heart-fill"></i>
+          <% end %>
+
+        <% else %>
+          <%= button_to service_favorites_path(@service), method: :post do%>
+            <i class="bi bi-heart"></i>
+          <% end %>
+        <% end %>
+
+
+
+
 
         <div>
         <!-- Description-body Start-->
