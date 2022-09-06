@@ -1,0 +1,8 @@
+ <%= simple_form_for @service do |f| %>
+    <%= f.input :name, html5: true %>
+    <%= f.input :category, html5: true %>
+    <%= f.input :price, html5: true %>
+    <%= f.input :description, html5: true %>
+    <%= f.input :location, html5: true %>
+    <%= f.submit "Update" %>
+  <% end %>

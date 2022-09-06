@@ -3,14 +3,12 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
     @booking = Booking.new
     @lastbook = Booking.last
-
-    @markers =[
-      {
-        lat: @service.latitude,
+    @markers = [
+      { lat: @service.latitude,
         lng: @service.longitude,
         info_window: render_to_string(partial: "info_window", locals: { service: @service }),
-        image_url: helpers.asset_url("marker.png")
-      }]
+        image_url: helpers.asset_url("marker.png") }
+    ]
   end
 
   def index
@@ -43,6 +41,16 @@ class ServicesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @service = Service.find(params[:id])
+  end
+
+  def update
+    @service = Service.find(params[:id])
+    @service.update(service_params)
+    redirect_to service_path(@service)
   end
 
   private

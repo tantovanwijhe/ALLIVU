@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   get "profile", to: "pages#profile"
   get "categories", to: "services#categories"
   get "users/account", to: "users#show", as: :user
+  get "users/account/provider", to: "users#provider"
+  get "users/account/service", to: "users#service"
 
-  resources :services, only: %i[index new create show edit] do
+  resources :services, only: %i[index new create show edit update] do
     collection do
       get "categories"
     end
