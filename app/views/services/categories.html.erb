@@ -1,34 +1,37 @@
 <%= render 'shared/navbar_back_pages' %>
-<h2 class="pl-4 h2-allivu"> Available categories on <%= params[:query][:location].capitalize %></h2>
+<h2 class="pl-4 h2-allivu"> Available categories on <br>
+<%= params[:query][:location] %></h2>
+
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <% if @categories.is_a?(Array) %>
       <% @categories.each do |category| %>
-          <%= link_to services_path(query: category) do %>
+        <%= link_to services_path(query: category) do %>
             <div class="box category-cards">
               <p class= "allivu-overblue" id="link-allivu-categories"><%= category %></p>
-              <div class="btn-light btn-block-categories btnnavbar" role="button" aria-pressed="true">
-                <% case %>
-                  <% when category == "Personal Assistant" %>
-                    <i class="bi bi-universal-access" style="font-size: 3rem"></i>
-                  <% when category == "Vehicle Rentals" %>
-                    <i class="bi bi-car-front-fill" style="font-size: 3rem"></i>
-                  <% when category == "Tours" %>
-                    <i class="bi bi-signpost-2" style="font-size: 3rem"></i>
-                  <% when category == "Private Classes" %>
-                  <i class="bi bi-book" style="font-size: 3rem"></i>
-                  <% when category == "Beauty" %>
-                    <i class="bi bi-scissors" style="font-size: 3rem"></i>
-                  <% when category == "Sports" %>
-                    <i class="bi bi-heart-pulse" style="font-size: 3rem"></i>
-                  <% when category == "Souvenirs" %>
-                    <i class="bi bi-balloon-heart" style="font-size: 3rem"></i>
-                  <% when category == "Home Entertainment" %>
-                    <i class="bi bi-house-heart" style="font-size: 3rem"></i>
-                  <% when category == "Romantic Services" %>
-                    <i class="bi bi-hearts" style="font-size: 3rem"></i>
-                  <% else category == "Health" %>
-                    <i class="bi bi-capsule" style="font-size: 3rem"></i>
-                <% end %>
+                <div class="btn-light btn-block-categories btnnavbar" role="button" aria-pressed="true">
+                  <% case %>
+                    <% when category == "Personal Assistant" %>
+                      <i class="bi bi-universal-access" style="font-size: 3rem"></i>
+                    <% when category == "Vehicle Rentals" %>
+                      <i class="bi bi-car-front-fill" style="font-size: 3rem"></i>
+                    <% when category == "Tours" %>
+                      <i class="bi bi-signpost-2" style="font-size: 3rem"></i>
+                    <% when category == "Private Classes" %>
+                    <i class="bi bi-book" style="font-size: 3rem"></i>
+                    <% when category == "Beauty" %>
+                      <i class="bi bi-scissors" style="font-size: 3rem"></i>
+                    <% when category == "Sports" %>
+                      <i class="bi bi-heart-pulse" style="font-size: 3rem"></i>
+                    <% when category == "Souvenirs" %>
+                      <i class="bi bi-balloon-heart" style="font-size: 3rem"></i>
+                    <% when category == "Home Entertainment" %>
+                      <i class="bi bi-house-heart" style="font-size: 3rem"></i>
+                    <% when category == "Romantic Services" %>
+                      <i class="bi bi-hearts" style="font-size: 3rem"></i>
+                    <% else category == "Health" %>
+                      <i class="bi bi-capsule" style="font-size: 3rem"></i>
+                  <% end %>
             </div>
           </div>
         <% end %>
@@ -45,4 +48,5 @@
       </div>
     </div>
     <% end %>
+
   <% end %>

@@ -3,17 +3,17 @@
 
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-4 col-md-offset-3">
-      <%= simple_form_for :query, :url => '/categories', method: :get, class: "form" do |f| %>
+  <div class="row"><div class="search-bar">
+    <div class="search-wrapper">
+      <%= simple_form_for :query, :url => '/categories', method: :get, class: "form", placeholder: "teste", label:false do |f| %>
         <%= f.input :location,
-        input_html: {data: {place_autocomplete_target: "location"}, class: "d-none"},
-        wrapper_html: {data: {controller: "place-autocomplete", place_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+        input_html: {data: {place_autocomplete_target: "location"}, class: "d-none", label:false},
+        wrapper_html: {data: {controller: "place-autocomplete", place_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, placeholder: "teste", label:false}
         %>
+        <%= f.button :submit, class: "round-button", value: "Search" %>
 
-        <%= f.button :submit, :class => "round-button", :value => "Search" %>
       <% end %>
-
+      </div>
     </div>
   </div>
 </div>

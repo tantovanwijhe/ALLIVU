@@ -52,9 +52,10 @@ class ServicesController < ApplicationController
   end
 
   def categories
-    sql_query = "location ILIKE :query"
-    @services = Service.where(sql_query, query: "%#{params[:query][:location]}%")
+
     if params[:query].present?
+      sql_query = "location ILIKE :query"
+      @services = Service.where(sql_query, query: "%#{params[:location]}%")
       @categories = @services.map do |service|
         service.category
       end
@@ -62,6 +63,7 @@ class ServicesController < ApplicationController
     else
       @categories = Service::CATEGORIES
     end
+
   end
 
   def new

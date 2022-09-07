@@ -64,3 +64,36 @@
 .suggestions {
   justify-content: left;
 }
+
+.mapboxgl-ctrl-geocoder {
+  width: 80% !important;
+  margin-top: 2vh;
+  align-self: flex-start;
+}
+
+.search-bar label {
+  display: none;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  color:rgb(138, 136, 136) !important;
+}
+
+.search-wrapper {
+  display: inline-flex !important;
+}
+
+.round-button{
+  height: 40px !important;
+  border-radius: 60px !important;
+  font-size: 15px !important;
+  text-align: center !important;
+  border-style: solid !important;
+  border-width: 1px !important;
+  background-color: transparent;
+  justify-content: center !important;
+  color: #dddcdc !important;
+  border-color: #6C9A8B !important;
+  font-weight: bold !important;
+
+}
