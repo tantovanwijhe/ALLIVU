@@ -1,34 +1,28 @@
 <%= render 'shared/navbar_pages' %>
 <div class="container">
-
   <div class="d-flex justify-content-between align-items-center">
   <%= render 'avatar_photo' %>
   </div>
     <p>Joined in <%= "#{current_user.created_at.year}" %></p>
+    <% if current_user.user_reviews.any? %>
+      <h6><%= "#{current_user.user_reviews.count} Reviews" %></h6>
+    <% end %>
     <p class="link-allivu"><%= link_to "Account settings", edit_user_registration_path %></p>
-    <h6><%= "#{current_user.user_reviews.count} Reviews" %></h6>
-  <hr>
-  <% if current_user.provider? %>
-    <h4 class="link-allivu"><%= link_to "Manage services", users_account_service_path %></h4>
-  <% end %>
-
+  <br>
   <!-- Upcoming bookings -->
-  <% if current_user.provider?  %>
-    <%= render 'provider_bookings' %>
-  <% else %>
-    <%= render 'user_bookings' %>
-  <% end %>
+  <%= render 'user_bookings' %>
 
   <!-- Review feed -->
   <%= render 'review_feed' %>
 
   <!-- Provider option -->
-  <br>
-  <h4>Become a Provider</h4>
-  <p class="link-allivu"><%= link_to "Become a provider", users_account_provider_path %></p>
-  <hr>
+  <h3 class="h3-allivu">Become a Provider</h3>
 
-  <div class="container">
-    <%= button_to "logout", destroy_user_session_path, method: :delete %>
+  <div class="d-flex justify-content-center my-3">
+    <%= button_to "Become a provider", users_account_provider_path, class: "button-wide" %>
+  </div>
+
+  <div class="d-flex justify-content-center my-3">
+    <%= button_to "logout", destroy_user_session_path, method: :delete, class: "button-wide" %>
   </div>
 </div>

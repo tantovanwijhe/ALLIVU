@@ -1,13 +1,19 @@
-<div class="container">
-<h1>Manage your services</h1>
-  <% @services.each do |service| %>
-  <div class="card-product">
+<%= render 'shared/navbar_pages' %>
+<div class="container mt-3 px-5">
+<!-- List Services -->
+    <h1 class="h1-allivu mb-4">Your Services</h1>
+    <% average_service_rating = [] %>
+    <% current_user.services.each do |service| %>
+    <div class="card-product">
     <%=cl_image_tag service.photos.first.key, height: 200, crop: :fill %>
-    <div class="card-product-infos py-0 px-4">
-      <h5><%= link_to service.name, service_path(service) %></h5>
-        <p class="card-desc-p-allivu-sm"><%= "Price: #{service.price}" %></p>
-        <p class="link-allivu"><%= link_to "Manage service", edit_service_path(service) %></p>
+      <div class="card-product-infos">
+        <p class="card-desc-p-allivu"><%= link_to "#{service.name}", service_path(service) %></p>
+        <p class="card-desc-p-allivu-sm"><%= "#{service.reviews.count} reviews" %></p>
+        <% service.reviews.each do |review| %>
+          <% average_service_rating << review.rating %>
+        <% end %>
+        <p class="card-desc-p-allivu-sm"><%= "Average rating:  #{'%.1f' % (average_service_rating.sum(0.0) / average_service_rating.size)}" %></p>
+      </div>
     </div>
-  </div>
-  <% end %>
+    <% end %>
 </div>

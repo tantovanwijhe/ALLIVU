@@ -20,16 +20,25 @@
           <% end %>
         </div>
         <div class="col">
-         <% if user_signed_in? %>
+         <% if user_signed_in? && current_user.provider == true%>
+            <%= link_to users_account_provider_path do %>
+              <i class="fa-regular fa-user icone-navbar"></i>
+              <div class="link-navbar">Account</div>
+            <% end %>
+
+            <% elsif user_signed_in? && current_user.provider == false %>
             <%= link_to user_path do %>
               <i class="fa-regular fa-user icone-navbar"></i>
               <div class="link-navbar">Account</div>
             <% end %>
+
           <% else %>
-                <%= link_to new_user_session_path do %>
-                  <i class="fa-regular fa-user icone-navbar"></i>
-                  <div class="link-navbar">Log in</div>
-                <% end %>
+
+            <%= link_to new_user_session_path do %>
+              <i class="fa-regular fa-user icone-navbar"></i>
+              <div class="link-navbar">Log in</div>
+            <% end %>
+
           <% end %>
         </div>
       </div>

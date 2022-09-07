@@ -1,13 +1,38 @@
+<%= render 'shared/navbar_pages' %>
 <div class="container">
-  <h1>Become a provider</h1>
-  <h3>Share your knowledge and experiences to the outside world</h3>
-  <p class="link-allivu"><%= link_to "Start", new_service_path %></p>
+  <div class="d-flex justify-content-between align-items-center">
+  <%= render 'avatar_photo' %>
+  </div>
+    <p>Joined in <%= "#{current_user.created_at.year}" %></p>
 
-  <p>You may know a thing or two about your land, but not everyone knows the ins and outs. This is where you can step in and offer your expertise in your area to people who are seeking experiences but may not know where to find it.</p>
+    <!-- Review Overview -->
+    <% @user_services = current_user.services %>
+    <% array = [] %>
+    <% @user_services.each do |service| %>
+      <% array << service.reviews.count %>
+    <% end %>
+    <% if @user_services.empty? %>
+      <p><%= "No Reviews yet" %></p>
+    <% else %>
+      <p><%= "#{array.sum} Reviews" %></p>
+      <p><%= "Average rating:  #{'%.1f' % (array.sum(0.0) / array.size)}" %> &#9733</p>
+    <% end %>
+    <p>-----------------------------------------------</p>
 
-  <h4>Create a service, your way.</h4>
-  <p>Available during certain days? Big group or private? Your service will be under your convenience.</p>
+  <p>-----------------------------------------------</p>
+  <!-- Upcoming bookings -->
+  <%= render 'provider_bookings' %>
 
-  <h4>Bring your community into the spotlight</h4>
-  <p>Introduce your local neighborhood in a whole new way. Share your roots in a way that is not possible anywhere else. </p>
+  <!-- Review feed -->
+  <%= render 'review_feed' %>
+
+  <!-- Provider option -->
+  <% if current_user.provider == false %>
+    <h4>Become a Provider</h4>
+    <p class="btn"><%= link_to "Start", users_account_provider_path %></p>
+  <% end %>
+
+  <div class="d-flex justify-content-center my-5">
+    <%= button_to "logout", destroy_user_session_path, method: :delete, class: "button-wide" %>
+  </div>
 </div>
