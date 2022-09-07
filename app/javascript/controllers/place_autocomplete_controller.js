@@ -13,19 +13,18 @@ export default class extends Controller {
       accessToken: this.apiKeyValue,
       types: "country,region,place,postcode,locality,neighborhood,address"
     })
-
+    this.geocoder.addTo(this.element)
     this.geocoder.on("result", event => this.#setInputValue(event))
     this.geocoder.on("clear", () => this.#clearInputValue())
   }
 
   #setInputValue(event) {
-    this.placeTarget.value = event.result["place_name"]
+    this.locationTarget.value = event.result["place_name"]
   }
 
   #clearInputValue() {
-    this.placeTarget.value = ""
+    this.locationTarget.parentNode.submit()
   }
-
 
   disconnect() {
     this.geocoder.onRemove()
