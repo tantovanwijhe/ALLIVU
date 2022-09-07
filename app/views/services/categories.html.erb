@@ -1,7 +1,5 @@
 <%= render 'shared/navbar_back_pages' %>
-
-
-<h2 class="pl-4 h2-allivu"> Available categories </h2>
+<h2 class="pl-4 h2-allivu"> Available categories on <%= params[:query][:location].capitalize %></h2>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <% if @categories.is_a?(Array) %>
       <% @categories.each do |category| %>

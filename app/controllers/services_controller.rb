@@ -37,7 +37,7 @@ class ServicesController < ApplicationController
   def categories
     # @services = Service.where(location: params[:query])
     sql_query = "location ILIKE :query"
-    @services = Service.where(sql_query, query: "%#{params[:query]}%")
+    @services = Service.where(sql_query, query: "%#{params[:query][:location]}%")
     if params[:query].present?
       @categories = @services.map do |service|
         service.category
