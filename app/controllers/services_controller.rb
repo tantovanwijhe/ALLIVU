@@ -18,15 +18,7 @@ class ServicesController < ApplicationController
   end
 
   def index
-    @services = Service.where(category: params[:query])
-    @markers = @services.geocoded.map do |service|
-      {
-        lat: service.latitude,
-        lng: service.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {service: service}),
-        image_url: helpers.asset_url("marker.png")
-      }
-    end
+
     if params[:query].present?
       sql_query = <<~SQL
         services.name ILIKE :query
@@ -37,7 +29,29 @@ class ServicesController < ApplicationController
       @services = Service.where(sql_query, query: "%#{params[:query]}%")
     else
       @services = Service.all
+      # @services = Service.where(category: params[:query])
     end
+
+    if params[:option] == "High"
+      @services = @services.order(price: :desc)
+    elsif params[:option] == "Low"
+      @services = @services.order(price: :asc)
+    end
+
+    @markers = @services.geocoded.map do |service|
+      {
+        lat: service.latitude,
+        lng: service.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {service: service}),
+        image_url: helpers.asset_url("marker.png")
+      }
+    end
+
+    @favorite_services = Favorite.all.map do |favorite|
+      favorite.service
+    end
+
+
   end
 
   def categories

@@ -124,3 +124,17 @@
   white-space: nowrap;
 
 }
+
+#heart{
+  margin-top: 10px ;
+}
+
+.bi::before {
+  display: inline-block;
+  content: "";
+  vertical-align: -.125em;
+  background: transparent;
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+  padding: 0px;
+}

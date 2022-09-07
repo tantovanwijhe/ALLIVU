@@ -21,7 +21,7 @@
         <!-- Favorites Start-->
         <%if @favorite_services.include?(@service)%>
           <%= button_to service_favorite_path(@service, @favorite), method: :delete do%>
-            <i class="bi bi-heart-fill"></i>
+            <i class="bi bi-heart-fill" style="color: red;"></i>
           <% end %>
 
         <% else %>

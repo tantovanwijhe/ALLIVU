@@ -1,6 +1,8 @@
-<%= simple_form_for [@service, @booking, @review] do |f| %>
-  <%= f.input :rating %>
-  <%= f.input :comment %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit "Submit review" %>
-<% end %>
+<div class="container">
+  <%= simple_form_for [@service, @booking, @review] do |f| %>
+    <%= f.input :rating %>
+    <%= f.input :comment %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit "Submit review" %>
+  <% end %>
+</div>
