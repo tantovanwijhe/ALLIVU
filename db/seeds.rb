@@ -76,35 +76,35 @@
 # provider: true
 # )
 
-# puts 'Creating 3 Providers...'
+puts 'Creating 3 Providers...'
 
-# provider_13 = User.new(
-# email: "adrian@allivu.pro",
-# password: "password",
-# first_name: "Adrian",
-# last_name: "Robert-Vassy",
-# username: "adrianrobertvassy",
-# location: "Legian, Bali",
-# provider: false
-# )
-# provider_14 = User.new(
-# email: "shane@allivu.pro",
-# password: "password",
-# first_name: "Shane",
-# last_name: "Sutherland",
-# username: "shanesutherland",
-# location: "Nusa Dua, Bali",
-# provider: false
-# )
-# provider_15 = User.new(
-# email: "jari@allivu.pro",
-# password: "password",
-# first_name: "Jari",
-# last_name: "Vedegaal",
-# username: "jariverdegaal",
-# location: "Bedugul, Bali",
-# provider: false
-# )
+provider_13 = User.new(
+email: "adrian@allivu.pro",
+password: "password",
+first_name: "Adrian",
+last_name: "Robert-Vassy",
+username: "adrianrobertvassy",
+location: "Legian, Bali",
+provider: false
+)
+provider_14 = User.new(
+email: "shane@allivu.pro",
+password: "password",
+first_name: "Shane",
+last_name: "Sutherland",
+username: "shanesutherland",
+location: "Nusa Dua, Bali",
+provider: false
+)
+provider_15 = User.new(
+email: "jari@allivu.pro",
+password: "password",
+first_name: "Jari",
+last_name: "Vedegaal",
+username: "jariverdegaal",
+location: "Bedugul, Bali",
+provider: false
+)
 
 # provider_5.save!
 # provider_6.save!
@@ -115,10 +115,10 @@
 # provider_11.save!
 # provider_12.save!
 
-# provider_13.save!
-# provider_14.save!
-# provider_15.save!
-# puts 'Providers created!'
+provider_13.save!
+provider_14.save!
+provider_15.save!
+puts 'Providers created!'
 
 # # puts "Deleting Services database..."
 # # Service.destroy_all
@@ -422,39 +422,39 @@ great_review_comment = [
   "If you see it and your dates are available for booking don't waste time! Press book now."
 ]
 
-# puts 'Creating Bookings + Reviews'
+puts 'Creating Bookings + Reviews'
 
-# Service.all.each do |booking|
-#   random_num = rand(1..10)
-#   Booking.create!(
-#     start_date: Date.today - random_num,
-#     end_date: Date.today - random_num,
-#     service: booking,
-#     user: User.all.sample
-#   )
+Service.all.each do |booking|
+  random_num = rand(7..10)
+  Booking.create!(
+    start_date: Date.today - random_num,
+    end_date: Date.today - random_num,
+    service: booking,
+    user: User.all.sample
+  )
 
-#   Review.create!(
-#     rating: rand(4..5),
-#     comment: great_review_comment.sample,
-#     service_id: Booking.last.service_id,
-#     booking_id: Booking.last.id
-#   )
+  Review.create!(
+    rating: rand(4..5),
+    comment: great_review_comment.sample,
+    service_id: Booking.last.service_id,
+    booking_id: Booking.last.id
+  )
 
-#   Booking.create!(
-#     start_date: Date.today - random_num,
-#     end_date: Date.today - random_num,
-#     service: booking,
-#     user: User.all.sample
-#   )
+  Booking.create!(
+    start_date: Date.today - random_num,
+    end_date: Date.today - random_num,
+    service: booking,
+    user: User.all.sample
+  )
 
-#   Review.create!(
-#     rating: rand(4..5),
-#     comment: review_comment.sample,
-#     service_id: Booking.last.service_id,
-#     booking_id: Booking.last.id
-#   )
-# end
-# puts 'Bookings + Reviews created!'
+  Review.create!(
+    rating: rand(4..5),
+    comment: review_comment.sample,
+    service_id: Booking.last.service_id,
+    booking_id: Booking.last.id
+  )
+end
+puts 'Bookings + Reviews created!'
 
 # UserReview.new(
 #   rating: rand(1..5),
