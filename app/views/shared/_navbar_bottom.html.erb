@@ -20,7 +20,7 @@
           <% end %>
         </div>
         <div class="col">
-         <% if user_signed_in? && current_user.provider == true%>
+         <% if user_signed_in? && current_user.provider == true %>
             <%= link_to users_account_provider_path do %>
               <i class="fa-regular fa-user icone-navbar"></i>
               <div class="link-navbar">Account</div>

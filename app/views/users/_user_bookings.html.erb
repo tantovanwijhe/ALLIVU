@@ -17,7 +17,7 @@
   <!-- Past bookings -->
   <h3 class="h3-allivu mb-4">History</h3>
     <% @bookings = Booking.where(user_id: current_user) %>
-      <% @bookings.each do |booking| %>
+      <% @bookings.limit(3).each do |booking| %>
         <% if booking.start_date < Date.today %>
           <div class="card-product">
           <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>

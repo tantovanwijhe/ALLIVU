@@ -1,7 +1,7 @@
 <% user_reviews = current_user.user_reviews %>
 <% user_services = current_user.services %>
 
-<% if user_reviews.present? %>
+<% if user_reviews.present? && current_user.provider == false %>
   <h3 class="h3-allivu mb-3"><strong>Reviews</strong></h3>
 
     <% user_reviews.each do |review| %>
@@ -16,21 +16,23 @@
     <% end %>
 
   <% else %>
+  
+    <% if user_services.any? %>
+      <% user_services do |service| %>
+        <% if service.bookings.any? %>
+          <% service.bookings.each do |booking| %>
 
-    <% user_services do |service| %>
-      <% if service.bookings.any? %>
-        <% service.bookings.each do |booking| %>
-
-          <% if booking.review.present? %>
-            <div class="bezier card mb-3 ">
-              <div class="card-header"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></div>
-              <div class="card-body pt-0">
-                <h5 class="card-title"><%= "#{booking.review.rating.to_i} stars" %></h5>
-                <p class="card-text"><%= booking.review.comment %></p>
+            <% if booking.review.present? %>
+              <div class="bezier card mb-3 ">
+                <div class="card-header"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></div>
+                <div class="card-body pt-0">
+                  <h5 class="card-title"><%= "#{booking.review.rating.to_i} stars" %></h5>
+                  <p class="card-text"><%= booking.review.comment %></p>
+                </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
 
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
