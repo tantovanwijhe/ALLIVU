@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "users/account", to: "users#show", as: :user
   get "users/account/provider", to: "users#provider"
   get "users/account/service", to: "users#service"
+  get "/bookings/confirmation", to: "bookings#confirm"
 
   resources :services, only: %i[index new create show edit update] do
     collection do
@@ -14,8 +15,10 @@ Rails.application.routes.draw do
     end
     resources :bookings, only: %i[create edit update] do
       resources :reviews, only: %i[create new edit update]
+      resources :user_reviews, only: %i[create new edit update]
     end
-    resources :favorites, only: :create
+    resources :favorites, only: %i[create destroy]
+
   end
   resources :bookings, only: :destroy
   resources :favorites, only: :index

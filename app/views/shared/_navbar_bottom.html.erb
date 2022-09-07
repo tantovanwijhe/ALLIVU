@@ -1,6 +1,6 @@
 
-<div class="fixed-bottom navbar-lewagon">
-    <div class="row">
+<nav class="fixed-bottom navbar-lewagon">
+    <div class="row text-center">
         <div class="col">
           <%= link_to root_path do %>
             <i class="fa-solid fa-house icone-navbar <%='active' if request.url == root_path %>"> </i>
@@ -8,8 +8,8 @@
           <% end %>
         </div>
         <div class="col">
-          <%= link_to root_path do %>
-          <i class="fa-regular fa-heart icone-navbar <%='active' if request.url == categories_path %>"></i>
+          <%= link_to favorites_path do %>
+          <i class="fa-regular fa-heart icone-navbar"></i>
           <div class="link-navbar">Planning</div>
           <% end %>
         </div>

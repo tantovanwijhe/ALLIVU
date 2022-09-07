@@ -1,13 +1,14 @@
 <%= render 'shared/navbar_back_pages' %>
-<div class="container">
-  <h2>Add a new Service</h2>
+
+<div class="container p-5">
+  <h1 class="h1-allivu pb-4">Add your first Service</h1>
   <%= simple_form_for(@service) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :category, collection: Service::CATEGORIES%>
-    <%= f.input :description %>
-    <%= f.input :price %>
-    <%= f.input :location %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :name, label: "What is the name of your service?" %>
+    <%= f.input :category, collection: Service::CATEGORIES, label: "What type of service is it?"%>
+    <%= f.input :description, label: "Describe your service in detail" %>
+    <%= f.input :price, label: "Set a price (per day)" %>
+    <%= f.input :location, label: "Where is your service located?" %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Add photos" %>
     <%= f.submit "Finish" %>
   <% end %>
 </div>

@@ -1,49 +1,36 @@
 <%= render 'shared/navbar_back_pages' %>
 <!-- Hero Image Section Start-->
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-      <% if @service.photos.any? %>
-        <%=cl_image_tag @service.photos.first.key, height: 300, width: 400, crop: :fill %>
-      </div>
-        <% @service.photos.drop(1).each do |photo| %>
-          <div class="carousel-item">
-            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+<%= render 'image_carousel' %>
 
   <!-- Hero Image Section End-->
 
-  <div class="container px-4">
+  <div class="container px-3">
   <!-- Service info Start-->
-    <div class="row g-4 justify-content-center">
+    <div class="row g-4 px-3 justify-content-center">
       <div class="col-lg-8">
         <!-- Description-head Start-->
         <div class="service-head">
           <div class="service-head-details">
-            <h2 class="allivu-h2"><strong><%= @service.name.capitalize %></strong></h2>
-            <h3 class="allivu-h3">$<%= @service.price.to_i %></h3>
+            <h2 class="h2-show-allivu"><%= @service.name.capitalize %></h2>
+            <h3 class="allivu-overblue">€<%= @service.price.to_i %></h3>
           </div>
-            <h5>Service hosted by <%= "#{@service.user.first_name.capitalize} #{@service.user.last_name.capitalize}" %> </h5>
-            <h6><%= "#{@service.reviews.count} reviews" %></h6>
+            <p class="p-allivu-sm">By <%= "#{@service.user.first_name.capitalize} #{@service.user.last_name.capitalize}" %> </h5>
+            <p class="link-allivu"><%= "#{@service.reviews.count} reviews" %></h6>
         </div>
-        <hr>
-        <%= button_to "add to favorites", service_favorites_path(@service), method: :post %>
-        <%# <button class="addToFavBtn">Add to Favorites</button> %>
-        <!-- Description-head End-->
 
-        <div>
+        <!-- Favorites Start-->
+        <%if @favorite_services.include?(@service)%>
+          <%= button_to service_favorite_path(@service, @favorite), method: :delete do%>
+            <i class="bi bi-heart-fill" style="color: red;"></i>
+          <% end %>
+
+        <% else %>
+          <%= button_to service_favorites_path(@service), method: :post do%>
+            <i class="bi bi-heart"></i>
+          <% end %>
+        <% end %>
+
+      <div>
         <!-- Description-body Start-->
           <div class="row justify-content-center pb-4">
             <button class="button-wide"><strong>Check availability</strong></button>
@@ -101,8 +88,8 @@
   <!-- Review section End-->
   <!-- Provider about start-->
         <h5 class="p-allivu">About <%= "#{@service.user.first_name.capitalize} #{@service.user.last_name.capitalize}" %> </h5>
-        <% d = @service.created_at %>
-        <p>Joined in <%= "#{d.strftime("%B")} #{d.year}" %> </p>
+        <% date = @service.created_at %>
+        <p>Joined in <%= "#{date.strftime("%B")} #{date.year}" %> </p>
   <!-- Provider review start-->
         <% sum = [] %>
         <% @service.user.services.each do |serve| %>

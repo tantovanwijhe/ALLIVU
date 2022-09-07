@@ -2,32 +2,37 @@
 <div class= "container">
   <div class="row justify-content-center">
     <div class="banner">
-
     </div>
-
+  </div>
+</div>
 
 <div style="margin-top:30px; margin-bottom:90px;">
   <div class = "container"> <h3 class="h3-allivu"> TOP rated Services </h3> </div>
-    <div class="container d-flex">
-      <% @services.take(5).each do |service| %>
-        <%= link_to service_path(service), :class =>"card-link" do %>
-          <div class="card my-4 land-card">
-            <img class="card-img" src="https://wallpaperaccess.com/full/7127369.jpg" alt="Card img" >
-            <div class="overlay serv">
-              <h1><%= service.name %></h1>
-              <div class="row">
-                <% array = [] %>
-                <% service.reviews.each do |review|%>
-                  <% array << review.rating %>
-                <% end %>
-                <% if array == nil %>
-                  <p><%= '%.1f' % (array.sum(0.0) / array.size) %> &#9733</p>
-                <% end %>
-                <h2><%= service.price.round%> € </h2>
+    <div class="scrolling-wrapper">
+      <div class="container d-flex">
+        <% @services.take(5).each do |service| %>
+          <%= link_to service_path(service), :class =>"card-link" do %>
+            <div class="card my-4 land-card">
+              <%=cl_image_tag service.photos.first.key, height: 200, width: 300, :style => "border-radius: 10px" , crop: :fill%>
+              <div class="overlay serv">
+                <h1><%= service.name %></h1>
+                <div class="row">
+                  <% array = [] %>
+                  <% service.reviews.each do |review|%>
+                    <% array << review.rating %>
+                  <% end %>
+                  <% if array == nil %>
+                    <p><%= '%.1f' % (array.sum(0.0) / array.size) %> &#9733</p>
+                  <% end %>
+                    <div class="action">
+                      <h2 class="price"><%= service.price.round%> € </h2>
+                      <button class="button-33 p-3" role="button">more info</button>
+                    </div>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
 </div>
