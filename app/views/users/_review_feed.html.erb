@@ -16,9 +16,9 @@
     <% end %>
 
   <% else %>
-  
+
     <% if user_services.any? %>
-      <% user_services do |service| %>
+      <% user_services.each do |service| %>
         <% if service.bookings.any? %>
           <% service.bookings.each do |booking| %>
 
