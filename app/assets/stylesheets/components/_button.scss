@@ -68,13 +68,14 @@
   font-weight: 400;
   outline: none;
   outline: 0;
-  padding: 10px 25px;
+  padding: 6px 25px;
   text-align: center;
   transform: translateY(0);
   transition: transform 150ms, box-shadow 150ms;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin-bottom: 4px;
 }
 
 .button-33:hover {
@@ -96,4 +97,16 @@
 .btn-block-categories {
   display: flex;
   flex-direction: row-reverse;
+}
+
+.filter{
+  border: rgba(139, 203, 182, 1);
+  border-radius: 15%;
+  margin: 3px;
+  background-color: rgba(139, 203, 182, 1);
+  padding: 3px 6px;
+
+  a{
+    color: white;
+  }
 }
