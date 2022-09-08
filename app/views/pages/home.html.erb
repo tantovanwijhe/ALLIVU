@@ -1,5 +1,5 @@
 <%= render "shared/navbar_top" %>
-<div class= "container">
+<div class= "container border-bottom pb-5">
   <div class="row justify-content-center">
     <div class="banner">
     </div>
@@ -7,7 +7,8 @@
 </div>
 
 <div style="margin-top:30px; margin-bottom:90px;">
-  <div class = "container"> <h3 class="h3-allivu"> TOP rated Services </h3> </div>
+  <div class = "container"> <h3 class="h3-allivu"> TOP rated Services </h3>
+    <h5 class="">Search, explore and pay for service vendors all-in-one place.</h5></div>
     <div class="scrolling-wrapper">
       <div class="container d-flex">
         <% @services.take(5).each do |service| %>
@@ -15,24 +16,25 @@
             <div class="card my-4 land-card">
               <%=cl_image_tag service.photos.first.key, height: 200, width: 300, :style => "border-radius: 10px" , crop: :fill%>
               <div class="overlay serv">
-                <h1><%= service.name %></h1>
+                <h1 class="text-dark"><%= service.name %></h1>
+                 <h4 class="text-dark">By : <%= service.user.first_name%> <%= service.user.last_name%></h4>
                 <% array = [] %>
                   <% service.reviews.each do |review|%>
                     <% array << review.rating %>
                   <% end %>
                   <% if array == nil %>
-                    <p><%= '%.1f' % (array.sum(0.0) / array.size) %> &#9733</p>
+                    <%= "no rating" %>
                   <% else %>
                     <% average = 0 %>
                     <% array.each do |rating| %>
                       <% average += rating %>
                     <% end %>
-                    <%= average / array.count %>
+                    <h1><i class="bi bi-star-fill"></i> <%= average / array.count %></h1>
                   <% end %>
                   <div class="row">
                     <div class="action">
-                      <h2><%= service.price.round%> € </h2>
-                      <button class="button-33 p-3" role="button">more info</button>
+                      <h2 class="pl-3"><%= service.price.round%> € </h2>
+                      <button class="button-33" role="button">More Info</button>
                     </div>
                 </div>
               </div>

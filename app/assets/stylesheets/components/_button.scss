@@ -1,6 +1,6 @@
 .button {
   background-color: transparent;
-  border: 4px solid #61897b;
+  border: 2px solid #d5406096;
   border-radius: 35px;
   width: 128px;
   height: 36px;
@@ -11,8 +11,8 @@
 
 .button-wide {
   background-color: transparent;
-  border: 4px solid #61897b;
-  color: black;
+  border: 2px solid #d5406096;
+  color: #d5406096;
   border-radius: 35px;
   width: 45vw;
   height: 5vh;
@@ -30,8 +30,8 @@
 
 .parent button {
   background-color: transparent;
-  border: 4px solid #61897b;
-  color: rgb(0, 0, 0);
+  border: 2px solid #d5406096;
+  color: #d5406096;
   border: none;
   padding-bottom: 50px;
   font-size: 31px;
@@ -44,7 +44,7 @@
 
 .parent button:active {
   background-color: transparent;
-  border: 4px solid #61897b;
+  border: 2px solid #d5406096;
   box-shadow: 0 0 2px 61897b;
   transform: translateY(2px);
 }
@@ -59,25 +59,27 @@
 
 .button-33 {
   background-color: transparent;
-  border: 4px solid #8A5C6B;
-  border-radius: 50px;
+  border: 2px solid #d5406096;
+  border-radius: 15px;
   box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
   box-sizing: border-box;
-  color: rgb(7, 6, 6);
+  color: #d5406096;
   cursor: pointer;
   font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 15px;
+  // font-weight: 400;
   outline: none;
   outline: 0;
-  padding: 3px 25px;
+  padding: 0px 15px;
   text-align: center;
   transform: translateY(0);
   transition: transform 150ms, box-shadow 150ms;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  margin-bottom: 4px;
+  margin-top: 12px;
+  height: 44px;
+  font-weight: bold;
 }
 
 .button-33:hover {
