@@ -53,12 +53,12 @@
   <!-- Provider option -->
   <% if current_user.provider? == false %>
     <div class="d-flex justify-content-center my-3">
-      <%= link_to "Become a provider", users_account_become_a_provider_path, class: "button-wide" %>
+      <button class="button-wide w-100"><%= link_to "Become a provider", users_account_become_a_provider_path, class: "button-text" %></button>
     </div>
   <% end %>
 
   <div class="d-flex justify-content-center my-3">
-    <%= button_to "logout", destroy_user_session_path, method: :delete, class: "button-wide" %>
+    <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "button-wide border-0" %>
 
   </div>
 </div>
