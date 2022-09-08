@@ -16,16 +16,22 @@
               <%=cl_image_tag service.photos.first.key, height: 200, width: 300, :style => "border-radius: 10px" , crop: :fill%>
               <div class="overlay serv">
                 <h1><%= service.name %></h1>
-                <div class="row">
-                  <% array = [] %>
+                <% array = [] %>
                   <% service.reviews.each do |review|%>
                     <% array << review.rating %>
                   <% end %>
                   <% if array == nil %>
                     <p><%= '%.1f' % (array.sum(0.0) / array.size) %> &#9733</p>
+                  <% else %>
+                    <% average = 0 %>
+                    <% array.each do |rating| %>
+                      <% average += rating %>
+                    <% end %>
+                    <%= average / array.count %>
                   <% end %>
+                  <div class="row">
                     <div class="action">
-                      <h2 class="price"><%= service.price.round%> € </h2>
+                      <h2><%= service.price.round%> € </h2>
                       <button class="button-33 p-3" role="button">more info</button>
                     </div>
                 </div>

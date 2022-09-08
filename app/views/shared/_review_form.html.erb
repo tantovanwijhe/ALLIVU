@@ -1,8 +1,11 @@
-<div class="container">
-  <%= simple_form_for [@service, @booking, @review] do |f| %>
-    <%= f.input :rating %>
+<div class="container pt-3">
+  <%= simple_form_for [@service, @booking, @review] , data: { controller: "submit" } do |f| %>
+    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html:
+     {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
     <%= f.input :comment %>
     <%= f.input :photo, as: :file %>
-    <%= f.submit "Submit review" %>
+    <%= f.submit "Send your review" %>
   <% end %>
 </div>
+
+<%# <%= f.submit, class: "d-none" %>
