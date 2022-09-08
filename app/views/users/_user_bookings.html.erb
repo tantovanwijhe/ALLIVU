@@ -1,33 +1,15 @@
-<h3 class="h3-allivu mb-4">Upcoming bookings</h3>
 <% @bookings = Booking.where(user_id: current_user) %>
-  <% @bookings.each do |booking| %>
-    <% if booking.start_date > Date.today %>
-      <div class="card-product">
-        <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
-        <div class="card-product-infos">
-          <h4><%= link_to booking.service.name, service_path(booking.service) %></h4>
-          <p class="card-desc-p-allivu-sm">Provider: <%= User.find(booking.service.user_id).first_name %></p>
-          <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime("%e, %Y") %></p>
-          <p class="link-allivu"><%= link_to "Manage booking", edit_service_booking_path(id: booking, service_id: booking.service) %></p>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-  <hr>
   <!-- Past bookings -->
-  <h3 class="h3-allivu mb-4">History</h3>
-    <% @bookings = Booking.where(user_id: current_user) %>
       <% @bookings.limit(3).each do |booking| %>
         <% if booking.start_date < Date.today %>
           <div class="card-product">
           <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
             <div class="card-product-infos py-0 px-4">
               <h4 class="my-3"><%= link_to booking.service.name, service_path(booking.service) %></h4>
-              <p class="card-desc-p-allivu-sm my-2">Provider: <%= User.find(booking.service.user_id).first_name %></p>
-              <p class="card-desc-p-allivu-sm my-2"><%= booking.start_date.strftime("%b %e ") %>—<%=booking.end_date.strftime(" %b %e, %Y") %></p>
+              <p class="card-desc-p-allivu-sm text-dark my-2">Provider: <%= User.find(booking.service.user_id).first_name %></p>
+              <p class="card-desc-p-allivu-sm text-dark my-2"><%= booking.start_date.strftime("%b %e ") %>—<%=booking.end_date.strftime(" %b %e, %Y") %></p>
               <p class="card-desc-p-link-allivu"><%= link_to "Leave a Review", new_service_booking_review_path(booking.service, booking) %></p>
             </div>
           </div>
         <% end %>
       <% end %>
-  <hr>

@@ -6,11 +6,11 @@
 
     <% user_reviews.each do |review| %>
     <div class="bezier card mb-3 ">
-      <div class="card-header"><%= "#{review.booking.service.user.first_name} #{review.booking.service.user.last_name}" %>
+      <div class="card-header text-dark"><%= "#{review.booking.service.user.first_name} #{review.booking.service.user.last_name}" %>
       </div>
       <div class="card-body">
-        <h5 class="card-title mt-0"><%= "#{review.rating.to_i} stars" %></h5>
-        <p class="card-text"><%= review.comment %></p>
+        <h5 class="card-title text-dark mt-0"><%= "#{review.rating.to_i} stars" %></h5>
+        <p class="card-text text-dark"><%= review.comment %></p>
       </div>
     </div>
     <% end %>
@@ -24,10 +24,10 @@
 
             <% if booking.review.present? %>
               <div class="bezier card mb-3 ">
-                <div class="card-header"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></div>
+                <div class="card-header text-dark"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></div>
                 <div class="card-body pt-0">
-                  <h5 class="card-title"><%= "#{booking.review.rating.to_i} stars" %></h5>
-                  <p class="card-text"><%= booking.review.comment %></p>
+                  <h5 class="card-title text-dark"><%= "#{booking.review.rating.to_i} stars" %></h5>
+                  <p class="card-text text-dark"><%= booking.review.comment %></p>
                 </div>
               </div>
             <% end %>

@@ -6,28 +6,35 @@
     
     <div class="container">
       <div class="d-flex">
-        <button class="filter"><%= link_to "High", services_path(option: "High") %></button>
-        <button class="filter"><%= link_to "Low", services_path(option: "Low") %></button>
+        <button class="filter"> <i class="bi bi-arrow-down " style="color: white;"></i>
+ <%= link_to "High", services_path(option: "High") %></button>
+        <button class="filter"> <i class="bi bi-arrow-up" style="color: white;"></i> <%= link_to "Low", services_path(option: "Low") %></button>
       </div>
       <% @services.each do |service| %>
         <%= link_to service_path(service), :class =>"card-link" do %>
             <div class="card categoryy my-4">
               <%=cl_image_tag service.photos.first.key, height: 300, width: 400, crop: :fill %>
               <div class="overlay serv">
+                <h1 class="text-dark"><%= service.name %></h1>
+                <h4 class="text-dark">By : <%= service.user.first_name%> <%= service.user.last_name%></h4>
 
-                <h1><%= service.name %></h1>
-
-                <div class="row">
                   <% array = [] %>
                   <% service.reviews.each do |review|%>
                     <% array << review.rating %>
                   <% end %>
                   <% if array == nil %>
                     <p><%= '%.1f' % (array.sum(0.0) / array.size) %> &#9733</p>
+                  <% else %>
+                  <% average = 0 %>
+                    <% array.each do |rating| %>
+                      <% average += rating %>
+                    <% end %>
+                    <h1><i class="bi bi-star-fill"></i> <%= average / array.count %></h1>
                   <% end %>
+                <div class="row">
                   <div class="action">
-                    <h2><%= service.price.round%> € </h2>
-                    <button class="button-33" role="button">more info</button>
+                    <h2 class="pl-3"><%= service.price.round%> € </h2>
+                    <button class="button-33" role="button">More info</button>
                   </div>
                 </div>
               </div>

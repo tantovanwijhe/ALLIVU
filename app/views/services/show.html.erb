@@ -2,84 +2,71 @@
 <!-- Hero Image Section Start-->
 <%= render 'image_carousel' %>
 
-  <!-- Hero Image Section End-->
+<!-- Main section-->
+<div class="container px-3">
+  <div class="col-lg-8">
 
-  <div class="container px-3">
-  <!-- Service info Start-->
-    <div class="row g-4 px-3 justify-content-center">
-      <div class="col-lg-8">
-        <!-- Description-head Start-->
-        <div class="service-head">
-          <div class="service-head-details">
-            <h2 class="h2-show-allivu"><%= @service.name.capitalize %></h2>
-            <h3 class="allivu-overblue">€<%= @service.price.to_i %></h3>
-          </div>
-            <p class="p-allivu-sm">By <%= "#{@service.user.first_name.capitalize} #{@service.user.last_name.capitalize}" %> </h5>
-            <p class="link-allivu"><%= "#{@service.reviews.count} reviews" %></h6>
-        </div>
-
-        <!-- Favorites Start-->
-        <%if @favorite_services.include?(@service)%>
-          <%= button_to service_favorite_path(@service, @favorite), method: :delete do%>
-            <i class="bi bi-heart-fill" style="color: red;"></i>
-          <% end %>
-
-        <% else %>
-          <%= button_to service_favorites_path(@service), method: :post do%>
-            <i class="bi bi-heart"></i>
-          <% end %>
-        <% end %>
-
-      <div>
-        <!-- Description-body Start-->
-          <div class="row justify-content-center pb-4">
-            <button class="button-wide"><strong>Check availability</strong></button>
-          </div>
-          <h5 class="description mb-2">Description</h5>
-          <p class="allivu-p"><%= @service.description %></p>
-        </div>
-        <!-- Description-body End-->
+    <!-- Description-head Start-->
+    <div class="service-head">
+      <div class="service-head-details">
+        <h2 class="h2-show-allivu"><%= @service.name.capitalize %></h2>
+        <h3 class="allivu-overblue">€<%= @service.price.to_i %></h3>
       </div>
-      <hr>
-  <!-- Service info End-->
-  <!-- Location start-->
-      <h5 class="p-allivu"><strong>Location</strong></h5>
-      <br>
-      <br>
-      <div style="width: 100%; height: 200px; margin: 5px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-      <br>
-      <br>
-      <hr>
-  <!-- Location end-->
+      <p class="p-allivu-sm mb-0">By <%= "#{@service.user.first_name.capitalize} #{@service.user.last_name.capitalize}" %> </h5>
+      <p class="link-allivu"><%= "#{@service.reviews.count} reviews" %></h6>
+    </div>
+
+    <!-- Favorites Start-->
+    <%if @favorite_services.include?(@service)%>
+      <%= button_to service_favorite_path(@service, @favorite), method: :delete do%>
+      <i class="bi bi-heart-fill" style="color: red;"></i>
+      <% end %>
+    <% else %>
+      <%= button_to service_favorites_path(@service), method: :post do%>
+        <i class="bi bi-heart"></i>
+      <% end %>
+    <% end %>
+
+    <!-- Description-body Start-->
+    <div class="row justify-content-center p-4 my-3">
+      <button class="button-wide w-100"><strong>Reserve</strong></button>
+    </div>
+    <h3 class="h3-allivu description mb-3">Description</h3>
+    <p class="p-allivu"><%= @service.description %></p>
+
+    <!-- Location start-->
+    <h3 class="h3-allivu my-5"><strong>Location</strong></h3>
+    <div style="width: 100%; height: 200px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+
   <!-- Form start-->
-      <% if @service.user == current_user %>
-        <div class="col-12 col-lg-4">
-          </div>
-        <% else %>
-        <h5 class="p-allivu"><strong>Make a booking</strong></h5>
-          <div class="col-12 col-lg-4">
-            <%= render "/shared/booking_form", service: @service, booking: @booking %>
-          </div>
-        <% end %>
-        </div>
-      <hr>
-      <br>
-  <!-- Form end-->
+  <div class="col-12 col-lg-8 col-lg-4 mt-5">
+  <% if @service.user != current_user %>
+    <h3 class="h3-allivu mb-0">Select a Date</h3>
+    <p class="allivu-p active">Available from Tomorrow</p>
+  </div>
+    <%= render "/shared/booking_form", service: @service, booking: @booking %>
+  <% end %>
+
   <!-- Review section start-->
+  <div class="container ">
       <% if @service.reviews.present? %>
-      <h5 class="p-allivu"><strong>Reviews</strong></h5>
-      <br>
+      <h3 class="h3-allivu">Reviews</h3>
         <% @service.reviews.each do |serve| %>
-        <div class="bezier card mb-3 ">
-          <div class="card-header"><%= "#{serve.booking.user.first_name} #{serve.booking.user.last_name}" %>
+        <div class="bezier card my-4">
+          <%# I'm not sure why css styling wouldn't work hence styling here %>
+          <div class="bezier card-header p-3 d-flex justify-content-between align-items-center" style="
+          background-color: #5c8b7b;
+          border-radius: 9px 9px 0px 0px;">
+            <p class="my-0 p-allivu text-white"><strong><%= "#{serve.booking.user.first_name} #{serve.booking.user.last_name}" %></strong></p>
+            <p class="my-0 p-allivu text-white"><strong><%= "#{serve.rating.to_i} stars" %></strong></p>
           </div>
           <div class="card-body">
-            <h5 class="card-title"><%= "#{serve.rating.to_i} stars" %></h5>
-            <p class="card-text"><%= serve.comment %></p>
+            <p class="p-allivu"><%= serve.comment %></p>
           </div>
         </div>
         <% end %>
@@ -87,23 +74,27 @@
       <hr>
   <!-- Review section End-->
   <!-- Provider about start-->
-        <h5 class="p-allivu">About <%= "#{@service.user.first_name.capitalize} #{@service.user.last_name.capitalize}" %> </h5>
-        <% date = @service.created_at %>
-        <p>Joined in <%= "#{date.strftime("%B")} #{date.year}" %> </p>
-  <!-- Provider review start-->
-        <% sum = [] %>
-        <% @service.user.services.each do |serve| %>
-          <% sum << serve.reviews.count %>
-        <% end %>
-        <h6><%= "⭐️ #{sum.sum} Reviews" %></h6>
-        <p class="link-allivu">View profile</p>
+      <div class="d-flex flex-row space-between">
+        <div class="profile">
+          <h3 class="h3-allivu">About <%= "#{@service.user.first_name.capitalize} #{@service.user.last_name.capitalize}" %> </h3>
+          <% date = @service.created_at %>
+          <p class ="p-allivu">Joined in <%= "#{date.strftime("%B")} #{date.year}" %> </p>
+
+          <!-- Provider review start-->
+            <% sum = [] %>
+            <% @service.user.services.each do |serve| %>
+              <% sum << serve.reviews.count %>
+            <% end %>
+            <h5 class="mb-0"><%= "⭐️ #{sum.sum} Reviews" %></h5>
+        </div>
+      </div>
   <!-- Provider review end-->
   <!-- Contact start-->
-          <button class="button-wide">
-
+          <button class="button-wide w-100 my-5">
             <%= link_to chatroom_path(provider: @service.user), method: :post do %> <%= "Contact #{@service.user.first_name.capitalize}" %> <% end %>
           </button>
   <!-- Contact end-->
       </div>
     </div>
   </div>
+</div>

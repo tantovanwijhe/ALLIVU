@@ -76,35 +76,35 @@
 # provider: true
 # )
 
-# puts 'Creating 3 Providers...'
+puts 'Creating 3 Providers...'
 
-# provider_13 = User.new(
-# email: "adrian@allivu.pro",
-# password: "password",
-# first_name: "Adrian",
-# last_name: "Robert-Vassy",
-# username: "adrianrobertvassy",
-# location: "Legian, Bali",
-# provider: false
-# )
-# provider_14 = User.new(
-# email: "shane@allivu.pro",
-# password: "password",
-# first_name: "Shane",
-# last_name: "Sutherland",
-# username: "shanesutherland",
-# location: "Nusa Dua, Bali",
-# provider: false
-# )
-# provider_15 = User.new(
-# email: "jari@allivu.pro",
-# password: "password",
-# first_name: "Jari",
-# last_name: "Vedegaal",
-# username: "jariverdegaal",
-# location: "Bedugul, Bali",
-# provider: false
-# )
+provider_13 = User.new(
+email: "adrian@allivu.pro",
+password: "password",
+first_name: "Adrian",
+last_name: "Robert-Vassy",
+username: "adrianrobertvassy",
+location: "Legian, Bali",
+provider: false
+)
+provider_14 = User.new(
+email: "shane@allivu.pro",
+password: "password",
+first_name: "Shane",
+last_name: "Sutherland",
+username: "shanesutherland",
+location: "Nusa Dua, Bali",
+provider: false
+)
+provider_15 = User.new(
+email: "jari@allivu.pro",
+password: "password",
+first_name: "Jari",
+last_name: "Vedegaal",
+username: "jariverdegaal",
+location: "Bedugul, Bali",
+provider: false
+)
 
 # provider_5.save!
 # provider_6.save!
@@ -115,10 +115,10 @@
 # provider_11.save!
 # provider_12.save!
 
-# provider_13.save!
-# provider_14.save!
-# provider_15.save!
-# puts 'Providers created!'
+provider_13.save!
+provider_14.save!
+provider_15.save!
+puts 'Providers created!'
 
 # # puts "Deleting Services database..."
 # # Service.destroy_all
@@ -401,60 +401,60 @@
 
 # puts 'Services created!'
 
-# review_comment = [
-#   "The service has been excellent and I am very happy I did this, so thank you again!",
-#   "Always found the experience well organised and planned. This was indeed a fun way to spend my time during my stay here!",
-#   "I'd recommend this service if you are looking for something fun to do!",
-#   "My partner and I greatly appreciate the care and support of the Host. Everything was guided and cared for, we have no complaints.",
-#   "The provider was really helpful with his recommendations and prompt replies.",
-#   "Location was relatively good and quiet. My partner and I had a very pleasant experience",
-#   "Very nice and would go for it again",
-#   "One of the better experiences I've ever had. It was a very pleasant experience. In fact, it was perfect."
-# ]
+review_comment = [
+  "The service has been excellent and I am very happy I did this, so thank you again!",
+  "Always found the experience well organised and planned. This was indeed a fun way to spend my time during my stay here!",
+  "I'd recommend this service if you are looking for something fun to do!",
+  "My partner and I greatly appreciate the care and support of the Host. Everything was guided and cared for, we have no complaints.",
+  "The provider was really helpful with his recommendations and prompt replies.",
+  "Location was relatively good and quiet. My partner and I had a very pleasant experience",
+  "Very nice and would go for it again",
+  "One of the better experiences I've ever had. It was a very pleasant experience. In fact, it was perfect."
+]
 
-# great_review_comment = [
-#   "If you are looking for something fun to do, this is great value for money. I highly recommended this service, and I cannot say anything bad about it because I have nothing to say!",
-#   "I'll be sure to come back the next time I'm here on vacation. This is literally one of the must haves on my holiday list!",
-#   "I didn't even know where to start as far as the quality of the service goes or how friendly the host is, so big thank you 🙏",
-#   "Amazing!!!",
-#   "Best value for money. The provider was more than welcoming and everything was well prepared.",
-#   "I loved this. I have done some really fun activities but this one has been fabulous. It’s affordable, unique and memorable!",
-#   "If you see it and your dates are available for booking don't waste time! Press book now."
-# ]
+great_review_comment = [
+  "If you are looking for something fun to do, this is great value for money. I highly recommended this service, and I cannot say anything bad about it because I have nothing to say!",
+  "I'll be sure to come back the next time I'm here on vacation. This is literally one of the must haves on my holiday list!",
+  "I didn't even know where to start as far as the quality of the service goes or how friendly the host is, so big thank you 🙏",
+  "Amazing!!!",
+  "Best value for money. The provider was more than welcoming and everything was well prepared.",
+  "I loved this. I have done some really fun activities but this one has been fabulous. It’s affordable, unique and memorable!",
+  "If you see it and your dates are available for booking don't waste time! Press book now."
+]
 
-# puts 'Creating Bookings + Reviews'
+puts 'Creating Bookings + Reviews'
 
-# Service.all.each do |booking|
-#   random_num = rand(7..10)
-#   Booking.create!(
-#     start_date: Date.today - random_num,
-#     end_date: Date.today - random_num,
-#     service: booking,
-#     user: User.all.sample
-#   )
+Service.all.each do |booking|
+  random_num = rand(7..10)
+  Booking.create!(
+    start_date: Date.today - random_num,
+    end_date: Date.today - random_num,
+    service: booking,
+    user: User.all.sample
+  )
 
-#   Review.create!(
-#     rating: rand(4..5),
-#     comment: great_review_comment.sample,
-#     service_id: Booking.last.service_id,
-#     booking_id: Booking.last.id
-#   )
+  Review.create!(
+    rating: rand(4..5),
+    comment: great_review_comment.sample,
+    service_id: Booking.last.service_id,
+    booking_id: Booking.last.id
+  )
 
-#   Booking.create!(
-#     start_date: Date.today - random_num,
-#     end_date: Date.today - random_num,
-#     service: booking,
-#     user: User.all.sample
-#   )
+  Booking.create!(
+    start_date: Date.today - random_num,
+    end_date: Date.today - random_num,
+    service: booking,
+    user: User.all.sample
+  )
 
-#   Review.create!(
-#     rating: rand(4..5),
-#     comment: review_comment.sample,
-#     service_id: Booking.last.service_id,
-#     booking_id: Booking.last.id
-#   )
-# end
-# puts 'Bookings + Reviews created!'
+  Review.create!(
+    rating: rand(4..5),
+    comment: review_comment.sample,
+    service_id: Booking.last.service_id,
+    booking_id: Booking.last.id
+  )
+end
+puts 'Bookings + Reviews created!'
 
 # UserReview.new(
 #   rating: rand(1..5),

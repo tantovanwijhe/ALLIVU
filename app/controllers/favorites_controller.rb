@@ -10,7 +10,7 @@ class FavoritesController < ApplicationController
     @favorite.service = @service
     if !@favorites.include?(@service)
       @favorite.save!
-      redirect_to favorites_path
+      redirect_to service_path(@service)
     end
   end
 

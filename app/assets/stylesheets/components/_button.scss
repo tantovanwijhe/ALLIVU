@@ -1,6 +1,6 @@
 .button {
-  background-color: #6C9A8B;
-  color: white;
+  background-color: transparent;
+  border: 2px solid #d5406096;
   border-radius: 35px;
   width: 128px;
   height: 36px;
@@ -10,12 +10,12 @@
 }
 
 .button-wide {
-  background-color: #6C9A8B;
-  color: white;
+  background-color: transparent;
+  border: 2px solid #d5406096;
+  color: #d5406096;
   border-radius: 35px;
-  width: 70vw;
+  width: 45vw;
   height: 5vh;
-  border: none;
   font-weight: bold;
   font-size: 16px;
   margin: 0.5rem 0
@@ -29,8 +29,9 @@
 }
 
 .parent button {
-  background-color: #6C9A8B;
-  color: white;
+  background-color: transparent;
+  border: 2px solid #d5406096;
+  color: #d5406096;
   border: none;
   padding-bottom: 50px;
   font-size: 31px;
@@ -42,8 +43,9 @@
 }
 
 .parent button:active {
-  background-color: #c9e3da;
-  box-shadow: 0 0 2px darkslategray;
+  background-color: transparent;
+  border: 2px solid #d5406096;
+  box-shadow: 0 0 2px 61897b;
   transform: translateY(2px);
 }
 
@@ -56,26 +58,28 @@
 }
 
 .button-33 {
-  background-color: rgba(48, 138, 108, 1);
-  border: 1px solid rgba(48, 138, 108, 1);
-  border-radius: 50px;
+  background-color: transparent;
+  border: 2px solid #d5406096;
+  border-radius: 15px;
   box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
   box-sizing: border-box;
-  color: #fff;
+  color: #d5406096;
   cursor: pointer;
   font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 15px;
+  // font-weight: 400;
   outline: none;
   outline: 0;
-  padding: 6px 25px;
+  padding: 0px 15px;
   text-align: center;
   transform: translateY(0);
   transition: transform 150ms, box-shadow 150ms;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  margin-bottom: 4px;
+  margin-top: 12px;
+  height: 44px;
+  font-weight: bold;
 }
 
 .button-33:hover {
