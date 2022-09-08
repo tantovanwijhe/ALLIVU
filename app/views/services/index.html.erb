@@ -17,8 +17,6 @@
               <div class="overlay serv">
 
                 <h1><%= service.name %></h1>
-
-                <div class="row">
                   <% array = [] %>
                   <% service.reviews.each do |review|%>
                     <% array << review.rating %>
@@ -32,6 +30,7 @@
                     <% end %>
                     <%= average / array.count %>
                   <% end %>
+                <div class="row">
                   <div class="action">
                     <h2><%= service.price.round%> € </h2>
                     <button class="button-33" role="button">more info</button>

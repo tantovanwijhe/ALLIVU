@@ -1,6 +1,6 @@
 .button {
-  background-color: #61897b;
-  color: white;
+  background-color: transparent;
+  border: 4px solid #61897b;
   border-radius: 35px;
   width: 128px;
   height: 36px;
@@ -10,12 +10,12 @@
 }
 
 .button-wide {
-  background-color: #61897b;
-  color: white;
+  background-color: transparent;
+  border: 4px solid #61897b;
+  color: black;
   border-radius: 35px;
-  width: 70vw;
+  width: 45vw;
   height: 5vh;
-  border: none;
   font-weight: bold;
   font-size: 16px;
   margin: 0.5rem 0
@@ -29,8 +29,9 @@
 }
 
 .parent button {
-  background-color: #61897b;
-  color: white;
+  background-color: transparent;
+  border: 4px solid #61897b;
+  color: rgb(0, 0, 0);
   border: none;
   padding-bottom: 50px;
   font-size: 31px;
@@ -42,7 +43,8 @@
 }
 
 .parent button:active {
-  background-color: #c9e3da;
+  background-color: transparent;
+  border: 4px solid #61897b;
   box-shadow: 0 0 2px 61897b;
   transform: translateY(2px);
 }
@@ -57,7 +59,7 @@
 
 .button-33 {
   background-color: transparent;
-  border: 4px solid #61897b;
+  border: 4px solid #8A5C6B;
   border-radius: 50px;
   box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
   box-sizing: border-box;
