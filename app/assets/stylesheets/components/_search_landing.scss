@@ -66,7 +66,7 @@
 }
 
 .mapboxgl-ctrl-geocoder {
-  width: 70%;
+  width: 100%;
   margin-top: 2vh;
   align-self: flex-start;
 }
@@ -82,7 +82,7 @@
 }
 
 .search-wrapper {
-  display: inline-flex !important;
+  display: inline-flex;
 }
 
 .round-button{
@@ -101,5 +101,18 @@
 }
 
 .button-search {
-  display: inline-flex !important;
+  position: absolute;
+  z-index: 100;
+  right: 82px;
+  top: 19px;
+}
+
+.searchbar-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-around !important;
+}
+
+.icon-search {
+  display: none;
 }
