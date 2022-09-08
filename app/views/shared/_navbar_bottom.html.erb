@@ -3,39 +3,40 @@
     <div class="row text-center">
         <div class="col">
           <%= link_to root_path do %>
-            <i class="fa-solid fa-house icone-navbar <%='active' if request.url == root_path %>"> </i>
-            <div class="link-navbar">Home</div>
+            <i class="fa-solid fa-house icone-navbar <%='icone-navbaractive' if current_page?(root_path) %>"> </i>
+            <div class="link-navbar <%='icone-navbaractive' if current_page?(root_path) %>">Home</div>
+
           <% end %>
         </div>
         <div class="col">
           <%= link_to favorites_path do %>
-          <i class="fa-regular fa-heart icone-navbar"></i>
-          <div class="link-navbar">Planning</div>
+          <i class="fa-regular fa-heart icone-navbar <%='icone-navbaractive' if current_page?(favorites_path) %>"></i>
+          <div class="link-navbar <%='icone-navbaractive' if current_page?(favorites_path) %>">Planning</div>
           <% end %>
         </div>
         <div class="col">
-          <%= link_to root_path do %>
-          <i class="fa-regular fa-envelope icone-navbar <%='active' if request.url == categories_path %>"></i>
-          <div class="link-navbar">Messages</div>
+          <%= link_to chatrooms_path do %>
+          <i class="fa-regular fa-envelope icone-navbar <%='icone-navbaractive' if current_page?(chatrooms_path) %>"></i>
+          <div class="link-navbar <%='icone-navbaractive' if current_page?(chatrooms_path) %>">Messages</div>
           <% end %>
         </div>
         <div class="col">
          <% if user_signed_in? && current_user.provider == true %>
             <%= link_to users_account_provider_path do %>
-              <i class="fa-regular fa-user icone-navbar"></i>
-              <div class="link-navbar">Account</div>
+              <i class="fa-regular fa-user icone-navbar <%='icone-navbaractive' if current_page?(users_account_provider_path) %>"></i>
+              <div class="link-navbar <%='icone-navbaractive' if current_page?(users_account_provider_path) %>">Account</div>
             <% end %>
 
             <% elsif user_signed_in? && current_user.provider == false %>
             <%= link_to user_path do %>
-              <i class="fa-regular fa-user icone-navbar"></i>
+              <i class="fa-regular fa-user icone-navbar <%='icone-navbaractive' if current_page?(user_path) %>"></i>
               <div class="link-navbar"><%= current_user.username %></div>
             <% end %>
 
           <% else %>
 
             <%= link_to new_user_session_path do %>
-              <i class="fa-regular fa-user icone-navbar"></i>
+              <i class="fa-regular fa-user icone-navbar <%='icone-navbaractive' if current_page?(new_user_session_path) %>"></i>
               <div class="link-navbar">Log in</div>
             <% end %>
 

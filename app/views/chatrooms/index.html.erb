@@ -1,0 +1,15 @@
+<%= render 'shared/navbar_back_pages' %>
+
+<div style="margin-top:30px; margin-bottom:90px;">
+  <div class = "container"> <h3 class="h3-allivu"> Your messages </h3> </div>
+    <div class="container">
+      <% @chatroom.each do |c| %>
+          <%  c.messages.each do |message| %>
+            <% @users = message.user.username %>
+          <% end %>
+          <%= link_to chatroom_path(c) do %>
+            <ul><p class="link-allivu">Messages with <%= @users %> </p></ul>
+        <% end %>
+      <% end %>
+    </div>
+</div>

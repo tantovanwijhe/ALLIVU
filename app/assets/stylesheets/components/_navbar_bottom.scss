@@ -20,8 +20,8 @@
 }
 
 .icone-navbaractive {
-  color: white;
-  fill: white;
+  color: white !important;
+  fill: white !important;
   font-size: 29px;
   margin: 0 auto;
 }
@@ -39,5 +39,3 @@
   color: $allivulightblue;
   text-decoration: none;
 }
-
-

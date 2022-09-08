@@ -91,7 +91,7 @@
   <!-- Provider review end-->
   <!-- Contact start-->
           <button class="button-wide w-100 my-5">
-            <%= "Contact #{@service.user.first_name.capitalize}" %>
+            <%= link_to chatroom_path(provider: @service.user), method: :post do %> <%= "Contact #{@service.user.first_name.capitalize}" %> <% end %>
           </button>
   <!-- Contact end-->
       </div>
