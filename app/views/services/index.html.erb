@@ -6,8 +6,9 @@
     <p class = "p-allivu"><%= @services.length %> results found </p>
     <div class="container">
       <div class="d-flex">
-        <button class="filter"><%= link_to "High", services_path(option: "High") %></button>
-        <button class="filter"><%= link_to "Low", services_path(option: "Low") %></button>
+        <button class="filter"> <i class="bi bi-arrow-down " style="color: white;"></i>
+ <%= link_to "High", services_path(option: "High") %></button>
+        <button class="filter"> <i class="bi bi-arrow-up" style="color: white;"></i> <%= link_to "Low", services_path(option: "Low") %></button>
       </div>
       <% @services.each do |service| %>
         <%= link_to service_path(service), :class =>"card-link" do %>
@@ -24,6 +25,12 @@
                   <% end %>
                   <% if array == nil %>
                     <p><%= '%.1f' % (array.sum(0.0) / array.size) %> &#9733</p>
+                  <% else %>
+                  <% average = 0 %>
+                    <% array.each do |rating| %>
+                      <% average += rating %>
+                    <% end %>
+                    <%= average / array.count %>
                   <% end %>
                   <div class="action">
                     <h2><%= service.price.round%> € </h2>
