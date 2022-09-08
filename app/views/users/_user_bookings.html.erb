@@ -1,4 +1,4 @@
-<h4>Upcoming bookings</h4>
+<h3 class="h3-allivu mb-4">Upcoming bookings</h3>
 <% @bookings = Booking.where(user_id: current_user) %>
   <% @bookings.each do |booking| %>
     <% if booking.start_date > Date.today %>
@@ -15,9 +15,9 @@
   <% end %>
   <hr>
   <!-- Past bookings -->
-  <h4>History</h4>
+  <h3 class="h3-allivu mb-4">History</h3>
     <% @bookings = Booking.where(user_id: current_user) %>
-      <% @bookings.each do |booking| %>
+      <% @bookings.limit(3).each do |booking| %>
         <% if booking.start_date < Date.today %>
           <div class="card-product">
           <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
@@ -25,7 +25,7 @@
               <h4 class="my-3"><%= link_to booking.service.name, service_path(booking.service) %></h4>
               <p class="card-desc-p-allivu-sm my-2">Provider: <%= User.find(booking.service.user_id).first_name %></p>
               <p class="card-desc-p-allivu-sm my-2"><%= booking.start_date.strftime("%b %e ") %>—<%=booking.end_date.strftime(" %b %e, %Y") %></p>
-              <p class="card-desc-p-link-allivu"><%= link_to "Write a Review", new_service_booking_review_path(booking.service, booking) %></p>
+              <p class="card-desc-p-link-allivu"><%= link_to "Leave a Review", new_service_booking_review_path(booking.service, booking) %></p>
             </div>
           </div>
         <% end %>

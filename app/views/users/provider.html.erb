@@ -1,13 +1,41 @@
+<%= render 'shared/navbar_pages' %>
 <div class="container">
-  <h1>Become a provider</h1>
-  <h3>Share your knowledge and experiences to the outside world</h3>
-  <p class="link-allivu"><%= link_to "Start", new_service_path %></p>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
+    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex flex-column align-content-center">
+        <h1 class="h1-allivu my-0"><%= "Hello #{current_user.first_name}"%></h1>
+        <p class="my-0">Joined in <%= "#{current_user.created_at.year}" %></p>
+    <% if current_user.user_reviews.any? %>
+      <h6><%= "#{current_user.user_reviews.count} Reviews" %></h6>
+    <% end %>
+      </div>
+    <%= render 'avatar_photo' %>
+    </div>
+    <p>-----------------------------------------------</p>
+      <!-- Review Overview -->
+      <% @user_services = current_user.services %>
+      <% array = [] %>
+      <% @user_services.each do |service| %>
+        <% array << service.reviews.count %>
+      <% end %>
+      <% if @user_services.empty? %>
+        <p><%= "No Reviews yet" %></p>
+      <% else %>
+        <p><%= "#{array.sum} Reviews" %></p>
+        <p><%= "Average rating:  #{'%.1f' % (array.sum(0.0) / array.size)}" %> &#9733</p>
+      <% end %>
+  </div>
+  <p>-----------------------------------------------</p>
+  <!-- Upcoming bookings -->
+  <%= render 'provider_bookings' %>
+  <p>-----------------------------------------------</p>
 
-  <p>You may know a thing or two about your land, but not everyone knows the ins and outs. This is where you can step in and offer your expertise in your area to people who are seeking experiences but may not know where to find it.</p>
+  <!-- Review feed -->
+  <%= render 'review_feed' %>
+  <p>-----------------------------------------------</p>
 
-  <h4>Create a service, your way.</h4>
-  <p>Available during certain days? Big group or private? Your service will be under your convenience.</p>
-
-  <h4>Bring your community into the spotlight</h4>
-  <p>Introduce your local neighborhood in a whole new way. Share your roots in a way that is not possible anywhere else. </p>
+  <!-- Return to profile button -->
+  <div class="d-flex justify-content-center my-5">
+    <%= link_to "Back to profile", user_path, class: "button-wide" %>
+  </div>
 </div>

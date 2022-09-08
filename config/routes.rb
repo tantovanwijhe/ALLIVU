@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "profile", to: "pages#profile"
   get "categories", to: "services#categories"
   get "users/account", to: "users#show", as: :user
+  get "users/account/become_a_provider", to: "users#new_provider"
   get "users/account/provider", to: "users#provider"
   get "users/account/service", to: "users#service"
   get "/bookings/confirmation", to: "bookings#confirm"

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @user = current_user.services
   end
 
-  def provider
+  def new_provider
   end
 
   def service
