@@ -1,7 +1,4 @@
-
-<h5 id="p-allivu" style="padding-left: 20px;color: #6C9A8B">All the categories</h5>
 <div class="wrappernavbar">
-
     <% @categories.each do |category| %>
       <%= link_to services_path(query: category) do %>
         <div class="box p-allivu-sm" id="link-allivu-categories">
@@ -9,26 +6,36 @@
             <% case %>
                 <% when category == "Personal Assistant" %>
                   <i class="bi bi-universal-access <%= 'active' if params[:query] == "Personal Assistant" %>" style="font-size: 3rem"></i>
+                  <p style="text-decoration: none" class= "<%= 'active' if params[:query] == "Personal Assistant" %>"><%= category %></p>
                 <% when category == "Vehicle Rentals" %>
                   <i class="bi bi-car-front-fill <%= 'active' if params[:query] == "Vehicle Rentals" %>"  style="font-size: 3rem"></i>
+                  <p style="text-decoration: none" class= "<%= 'active' if params[:query] ==  "Vehicle Rentals" %>"><%= category %></p>
                 <% when category == "Tours" %>
                   <i class="bi bi-signpost-2 <%= 'active' if params[:query] == "Tours" %>" style="font-size: 3rem"></i>
+                  <p style="text-decoration: none" class= "<%= 'active' if params[:query] ==  "Vehicle Rentals" %>"><%= category %></p>
                 <% when category == "Private Classes" %>
                 <i class="bi bi-book <%= 'active' if params[:query] == "Tours" %>"  style="font-size: 3rem"></i>
+                <p style="text-decoration: none" class= "<%= 'active' if params[:query] ==  "Tours" %>"><%= category %></p>
                 <% when category == "Beauty" %>
                   <i class="bi bi-scissors <%= 'active' if params[:query] == "Beauty" %>"  style="font-size: 3rem"></i>
+                  <p style="text-decoration: none" class= "<%= 'active' if params[:query] ==  "Beauty" %>"><%= category %></p>
                 <% when category == "Sports" %>
                   <i class="bi bi-heart-pulse <%= 'active' if params[:query] == "Sports" %>" style="font-size: 3rem"></i>
+                  <p style="text-decoration: none" class= "<%= 'active' if params[:query] ==  "Sports" %>"><%= category %></p>
                 <% when category == "Souvenirs" %>
                   <i class="bi bi-balloon-heart <%= 'active' if params[:query] == "Souvenirs" %>" style="font-size: 3rem"></i>
+                  <p style="text-decoration: none" class= "<%= 'active' if params[:query] ==  "Souvenirs" %>"><%= category %></p>
                 <% when category == "Home Entertainment" %>
                   <i class="bi bi-house-heart <%= 'active' if params[:query] == "Home Entertainment" %>" style="font-size: 3rem"></i>
+                  <p style="text-decoration: none" class= "<%= 'active' if params[:query] ==  "Home Entertainments" %>"><%= category %></p>
                 <% when category == "Romantic Services" %>
                   <i class="bi bi-hearts" style="font-size: 3rem <%= 'active' if params[:query] == "Romantic Services" %>"></i>
+                  <p style="text-decoration: none" class= "<%= 'active' if params[:query] ==  "Romantic Services" %>"><%= category %></p>
                 <% else category == "Health" %>
                   <i class="bi bi-capsule <%= 'active' if params[:query] == "Health" %>" style="font-size: 3rem"></i>
+                  <p style="text-decoration: none" class= "<%= 'active' if params[:query] ==  "Health" %>"><%= category %></p>
               <% end %>
-              <p style="text-decoration: none"><%= category %></p>
+
           </div>
         </div>
       <% end %>

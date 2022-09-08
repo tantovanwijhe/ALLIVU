@@ -1,4 +1,4 @@
-<%= render 'shared/navbar_pages' %>
+<%= render 'shared/navbar_back_pages' %>
 <div class="container">
   <div class="d-flex justify-content-between align-items-center">
     <div class="d-flex flex-column align-content-center">
@@ -22,6 +22,7 @@
     </li>
   </ul>
   <div class="tab-content" id="pills-tabContent">
+  
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><%= render 'user_bookings' %></div>
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"><%= render 'review_feed' %></div>
   </div>
@@ -36,5 +37,6 @@
 
   <div class="d-flex justify-content-center my-3">
     <%= button_to "logout", destroy_user_session_path, method: :delete, class: "button-wide" %>
+
   </div>
 </div>
