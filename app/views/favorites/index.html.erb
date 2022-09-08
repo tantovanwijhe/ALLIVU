@@ -1,7 +1,7 @@
 <%= render 'shared/navbar_pages' %>
 
 <div style="margin-top:30px; margin-bottom:90px;">
-  <div class = "container"> <h3 class="h3-allivu"> Favorites List</h3> </div>
+  <div class = "container"> <h3 class="h3-allivu"> Your Favorites List</h3> </div>
     <div class="container">
       <% @favorites.each do |favorite| %>
         <%= link_to service_path(favorite.service), :class =>"card-link" do %>
