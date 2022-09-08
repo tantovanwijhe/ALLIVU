@@ -3,6 +3,7 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
     @booking = Booking.new
     @lastbook = Booking.last
+    @chatroom = Chatroom.new
     @markers = [
       { lat: @service.latitude,
         lng: @service.longitude,
