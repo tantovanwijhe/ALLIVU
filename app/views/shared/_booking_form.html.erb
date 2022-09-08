@@ -1,7 +1,11 @@
 <div class="container">
   <%= simple_form_for [@service, @booking] do |f| %>
-    <%= f.input :start_date, as: :date, html5: true %>
-    <%= f.input :end_date, as: :date, html5: true %>
-    <%= f.submit "Reserve" %>
+  <div class="form-group">
+    <%= f.input :start_date, as: :date, label: 'From', label_html: { class: 'p-allivu-sm' }, html5: true %>
+    <%= f.input :end_date, as: :date, label: 'Until', label_html: { class: 'p-allivu-sm' }, html5: true %>
+    <div class="d-flex flex-column align-items-center">
+      <%= f.submit class: "button-wide w-100" %>
+    </div>
+  </div>
   <% end %>
 </div>
