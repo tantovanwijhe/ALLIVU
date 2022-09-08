@@ -13,11 +13,11 @@ class ChatroomsController < ApplicationController
   end
 
    def create
-     @chatroom.provider = provider.find(params[:provider])
      @chatroom = Chatroom.new(chatrooms_params)
-     @chatroom.provider = @service.user
-     @chatroom.user = current_user
-     if @chatroom.save
+     @chatroom.current_user = current_user.id
+     @chatroom.provider = params[:provider].to_i
+     @chatroom.name = "your apointment"
+      if @chatroom.save
        redirect_to chatroom_path(@chatroom)
      else
       redirect_to service_path

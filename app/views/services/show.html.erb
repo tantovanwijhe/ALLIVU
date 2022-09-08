@@ -90,9 +90,10 @@
       </div>
   <!-- Provider review end-->
   <!-- Contact start-->
-          <button class="button-wide w-100 my-5">
-            <%= link_to chatroom_path(provider: @service.user), class: 'button-text', method: :post do %> <%= "Contact #{@service.user.first_name.capitalize}" %> <% end %>
-          </button>
+          <%= simple_form_for(@chatroom) do |f| %>
+  <%= f.hidden_field :provider, value: @service.user %>
+  <%= f.submit %>
+<% end %>
   <!-- Contact end-->
       </div>
     </div>
