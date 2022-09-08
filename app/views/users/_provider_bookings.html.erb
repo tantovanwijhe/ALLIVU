@@ -1,64 +1,25 @@
 <% @services = Service.where(user_id: current_user) %>
-<% if @services.empty? %>
-  <div class="d-flex justify-content-center my-5">
-    <%= button_to "Add your first service", new_service_path, class: "button-wide" %>
-  </div>
-
-<% else %>
-
-  <h3 class="h3-allivu mb-4">Upcoming reservations</h3>
-  <% @services.limit(3).each do |service| %>
-
-      <% if service.bookings.any? == false %>
-        <p class="mt-4">No upcoming bookings.</p>
-      <% end %>
-
-      <% service.bookings.each do |booking| %>
-        <% if booking.start_date > Date.today %>
-          <div class="card-product">
-          <%= link_to service_path(booking.service) do %>
-            <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
-          <% end %>
-            <div class="card-product-infos">
-              <p class="card-desc-p-allivu-sm"><%= "Booked by: #{booking.user.first_name} #{booking.user.last_name}" %></p>
-              <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime(" %e, %Y") %></p>
-              <p class="card-desc-p-allivu-sm"><%= link_to "Manage booking", edit_service_booking_path(booking.id, service_id: booking.service) %></p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-
-  <% end %>
-
-  <h4 class="link-allivu"><%= link_to "See all" %></h4>
-<hr>
 <!-- Past bookings -->
-<h3 class="h3-allivu">History</h3>
-
-  <% @services.limit(1).each do |service| %>
-
-      <% if service.bookings.any? == false %>
-        <p class="mt-4">No past bookings.</p>
-      <% end %>
+  <% @services.each do |service| %>
+    <% if service.bookings.any? == false %>
+      <p class="mt-4">No past bookings.</p>
+    <% end %>
 
     <% service.bookings.limit(3).each do |booking| %>
       <% if booking.start_date < Date.today %>
         <div class="card-product">
         <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
           <div class="card-product-infos py-0 px-4">
-            <h4><%= link_to "Manage booking", edit_service_booking_path(booking.id, service_id: booking.service) %></h4>
-            <p class="card-desc-p-allivu-sm"><%= "Booked by: #{booking.user.first_name} #{booking.user.last_name}" %></p>
-            <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime("%e, %Y") %></p>
+            <h4><%= link_to "#{booking.service.name}", edit_service_booking_path(booking.id, service_id: booking.service) %></h4>
+            <p class="card-desc-p-allivu-sm text-dark"><%= "Booked by: #{booking.user.first_name} #{booking.user.last_name}" %></p>
+            <p class="card-desc-p-allivu-sm text-dark"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime(" %e, %Y") %></p>
             <p class="card-desc-p-link-allivu"><%= link_to "Write a Review", new_service_booking_user_review_path(booking.service, booking) %></p>
           </div>
         </div>
       <% end %>
     <% end %>
-
     <% if service.bookings.any? == true %>
       <h4 class="link-allivu"><%= link_to "See all" %></h4>
     <% end %>
-
   <% end %>
-<% end %>
-<hr>
+</div>

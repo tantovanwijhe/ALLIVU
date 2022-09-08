@@ -1,5 +1,5 @@
 .land-card{
-  width: 300px;
+  width: auto;
   height: auto;
   box-sizing: border-box;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -20,7 +20,7 @@
 }
 
 .card-link:hover{
-  color: blue;
+  color: rgb(2, 2, 2);
 }
 
 .overlay{
@@ -35,14 +35,18 @@
 }
 
 .serv h1{
-  font-weight: 350;
-  font-size:large
+  font-weight: bold;
+  font-size: 24px;
+  color: #8b7b7b;
+
+  &:hover{
+    color: rgb(2, 2, 2);
+  }
 }
 .serv h2{
   text-align: left;
-  font-weight: bold;
   color: black;
-  padding-left: 15px;
+  padding-left: 0px;
 }
 
 .serv p{
