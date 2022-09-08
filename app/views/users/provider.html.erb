@@ -1,38 +1,76 @@
 <%= render 'shared/navbar_pages' %>
 <div class="container">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
-    <div class="d-flex justify-content-between align-items-center">
+  <div class="d-flex justify-content-between align-items-center">
     <div class="d-flex flex-column align-content-center">
-        <h1 class="h1-allivu my-0"><%= "Hello #{current_user.first_name}"%></h1>
-        <p class="my-0">Joined in <%= "#{current_user.created_at.year}" %></p>
-    <% if current_user.user_reviews.any? %>
-      <h6><%= "#{current_user.user_reviews.count} Reviews" %></h6>
-    <% end %>
-      </div>
-    <%= render 'avatar_photo' %>
-    </div>
-    <p>-----------------------------------------------</p>
-      <!-- Review Overview -->
+      <h1 class="h1-allivu my-0"><%= "Hello #{current_user.first_name}"%></h1>
+      <p class="my-0">Joined in <%= "#{current_user.created_at.year}" %></p>
+
+     <!-- Review Overview -->
       <% @user_services = current_user.services %>
       <% array = [] %>
       <% @user_services.each do |service| %>
         <% array << service.reviews.count %>
       <% end %>
       <% if @user_services.empty? %>
-        <p><%= "No Reviews yet" %></p>
+        <h6><%= "No Reviews yet" %></h6>
       <% else %>
-        <p><%= "#{array.sum} Reviews" %></p>
-        <p><%= "Average rating:  #{'%.1f' % (array.sum(0.0) / array.size)}" %> &#9733</p>
+        <h6><%= "#{array.sum} Reviews (#{'%.1f' % (array.sum(0.0) / array.size)})"%></h6>
       <% end %>
-  </div>
-  <p>-----------------------------------------------</p>
-  <!-- Upcoming bookings -->
-  <%= render 'provider_bookings' %>
-  <p>-----------------------------------------------</p>
+    </div>
+  <%= render 'avatar_photo' %>
+</div>
 
-  <!-- Review feed -->
-  <%= render 'review_feed' %>
-  <p>-----------------------------------------------</p>
+<div class="card-category">
+  <% @services = Service.where(user_id: current_user) %>
+  <% if @services.empty? %>
+  <div class="d-flex justify-content-center my-5">
+    <%= button_to "Add your first service", new_service_path, class: "button-wide" %>
+  </div>
+
+<% else %>
+
+  <h3 class="h3-allivu mb-4">Upcoming reservations</h3>
+  <% @services.limit(3).each do |service| %>
+
+      <% if service.bookings.any? == false %>
+        <p class="mt-4">No upcoming bookings.</p>
+      <% end %>
+
+      <% service.bookings.each do |booking| %>
+        <% if booking.start_date > Date.today %>
+          <div class="card-product">
+          <%= link_to service_path(booking.service) do %>
+            <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
+          <% end %>
+            <div class="card-product-infos py-0 px-4">
+              <h4><%= link_to "#{service.name}", edit_service_booking_path(booking.id, service_id: booking.service) %></h4>
+              <p class="card-desc-p-allivu-sm"><%= "Booked by: #{booking.user.first_name} #{booking.user.last_name}" %></p>
+              <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime(" %e, %Y") %></p>
+              <p class="card-desc-p-allivu-sm"><%= link_to "Manage booking", edit_service_booking_path(booking.id, service_id: booking.service) %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+  <% end %>
+<% end %>
+
+  <h4 class="link-allivu"><%= link_to "See all" %></h4>
+<hr>
+
+  <!-- History + Reviews -->
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">History</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Reviews</button>
+    </li>
+  </ul>
+  <div class="tab-content mb-5" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><%= render 'provider_bookings' %></div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"><%= render 'review_feed' %></div>
+  </div>
 
   <!-- Return to profile button -->
   <div class="d-flex justify-content-center my-5">
