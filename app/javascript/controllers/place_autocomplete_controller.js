@@ -1,16 +1,16 @@
 import { Controller } from "@hotwired/stimulus"
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
-// Connects to data-controller="location-autocomplete"
+// Connects to data-controller="place-autocomplete"
 export default class extends Controller {
   static values = { apiKey: String }
 
   static targets = ["location"]
 
   connect() {
-    console.log(this.locationTarget)
+    console.log("Hey")
     this.geocoder = new MapboxGeocoder({
-      accessToken: this.locationTarget.dataset.key,
+      accessToken: this.apiKeyValue,
       types: "country,region,place,postcode,locality,neighborhood,address"
     })
     this.geocoder.addTo(this.element)
@@ -18,18 +18,15 @@ export default class extends Controller {
     this.geocoder.on("clear", () => this.#clearInputValue())
   }
 
+  #setInputValue(event) {
+    this.locationTarget.value = event.result["place_name"]
+  }
+
+  #clearInputValue() {
+    this.locationTarget.parentNode.submit()
+  }
+
   disconnect() {
     this.geocoder.onRemove()
   }
-
-
-#setInputValue(event) {
-  console.log("Set")
-  this.locationTarget.value = event.result["Search location"]
-}
-
-#clearInputValue() {
-  console.log("Clear")
-  this.locationTarget.value = "Search location"
-}
 }

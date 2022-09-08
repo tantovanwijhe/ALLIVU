@@ -18,11 +18,10 @@ class ServicesController < ApplicationController
   end
 
   def index
-
+    @categories = Service::CATEGORIES
     if params[:query].present?
       sql_query = <<~SQL
         services.name ILIKE :query
-        OR services.location ILIKE :query
         OR services.description ILIKE :query
         OR services.category ILIKE :query
       SQL
@@ -50,14 +49,13 @@ class ServicesController < ApplicationController
     @favorite_services = Favorite.all.map do |favorite|
       favorite.service
     end
-
-
   end
 
   def categories
-    sql_query = "location ILIKE :query"
-    @services = Service.where(sql_query, query: "%#{params[:query]}%")
+
     if params[:query].present?
+      sql_query = "location ILIKE :query"
+      @services = Service.where(sql_query, query: "%#{params[:location]}%")
       @categories = @services.map do |service|
         service.category
       end
@@ -65,6 +63,7 @@ class ServicesController < ApplicationController
     else
       @categories = Service::CATEGORIES
     end
+
   end
 
   def new

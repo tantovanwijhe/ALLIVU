@@ -42,7 +42,7 @@
 }
 
 .parent button:active {
-  background-color: #4c806f;
+  background-color: #c9e3da;
   box-shadow: 0 0 2px darkslategray;
   transform: translateY(2px);
 }
@@ -98,6 +98,8 @@
   display: flex;
   flex-direction: row-reverse;
 }
+
+
 
 .filter{
   border: rgba(139, 203, 182, 1);

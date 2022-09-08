@@ -8,6 +8,7 @@ class PagesController < ApplicationController
 
   def home
     @services = Service.where(category: params[:query])
+    @categories = Service::CATEGORIES
     @markers = @services.geocoded.map do |service|
       {
         lat: service.latitude,
@@ -28,4 +29,5 @@ class PagesController < ApplicationController
       @services = Service.all
     end
   end
+  
 end

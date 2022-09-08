@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: :destroy
   resources :favorites, only: :index
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 end

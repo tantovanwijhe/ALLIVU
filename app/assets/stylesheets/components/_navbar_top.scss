@@ -8,31 +8,35 @@
 .wrappernavbar {
   height: 120px;
   width: 100vw;
+  max-width: 100%;
   border: 1px solid rgb(228, 228, 228);
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
   justify-content: space-around;
   align-items: center;
   overflow-y: hidden;
   float: left;
   white-space: nowrap;
-  padding-left: 60rem;
-  padding-right: 43rem;
-  -webkit-overflow-scrolling: touch;
+  padding-left: 75rem;
+  padding-right: 143rem;
+
 }
 
 .box:first-child{
-  padding-left: 2rem;;
+  padding-left: 2rem;
+
 }
 
 .wrappernavbar .box {
-  min-width: 110px;
-  max-height: 110px;
   text-align: center;
-  margin-left: 10px;
-  padding: 5px;
+  margin-left: 25px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
+  display: block;
+  height: max-content;
+  width: fit-content;
+  justify-content: center;
   }
 
 /* Style buttons */
@@ -51,5 +55,8 @@
   color: $allivublue;
   background-color: transparent;
   text-decoration: none;
+}
 
+.active {
+  color: $allivublue;
 }

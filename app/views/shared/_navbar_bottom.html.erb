@@ -3,7 +3,7 @@
     <div class="row text-center">
         <div class="col">
           <%= link_to root_path do %>
-            <i class="fa-solid fa-house icone-navbaractive"></i>
+            <i class="fa-solid fa-house icone-navbar <%='active' if request.url == root_path %>"> </i>
             <div class="link-navbar">Home</div>
           <% end %>
         </div>
@@ -14,8 +14,8 @@
           <% end %>
         </div>
         <div class="col">
-          <%= link_to categories_path do %>
-          <i class="fa-regular fa-envelope icone-navbar"></i>
+          <%= link_to root_path do %>
+          <i class="fa-regular fa-envelope icone-navbar <%='active' if request.url == categories_path %>"></i>
           <div class="link-navbar">Messages</div>
           <% end %>
         </div>
@@ -29,7 +29,7 @@
             <% elsif user_signed_in? && current_user.provider == false %>
             <%= link_to user_path do %>
               <i class="fa-regular fa-user icone-navbar"></i>
-              <div class="link-navbar">Account</div>
+              <div class="link-navbar"><%= current_user.username %></div>
             <% end %>
 
           <% else %>
@@ -45,4 +45,4 @@
 
     </div>
   </a>
-</nav>
+</div>
