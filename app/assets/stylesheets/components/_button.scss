@@ -21,6 +21,14 @@
   margin: 0.5rem 0
 }
 
+.button-text {
+  color: #d5406096;
+
+  &:hover {
+    color: #d5406096;
+  }
+}
+
 .parent {
   display: flex;
   flex-direction: column;
@@ -78,6 +86,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   margin-top: 12px;
+  margin-bottom: 12px;
   height: 44px;
   font-weight: bold;
 }
