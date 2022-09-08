@@ -29,11 +29,11 @@
                     <% array.each do |rating| %>
                       <% average += rating %>
                     <% end %>
-                    <h1><i class="bi bi-star-fill"></i> <%= average / array.count %></h1>
+                    <h1><i class="bi bi-star-fill"></i> <%= (average / array.count).round %></h1>
                   <% end %>
                   <div class="row">
                     <div class="action">
-                      <h2 class="pl-3"><%= service.price.round%> € </h2>
+                      <h3 class="h3-allivu pl-3"><%= service.price.round%> € </h3>
                       <button class="button-33" role="button">More Info</button>
                     </div>
                 </div>
