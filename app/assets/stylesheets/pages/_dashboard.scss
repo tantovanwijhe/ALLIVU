@@ -35,16 +35,16 @@ hr.line {
 
 .bg-provider {
   padding: 5rem 3rem;
-  background: rgb(230,144,159);
-  background: linear-gradient(135deg, rgba(230,144,159,1) 0%, rgba(92,139,123,1) 100%);
+  background: rgb(139,203,182);;
+  background: linear-gradient(20deg, #DCC9B6 0%, rgb(134, 201, 171) 100%);
 }
 
 .bg-new-provider {
   background: rgb(139,203,182);
-  background: linear-gradient(20deg, rgba(139,203,182,0.5) 0%, rgba(233,146,162,1) 100%);
+  background: linear-gradient(20deg, #DCC9B6 0%, rgb(134, 201, 171) 100%);
 }
 
 .bg-service {
-  background: rgb(99,87,87);
-  background: linear-gradient(20deg, rgba(99,87,87,1) 0%, rgba(121,122,122,1) 100%);
+  background: white;
+  // background: linear-gradient(20deg, #DCC9B6 0%, rgb(134, 201, 171) 100%);
 }
