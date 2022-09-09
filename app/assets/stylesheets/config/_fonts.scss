@@ -43,7 +43,7 @@ a {
 }
 
 .h1-allivu {
-  font-family: 'Roboto', bold;
+  font-family: 'Helvetica', bold;
   font-size: 36px;
   color: black;
   font-weight:bold;
@@ -57,21 +57,21 @@ a {
 }
 
 .h2-allivu {
-  font-family: 'Roboto', bold;
+  font-family: 'Helvetica', bold;
   font-size: 28px;
   color: $allivugray;
   font-weight:bold;
 }
 
 .h2-show-allivu {
-  font-family: 'Roboto', bold;
+  font-family: 'Helvetica', bold;
   font-size: 24px;
   color: $allivugray;
   font-weight: bold;
 }
 
 .h3-allivu {
-  font-family: 'Roboto', bold;
+  font-family: 'Helvetica', bold;
   font-size: 24px;
   color: $allivulightgray;
   font-weight:bold;
@@ -85,14 +85,14 @@ a {
 }
 
 .p-allivu {
-  font-family: 'Roboto';
+  font-family: 'Helvetica';
   font-size: 16px;
   color: $allivugray;
   text-decoration: none;
 }
 
 .p-allivu-sm {
-  font-family: 'Roboto';
+  font-family: 'Helvetica';
   font-size: 18px;
   color: $allivulightgray;
 }
@@ -110,7 +110,7 @@ a {
 }
 
 .link-allivu {
-  font-family: 'Roboto';
+  font-family: 'Helvetica';
   font-weight: lighter;
   font-size: 14px;
   color: $allivublue;
@@ -125,7 +125,7 @@ a {
 }
 
 #link-allivu-categories {
-  font-family: 'Roboto';
+  font-family: 'Helvetica';
   font-weight: lighter;
   font-size: 18px;
   color: $allivugray;
@@ -144,6 +144,11 @@ a {
   text-decoration: none;
 }
 
+.subtitle-landing {
+  font-family: sans-serif;
+    font-size: 18px;
+    color: #7d9b91;
+    font-weight: bold;
 .service-text {
   color: $allivufaded;
 }
