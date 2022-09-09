@@ -9,7 +9,7 @@ class ServicesController < ApplicationController
         lng: @service.longitude,
         info_window: render_to_string(partial: "info_window", locals: { service: @service }),
         image_url: helpers.asset_url("marker.png") }
-    ]
+      ]
 
     @favorite_services = Favorite.all.map do |favorite|
       favorite.service
