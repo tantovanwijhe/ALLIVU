@@ -47,7 +47,7 @@
           <% end %>
 
           <% service.bookings.each do |booking| %>
-            <% if booking.start_date > Date.today %>
+            <% if booking.start_date > Date.today + 80 %>
 
               <div class="card-product align-items-center">
                 <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
@@ -72,16 +72,16 @@
 </div>
 
 <!-- LIST SERVICES -->
-<div class="bg-service mt-4">
+<div class="bg-service my-4 pb-5">
   <% if @user_services.empty? %>
     <% else %>
 
       <h3 class="h3-allivu p-4 text-white">Your services</h3>
       <% @user_services.each do |service| %>
-        <div class="px-3 pb-5 bezier">
+        <div class="px-3 bezier">
 
           <%= link_to service do %>
-            <div class="card-product bezier dark-card">
+            <div class="card-product bezier my-4 dark-card">
               <%=cl_image_tag service.photos.first.key, height: 200, crop: :fill %>
               <div class="card-product-infos">
                 <h5 class="mt-3 text-white"><%= "#{service.name}" %></h4>
