@@ -126,7 +126,6 @@
   <!-- Contact start-->
 
   <%= simple_form_for(@chatroom) do |f| %>
-          <%= f.hidden_field :provider, value: @service.user.id %>
           <%= f.hidden_field :name, value: @service.name %>
           <%= f.submit class: "button-33", value: "Contact #{@service.user.first_name.capitalize}" %>
   <% end %>

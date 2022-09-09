@@ -24,7 +24,7 @@ class ChatroomsController < ApplicationController
 
 
    def chatrooms_params
-    params.require(:chatroom).permit(:name, :current_user, :provider)
+    params.require(:chatroom).permit(:name, :current_user)
   end
 
 end
@@ -37,7 +37,6 @@ end
     #   if c.name == @chatroom.name
     #     redirect_to chatroom_path(c)
     #   else @chatroom.save!
-     #   redirect_to chatroom_path
+     #   redirect_to chatroom_path(@chatroom)
       # end
     # end
-
