@@ -49,6 +49,13 @@ a {
   font-weight:bold;
 }
 
+.h1-allivu-dash {
+  font-family: 'Roboto', bold;
+  font-size: 30px;
+  color: black;
+  font-weight:bold;
+}
+
 .h2-allivu {
   font-family: 'Helvetica', bold;
   font-size: 28px;
@@ -70,10 +77,17 @@ a {
   font-weight:bold;
 }
 
+.h3-allivu-dash {
+  font-family: 'Roboto', bold;
+  font-size: 20px;
+  color: $allivulightgray;
+  font-weight:bold;
+}
+
 .p-allivu {
   font-family: 'Helvetica';
   font-size: 16px;
-  color: $allivulightgray;
+  color: $allivugray;
   text-decoration: none;
 }
 
@@ -81,6 +95,18 @@ a {
   font-family: 'Helvetica';
   font-size: 18px;
   color: $allivulightgray;
+}
+
+.p-allivu-mini {
+  font-family: 'Roboto';
+  font-size: 12px;
+  color: $allivugray;
+}
+
+.service-link {
+  font-family: 'Roboto';
+  font-size: 12px;
+  color: $allivulightblue;
 }
 
 .link-allivu {
@@ -123,4 +149,6 @@ a {
     font-size: 18px;
     color: #7d9b91;
     font-weight: bold;
+.service-text {
+  color: $allivufaded;
 }

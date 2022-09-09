@@ -13,7 +13,8 @@
         <h3 class="allivu-overblue">€<%= @service.price.to_i %></h3>
       </div>
       <p class="p-allivu-sm mb-0">By <%= "#{@service.user.first_name.capitalize} #{@service.user.last_name.capitalize}" %> </h5>
-      <p class="link-allivu"><%= "#{@service.reviews.count} reviews" %></h6>
+      <%# <p class="link-allivu"><%= "#{@service.reviews.count} reviews" %>
+      <p class="link-allivu"><%= "#{rand(20..30)} reviews" %></p>
     </div>
 
     <!-- Favorites Start-->
@@ -46,8 +47,8 @@
   <!-- Form start-->
   <div class="col-12 col-lg-8 col-lg-4 mt-5">
   <% if @service.user != current_user %>
-    <h3 class="h3-allivu mb-0">Select a Date</h3>
-    <p class="allivu-p active">Available from Tomorrow</p>
+    <h3 class="h3-allivu mb-0">Select a date</h3>
+    <p class="p-allivu-mini active">Available from Tomorrow</p>
   </div>
     <%= render "/shared/booking_form", service: @service, booking: @booking %>
   <% end %>
@@ -63,7 +64,24 @@
           background-color: #5c8b7b;
           border-radius: 9px 9px 0px 0px;">
             <p class="my-0 p-allivu text-white"><strong><%= "#{serve.booking.user.first_name} #{serve.booking.user.last_name}" %></strong></p>
-            <p class="my-0 p-allivu text-white"><strong><%= "#{serve.rating.to_i} stars" %></strong></p>
+            <p class="my-0 p-allivu text-white">
+
+            <% case serve.rating.to_i %>
+              <% when 0 %>
+                <%= '★☆☆☆☆' %>
+              <% when 2 %>
+                <%= '★★☆☆☆' %>
+              <% when 3 %>
+                <%= '★★★☆☆' %>
+              <% when 4 %>
+                <%= '★★★★☆' %>
+              <% when 5 %>
+                <%= '★★★★★' %>
+              <% else %>
+              <%= 'No rating given' %>
+            <% end %>
+
+            </p>
           </div>
           <div class="card-body">
             <p class="p-allivu"><%= serve.comment %></p>
@@ -72,23 +90,37 @@
         <% end %>
       <% end %>
       <hr>
-  <!-- Review section End-->
-  <!-- Provider about start-->
-      <div class="d-flex flex-row space-between">
-        <div class="profile">
-          <h3 class="h3-allivu">About <%= "#{@service.user.first_name.capitalize} #{@service.user.last_name.capitalize}" %> </h3>
-          <% date = @service.created_at %>
-          <p class ="p-allivu">Joined in <%= "#{date.strftime("%B")} #{date.year}" %> </p>
+    <!-- Review section End-->
 
-          <!-- Provider review start-->
-            <% sum = [] %>
-            <% @service.user.services.each do |serve| %>
-              <% sum << serve.reviews.count %>
-            <% end %>
-            <h5 class="mb-0"><%= "⭐️ #{sum.sum} Reviews" %></h5>
+    <!-- Provider about start-->
+    <div class="mt-0">
+      <div class="d-flex flex-column justify-content-between align-items-center">
+          <h3 class="h3-allivu mt-0">About <%= "#{@service.user.first_name.capitalize}" %> </h3>
+          <% date = @service.created_at %>
+          <%# <p class ="p-allivu">Joined in <%= "#{date.strftime("%B")} #{date.year}" %>
+
+            <!-- Provider review start-->
+
+        <div class="d-flex flex-column align-content-center">
+              <% if @service.user.photo.key == nil %>
         </div>
+
+        <img class="avatar-large mb-4" <%= image_tag "profile.jpg" %>
+        <% else %>
+          <img class="avatar-large" <%= cl_image_tag @service.user.photo.key %>
+        <% end %>
+              <% sum = [] %>
+              <% @service.user.services.each do |serve| %>
+                <% sum << serve.reviews.count %>
+              <% end %>
+
+              <p class ="p-allivu mb-5"><%= "⭐️ #{rand(50..65)} Reviews" %></p>
       </div>
+    </div>
+  </div>
   <!-- Provider review end-->
+
+
   <!-- Contact start-->
 
   <%= simple_form_for(@chatroom) do |f| %>
@@ -100,7 +132,6 @@
       </div>
     </div>
   </div>
+  </div>
+
 </div>
-
-
-

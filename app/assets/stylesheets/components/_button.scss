@@ -21,11 +21,31 @@
   margin: 0.5rem 0
 }
 
+.button-wide-alt {
+  background-color: transparent;
+  border: 2px solid #5B8B7B;
+  color: #5B8B7B;
+  border-radius: 35px;
+  width: 45vw;
+  height: 5vh;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0.5rem 0
+}
+
 .button-text {
   color: #d5406096;
 
   &:hover {
     color: #d5406096;
+  }
+}
+
+.button-text-alt {
+  color: #5B8B7B;
+
+  &:hover {
+    color: #5B8B7B;
   }
 }
 
@@ -111,8 +131,6 @@
   display: flex;
   flex-direction: row-reverse;
 }
-
-
 
 .filter{
   border: rgba(139, 203, 182, 1);
