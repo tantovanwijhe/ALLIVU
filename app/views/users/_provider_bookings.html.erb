@@ -1,25 +1,28 @@
 <% @services = Service.where(user_id: current_user) %>
-<!-- Past bookings -->
-  <% @services.each do |service| %>
-    <% if service.bookings.any? == false %>
-      <p class="mt-4">No past bookings.</p>
-    <% end %>
 
-    <% service.bookings.limit(3).each do |booking| %>
-      <% if booking.start_date < Date.today %>
-        <div class="card-product">
-        <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
-          <div class="card-product-infos py-0 px-4">
-            <h4><%= link_to "#{booking.service.name}", edit_service_booking_path(booking.id, service_id: booking.service) %></h4>
-            <p class="card-desc-p-allivu-sm text-dark"><%= "Booked by: #{booking.user.first_name} #{booking.user.last_name}" %></p>
-            <p class="card-desc-p-allivu-sm text-dark"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime(" %e, %Y") %></p>
-            <p class="card-desc-p-link-allivu"><%= link_to "Write a Review", new_service_booking_user_review_path(booking.service, booking) %></p>
-          </div>
-        </div>
+<!-- Past bookings -->
+<% @services.each do |service| %>
+
+  <% if service.bookings.any? == false %>
+    <p class="mt-4">No past bookings.</p>
+  <% end %>
+
+  <% service.bookings.limit(3).each do |booking| %>
+
+    <% if booking.start_date < Date.today %>
+    <div class="card-product align-items-center mb-3">
+      <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
+      <div class="card-product-infos">
+
+      <%= link_to edit_service_booking_path(booking.id, service_id: booking.service) do %>
+        <h4 class="live-link mb-2"><%= booking.service.name %></h4>
+        <p class="p-allivu-mini mb-0"><%= "Booked by: #{booking.user.first_name} #{booking.user.last_name}" %></p>
+        <p class="p-allivu-mini mb-0"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime(" %e, %Y") %></p>
+        <p class="link-allivu"><%= link_to "Write a Review", new_service_booking_user_review_path(booking.service, booking) %></p>
       <% end %>
-    <% end %>
-    <% if service.bookings.any? == true %>
-      <h4 class="link-allivu"><%= link_to "See all" %></h4>
+
+      </div>
+    </div>
     <% end %>
   <% end %>
-</div>
+<% end %>

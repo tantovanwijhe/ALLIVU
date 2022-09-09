@@ -21,13 +21,8 @@
           <% end %>
         </div>
         <div class="col">
-         <% if user_signed_in? && current_user.provider == true %>
-            <%= link_to users_account_provider_path do %>
-              <i class="fa-regular fa-user icone-navbar <%='icone-navbaractive' if current_page?(users_account_provider_path) %>"></i>
-              <div class="link-navbar <%='icone-navbaractive' if current_page?(users_account_provider_path) %>">Account</div>
-            <% end %>
+         <% if user_signed_in? %>
 
-            <% elsif user_signed_in? && current_user.provider == false %>
             <%= link_to user_path do %>
               <i class="fa-regular fa-user icone-navbar <%='icone-navbaractive' if current_page?(user_path) %>"></i>
               <div class="link-navbar"><%= current_user.username %></div>
