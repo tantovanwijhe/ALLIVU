@@ -1,79 +1,169 @@
-<%= render 'shared/navbar_back_pages' %>
-<div class="container">
+<!-- PROFILE CARD -->
+<div class="bg-provider">
   <div class="d-flex justify-content-between align-items-center">
     <div class="d-flex flex-column align-content-center">
-      <h1 class="h1-allivu my-0"><%= "Hello #{current_user.first_name}"%></h1>
-      <p class="my-0">Joined in <%= "#{current_user.created_at.year}" %></p>
-
-     <!-- Review Overview -->
-      <% @user_services = current_user.services %>
-      <% array = [] %>
-      <% @user_services.each do |service| %>
-        <% array << service.reviews.count %>
-      <% end %>
-      <% if @user_services.empty? %>
-        <h6><%= "No Reviews yet" %></h6>
-      <% else %>
-        <h6><%= "#{array.sum} Reviews (#{'%.1f' % (array.sum(0.0) / array.size)})"%></h6>
-      <% end %>
+      <h1 class="h1-allivu"><%= "Welcome, #{current_user.first_name}"%></h1>
+      <p class="p-allivu my-0 text-dark"><%= "January 3, 2023" %></p>
     </div>
-  <%= render 'avatar_photo' %>
+    <%= render 'avatar_photo' %>
+  </div>
+
+  <!-- OVERVIEW REVIEWS -->
+  <% @user_services = current_user.services %>
+  <% array = [] %>
+
+  <% @user_services.each do |service| %>
+    <% array << service.reviews.count %>
+  <% end %>
+
+  <% if @user_services.empty? %>
+  <% else %>
+    <!-- <p class="p-allivu-mini"><%= "#{array.sum} Reviews (#{'%.1f' % (array.sum(0.0) / array.size)})"%></p> -->
+  <% end %>
+  <!-- END OVERVIEW REVIEWS -->
 </div>
 
-<div class="card-category">
-  <% @services = Service.where(user_id: current_user) %>
-  <% if @services.empty? %>
-  <div class="d-flex justify-content-center my-5">
-    <%= button_to "Add your first service", new_service_path, class: "button-wide" %>
-  </div>
+<!-- UPCOMING RESERVATIONS -->
+<div class="container dashboard buffer-top">
+  <div class="bg-white px-3 bezier">
+    <div class="card-category">
+      <% @services = Service.where(user_id: current_user) %>
 
-<% else %>
+      <% if @services.empty? %>
+        <div class="d-flex justify-content-center my-5">
+          <button class="button-wide w-100"> <%= link_to "Add your first service", new_service_path, class: "button-text" %></button>
+        </div>
 
-  <h3 class="h3-allivu mb-4">Upcoming reservations</h3>
-  <% @services.limit(3).each do |service| %>
+        <% else %>
 
-      <% if service.bookings.any? == false %>
-        <p class="mt-4">No upcoming bookings.</p>
-      <% end %>
+        <div class="tab-underline d-flex justify-content-between align-items-center mb-2">
+          <h3 class="h3-allivu my-3">Upcoming reservations</h3>
+          <h4 class="link-allivu my-3"><%= link_to "See all" %></h4>
+        </div>
 
-      <% service.bookings.each do |booking| %>
-        <% if booking.start_date > Date.today %>
-          <div class="card-product">
-          <%= link_to service_path(booking.service) do %>
-            <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
+        <% @services.limit(3).each do |service| %>
+          <% if service.bookings.any? == false %>
+            <p class="mt-4">No upcoming bookings.</p>
           <% end %>
-            <div class="card-product-infos py-0 px-4">
-              <h4><%= link_to "#{service.name}", edit_service_booking_path(booking.id, service_id: booking.service) %></h4>
-              <p class="card-desc-p-allivu-sm"><%= "Booked by: #{booking.user.first_name} #{booking.user.last_name}" %></p>
-              <p class="card-desc-p-allivu-sm"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime(" %e, %Y") %></p>
-              <p class="card-desc-p-allivu-sm"><%= link_to "Manage booking", edit_service_booking_path(booking.id, service_id: booking.service) %></p>
-            </div>
-          </div>
+
+          <% service.bookings.each do |booking| %>
+            <% if booking.start_date > Date.today %>
+
+              <div class="card-product align-items-center">
+                <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
+                <div class="card-product-infos">
+
+                  <%= link_to service_path(booking.service) do %>
+                    <h4 class="live-link mb-2"><%= "#{service.name}" %></h4>
+                    <p class="p-allivu-mini mb-0"><%= "Booked by: #{booking.user.first_name} #{booking.user.last_name}" %></p>
+                    <p class="p-allivu-mini mb-0"><%= booking.start_date.strftime("%B %e ") %>—<%=booking.end_date.strftime(" %e, %Y") %></p>
+                    <p class="link-allivu"><%= link_to "Manage booking", edit_service_booking_path(booking.id, service_id: booking.service) %></p>
+                  <% end %>
+
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+
         <% end %>
       <% end %>
+    </div>
+  </div>
+</div>
 
+<!-- LIST SERVICES -->
+<div class="bg-service mt-4">
+  <% if @user_services.empty? %>
+    <% else %>
+
+      <h3 class="h3-allivu p-4 text-white">Your services</h3>
+      <% @user_services.each do |service| %>
+        <div class="px-3 pb-5 bezier">
+
+          <%= link_to service do %>
+            <div class="card-product bezier dark-card">
+              <%=cl_image_tag service.photos.first.key, height: 200, crop: :fill %>
+              <div class="card-product-infos">
+                <h5 class="mt-3 text-white"><%= "#{service.name}" %></h4>
+                <p class="service-link"><%= link_to "Manage service", edit_service_path(service.id) %></p>
+              </div>
+            </div>
+          <% end %>
+
+        </div>
+      <% end %>
   <% end %>
-<% end %>
+</div>
 
-  <h4 class="link-allivu"><%= link_to "See all" %></h4>
-<hr>
+<!-- History + Reviews -->
+<div class="container dashboard">
+  <% if @user_services.empty? %>
+  <% else %>
 
-  <!-- History + Reviews -->
-  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">History</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Reviews</button>
-    </li>
-  </ul>
-  <div class="tab-content mb-5" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><%= render 'provider_bookings' %></div>
-    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"><%= render 'review_feed' %></div>
+  <div class="bg-white mt-3 px-3 pt-4 bezier">
+
+   <div class="mb-5 border">
+    <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Reviews</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">History</button>
+      </li>
+    </div>
+    </ul>
+    <div class="tab-content mb-5" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+        <% user_services = current_user.services %>
+
+        <% if user_services.any? %>
+          <% user_services.each do |service| %>
+            <% if service.bookings.any? %>
+              <% service.bookings.each do |booking| %>
+
+                <% if booking.review.present? %>
+                  <div class="bezier card mb-3 ">
+                    <div class="card-header"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></div>
+                    <div class="card-body pt-0">
+
+                      <h5 class="card-title mt-2">
+                        <% case booking.review.rating.to_i %>
+                        <% when 0 %>
+                          <%= '★☆☆☆☆' %>
+                        <% when 2 %>
+                          <%= '★★☆☆☆' %>
+                        <% when 3 %>
+                          <%= '★★★☆☆' %>
+                        <% when 4 %>
+                          <%= '★★★★☆' %>
+                        <% when 5 %>
+                          <%= '★★★★★' %>
+                        <% else %>
+                        <%= 'No rating given' %>
+                        <% end %>
+                      </h5>
+
+                      <p class="card-text"><%= booking.review.comment %></p>
+                    </div>
+                  </div>
+                <% end %>
+
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+      </div>
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"><%= render 'provider_bookings' %></div>
+    </div>
   </div>
 
-  <!-- Return to profile button -->
-  <div class="d-flex justify-content-center my-5">
-   <button class="button-wide w-100"> <%= link_to "Back to profile", user_path, class: "button-text" %></button>
+    <% end %>
+
+    <!-- Return to profile button -->
+    <div class="d-flex justify-content-center my-5">
+      <button class="button-wide w-100"> <%= link_to "Back to profile", user_path, class: "button-text" %></button>
+    </div>
   </div>
 </div>

@@ -106,6 +106,7 @@
 .card-desc-p-allivu-sm {
   font-size: 14px;
   margin: none;
+  color: $gray;
 }
 
 .card-product .card-product-infos {
@@ -140,4 +141,21 @@
   background-repeat: no-repeat;
   background-size: 1rem 1rem;
   padding: 0px;
+}
+
+.bezier {
+  border-radius: 12px;
+}
+
+.bezier-bottom {
+  border-radius: 0px 0px 12px 12px;
+}
+
+.bezier-top {
+  border-radius: 12px 12px 0px 0px;
+}
+
+.dark-card {
+  background: #3f3f3f;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }

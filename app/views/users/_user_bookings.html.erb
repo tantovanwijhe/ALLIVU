@@ -1,15 +1,21 @@
 <% @bookings = Booking.where(user_id: current_user) %>
-  <!-- Past bookings -->
-      <% @bookings.limit(3).each do |booking| %>
-        <% if booking.start_date < Date.today %>
-          <div class="card-product">
-          <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
-            <div class="card-product-infos py-0 px-4">
-              <h4 class="my-3"><%= link_to booking.service.name, service_path(booking.service) %></h4>
-              <p class="card-desc-p-allivu-sm text-dark my-2">Provider: <%= User.find(booking.service.user_id).first_name %></p>
-              <p class="card-desc-p-allivu-sm text-dark my-2"><%= booking.start_date.strftime("%b %e ") %>—<%=booking.end_date.strftime(" %b %e, %Y") %></p>
-              <p class="card-desc-p-link-allivu"><%= link_to "Leave a Review", new_service_booking_review_path(booking.service, booking) %></p>
-            </div>
-          </div>
+
+<!-- Past bookings -->
+<% @bookings.limit(3).each do |booking| %>
+  <% if booking.start_date < Date.today %>
+
+    <div class="card-product align-items-center">
+      <%=cl_image_tag booking.service.photos.first.key, height: 200, crop: :fill %>
+      <div class="card-product-infos">
+
+        <%= link_to service_path(booking.service) do %>
+          <h4 class="live-link mb-2"><%= booking.service.name %></h4>
+          <p class="p-allivu-mini">Served by: <%= User.find(booking.service.user_id).first_name %></p>
+          <p class="link-allivu"><%= link_to "Write a Review", new_service_booking_review_path(booking.service, booking) %></p>
         <% end %>
-      <% end %>
+
+      </div>
+    </div>
+  <% end %>
+  <hr class="line">
+<% end %>
