@@ -37,7 +37,6 @@ end
     #   if c.name == @chatroom.name
     #     redirect_to chatroom_path(c)
     #   else @chatroom.save!
-     #   redirect_to chatroom_path
+     #   redirect_to chatroom_path(@chatroom)
       # end
     # end
-
