@@ -43,7 +43,7 @@
 
         <% @services.limit(3).each do |service| %>
           <% if service.bookings.any? == false %>
-            <p class="mt-4">No upcoming bookings.</p>
+            <%# <p class="mt-4">No upcoming bookings.</p> %>
           <% end %>
 
           <% service.bookings.each do |booking| %>
