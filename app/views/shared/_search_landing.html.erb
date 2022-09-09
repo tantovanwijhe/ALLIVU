@@ -4,12 +4,12 @@
 
 <div class="row">
   <div class="search-bar">
-    <%= simple_form_for :query, :url => '/categories', method: :get, html: {class: "form searchbar-wrapper"}, placeholder: "teste", label:false do |f| %>
+    <%= simple_form_for :query, :url => '/categories', method: :get, html: {class: "form searchbar-wrapper", placeholder: "teste"}, label:false do |f| %>
         <%= f.input :location,
         input_html: {data: {place_autocomplete_target: "location"}, class: "d-none", label:false},
         wrapper_html: {data: {controller: "place-autocomplete", place_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
         %>
-       <div class = "button-search"><%= f.button :submit, class: "round-button", value: "Search" %></div>
+       <div class = "button-search"><%= f.button :submit, class: "round-button", value: ">", placeholder: ">" %> </div>
       <% end %>
       </div>
   </div>

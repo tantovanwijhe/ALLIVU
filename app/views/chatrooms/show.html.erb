@@ -4,7 +4,9 @@
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
 >
-  <h1><%= @chatroom.name.capitalize %></h1>
+  <h2 class = "$h3-allivu">Message board of <%= @chatroom.name.capitalize %> </h3>
+  <p class = "$p-allivu"> Private chatroom between you and the service provider. </h2>
+
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
       <%= render "messages/message", message: message %>
@@ -14,10 +16,10 @@
   html:  { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex"} do |f| %>
   <%= f.input :content,
     label: false,
-    placeholder: "Message #{@chatroom.name}",
+    placeholder: "Type your message",
     wrapper_html: {class: "flex-grow-1"}
   %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <%= f.submit "Send", class: "button-chat" %>
 
 <% end %>
 </div>

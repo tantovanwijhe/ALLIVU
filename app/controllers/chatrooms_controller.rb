@@ -15,9 +15,7 @@ class ChatroomsController < ApplicationController
    def create
      @chatroom = Chatroom.new(chatrooms_params)
      @chatroom.current_user = current_user.id
-     @chatroom.provider = params[:provider].to_i
-     @chatroom.name = "your apointment"
-      if @chatroom.save
+       if @chatroom.save
        redirect_to chatroom_path(@chatroom)
      else
       redirect_to service_path
@@ -30,3 +28,16 @@ class ChatroomsController < ApplicationController
   end
 
 end
+
+
+#@chat = Chatroom.all
+ #   @chatroom = Chatroom.new(chatrooms_params)
+  #  @chatroom.current_user = current_user.id
+    # @chat.each do |c|
+    #   if c.name == @chatroom.name
+    #     redirect_to chatroom_path(c)
+    #   else @chatroom.save!
+     #   redirect_to chatroom_path
+      # end
+    # end
+

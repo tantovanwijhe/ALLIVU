@@ -7,6 +7,32 @@
   justify-content: space-between;
   flex-grow: 1;
 
+  .button-chat {
+  background-color: transparent;
+  border: 2px solid #d5406096;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #d5406096;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  // font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 0px 15px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom: 12px;
+  height: 35px;
+  font-weight: bold;
+
+  }
+
 
   h1 {
     border-bottom: 1px solid $gray-200;
@@ -28,5 +54,13 @@
     .form-group {
       margin-bottom: 0;
     }
+  }
+
+
+
+  .string optional{
+    margin-top: 13px !important;
+    width: 100% !important;
+    height: 44px !important;
   }
 }
