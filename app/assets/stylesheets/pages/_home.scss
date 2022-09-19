@@ -74,5 +74,9 @@
 }
 .banner-bg{
   background-image: url('banner-background.png');
-  width: 100vw;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
