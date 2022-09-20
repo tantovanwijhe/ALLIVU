@@ -34,6 +34,7 @@
     </div>
     <h3 class="h3-allivu description mb-3">Description</h3>
     <p class="p-allivu"><%= @service.description %></p>
+    
 
     <!-- Location start-->
     <h3 class="h3-allivu my-5"><strong>Location</strong></h3>
@@ -43,53 +44,55 @@
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
+    <!-- Location end-->
+
 
   <!-- Form start-->
   <div class="col-12 col-lg-8 col-lg-4 mt-5">
-  <% if @service.user != current_user %>
-    <h3 class="h3-allivu mb-0">Select a date</h3>
-    <p class="p-allivu-mini active">Available from Tomorrow</p>
-  </div>
-    <%= render "/shared/booking_form", service: @service, booking: @booking %>
-  <% end %>
+    <% if @service.user != current_user %>
+      <h3 class="h3-allivu mb-0">Select a date</h3>
+      <p class="p-allivu-mini active">Available from Tomorrow</p>
+    </div>
+      <%= render "/shared/booking_form", service: @service, booking: @booking %>
+    <% end %>
 
   <!-- Review section start-->
-  <div class="container ">
-      <% if @service.reviews.present? %>
-      <h3 class="h3-allivu">Reviews</h3>
-        <% @service.reviews.each do |serve| %>
-        <div class="bezier card my-4">
-          <%# I'm not sure why css styling wouldn't work hence styling here %>
-          <div class="bezier card-header p-3 d-flex justify-content-between align-items-center" style="
-          background-color: #5c8b7b;
-          border-radius: 9px 9px 0px 0px;">
-            <p class="my-0 p-allivu text-white"><strong><%= "#{serve.booking.user.first_name} #{serve.booking.user.last_name}" %></strong></p>
-            <p class="my-0 p-allivu text-white">
+    <div class="container ">
+        <% if @service.reviews.present? %>
+        <h3 class="h3-allivu">Reviews</h3>
+          <% @service.reviews.each do |serve| %>
+          <div class="bezier card my-4">
+            <%# I'm not sure why css styling wouldn't work hence styling here %>
+            <div class="bezier card-header p-3 d-flex justify-content-between align-items-center" style="
+            background-color: #5c8b7b;
+            border-radius: 9px 9px 0px 0px;">
+              <p class="my-0 p-allivu text-white"><strong><%= "#{serve.booking.user.first_name} #{serve.booking.user.last_name}" %></strong></p>
+              <p class="my-0 p-allivu text-white">
 
-            <% case serve.rating.to_i %>
-              <% when 0 %>
-                <%= '★☆☆☆☆' %>
-              <% when 2 %>
-                <%= '★★☆☆☆' %>
-              <% when 3 %>
-                <%= '★★★☆☆' %>
-              <% when 4 %>
-                <%= '★★★★☆' %>
-              <% when 5 %>
-                <%= '★★★★★' %>
-              <% else %>
-              <%= 'No rating given' %>
-            <% end %>
+              <% case serve.rating.to_i %>
+                <% when 0 %>
+                  <%= '★☆☆☆☆' %>
+                <% when 2 %>
+                  <%= '★★☆☆☆' %>
+                <% when 3 %>
+                  <%= '★★★☆☆' %>
+                <% when 4 %>
+                  <%= '★★★★☆' %>
+                <% when 5 %>
+                  <%= '★★★★★' %>
+                <% else %>
+                <%= 'No rating given' %>
+              <% end %>
 
-            </p>
+              </p>
+            </div>
+            <div class="card-body">
+              <p class="p-allivu"><%= serve.comment %></p>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="p-allivu"><%= serve.comment %></p>
-          </div>
-        </div>
+          <% end %>
         <% end %>
-      <% end %>
-      <hr>
+    <hr>
     <!-- Review section End-->
 
     <!-- Provider about start-->
@@ -122,7 +125,6 @@
 
 
   <!-- Contact start-->
-
   <%= simple_form_for(@chatroom) do |f| %>
           <%= f.hidden_field :name, value: @service.name %>
           <%= f.submit class: "button-33", value: "Contact #{@service.user.first_name.capitalize}" %>
