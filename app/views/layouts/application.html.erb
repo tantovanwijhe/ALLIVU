@@ -25,17 +25,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Staatliches&display=swap" rel="stylesheet">
   </head>
   <body>
-  
-  <%= render "shared/flashes" %>
+  <div class="min-height-body">
+    <%= render "shared/flashes" %>
       <%= yield %>
-
+  </div>
   </body>
   <footer>
   <%= render "shared/footer" %>
   </footer>
   <div class="sectionavbar">
-
   <%= render "shared/navbar_bottom" %>
   </div>
-
 </html>

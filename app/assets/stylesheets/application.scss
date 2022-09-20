@@ -13,7 +13,12 @@
 @import "pages/index";
 @import "star-rating.js/dist/star-rating.css";
 
-.allivu-container{
+.allivu-container {
   margin-right: 2vw;
   margin-left: 2vw;
+}
+
+
+.min-height-body{
+  min-height: 100vh;
 }

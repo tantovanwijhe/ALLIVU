@@ -2,9 +2,9 @@
 <%= render 'shared/categories_scroll' %>
 
 <div style="margin-top:10px; margin-bottom:90px;">
-  <div class = "container"> <h4 id="h3-allivu" style="padding: 20px; color: #6C9A8B; margin-top: 100px"> <%= @services.length %> results for <%= params[:query] %></h4> </div>
+  <div class = "allivu-container"> <h4 id="h3-allivu" style="padding: 20px; color: #6C9A8B; margin-top: 100px"> <%= @services.length %> results for <%= params[:query] %></h4> </div>
 
-    <div class="container">
+    <div class="allivu-container">
       <div class="d-flex">
         <button class="filter"> <i class="bi bi-arrow-down " style="color: white;"></i>
  <%= link_to "High", services_path(option: "High") %></button>
