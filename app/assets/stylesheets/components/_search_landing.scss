@@ -66,10 +66,10 @@
 }
 
 .mapboxgl-ctrl-geocoder {
-  width: 100%;
   margin-top: 2vh;
   align-self: flex-start;
-  width: 350px
+  width: 70vw;
+  height: 42px;
 }
 
 .search-bar label {
@@ -80,6 +80,8 @@
   color:rgb(138, 136, 136) !important;
   position: absolute;
   display: inline;
+  padding: 2px 15px;
+  height: 40px;
 }
 
 .search-wrapper {
@@ -100,10 +102,10 @@
   font-size: 15px;
   font-weight: bold;
   color: #5b9b8d;
+  height: 42px;
 }
 
 .button-search {
-  position: absolute;
   z-index: 100;
   right: 28px;
   top: 22px;
@@ -112,8 +114,9 @@
 .searchbar-wrapper {
   display: flex !important;
   align-items: center !important;
-  justify-content: space-around !important;
-  height: 80px;
+  justify-content: center;
+  margin: 1px;
+  padding: 5px;
 }
 
 .icon-search {
