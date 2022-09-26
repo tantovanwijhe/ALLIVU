@@ -1,10 +1,39 @@
-<%= render 'shared/navbar_back_pages' %>
-<!-- Hero Image Section Start-->
-<%= render 'image_carousel' %>
-
 <!-- Main section-->
 <div class="container px-3">
-  <div class="col-lg-8">
+  <div class="col-lg-12">
+<!-- Hero Image Section Start-->
+<div id="service-gallery" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#service-gallery" data-slide-to="0" class="active"></li>
+    <li data-target="#service-gallery" data-slide-to="1"></li>
+    <li data-target="#service-gallery" data-slide-to="2"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <% if @service.photos.any? %>
+        <div class="d-block w-100"></div><%=cl_image_tag @service.photos.first.key, crop: :fill %>
+      <% end %>
+    </div>
+
+   <% @service.photos.drop(1).each do |photo| %>
+      <div class="carousel-item">
+        <div class="d-block w-100"><%= cl_image_tag photo.key, crop: :fill %></div>
+      </div>
+    <% end %>
+  </div>
+
+  <a class="carousel-control-prev" href="#service-gallery" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+
+  <a class="carousel-control-next" href="#service-gallery" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
 
     <!-- Description-head Start-->
     <div class="service-head">
@@ -34,7 +63,7 @@
     </div>
     <h3 class="h3-allivu description mb-3">Description</h3>
     <p class="p-allivu"><%= @service.description %></p>
-    
+
 
     <!-- Location start-->
     <h3 class="h3-allivu my-5"><strong>Location</strong></h3>
@@ -126,8 +155,10 @@
 
   <!-- Contact start-->
   <%= simple_form_for(@chatroom) do |f| %>
-          <%= f.hidden_field :name, value: @service.name %>
-          <%= f.submit class: "button-33", value: "Contact #{@service.user.first_name.capitalize}" %>
+    <%= f.hidden_field :name, value: @service.name %>
+    <div class="d-flex flex-column align-items-center">
+    <%= f.submit class: "button-33", value: "Contact #{@service.user.first_name.capitalize}" %>
+    </div>
   <% end %>
   <!-- Contact end-->
       </div>
