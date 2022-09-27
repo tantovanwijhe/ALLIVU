@@ -12,13 +12,13 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <% if @service.photos.any? %>
-        <div class="d-block w-100"></div><%=cl_image_tag @service.photos.first.key, crop: :fill %>
+        <div class="carousel-img d-block"><%=cl_image_tag @service.photos.first.key %></div>
       <% end %>
     </div>
 
    <% @service.photos.drop(1).each do |photo| %>
       <div class="carousel-item">
-        <div class="d-block w-100"><%= cl_image_tag photo.key, crop: :fill %></div>
+        <div class="carousel-img d-block"><%= cl_image_tag photo.key %></div>
       </div>
     <% end %>
   </div>
