@@ -4,7 +4,6 @@ For vacationers who want a variety of services but only one organiser.
 ### Background
 ALLIVU was created as part of the 2-week sprint at the end of the Web Development bootcamp.
 
-### The Why
 Designed for vacationers who want a variety of services in one platform, ALLIVU soothes the dizzying array of demands of vacations — informational research, planning activities, practical errands. Search, explore and pay for service vendors, all-in-one place.
 
 > "Looking to rent a vehicle? Hire a private chef? Or book a spa massage? Search, explore and pay for service vendors all-in-one place."
