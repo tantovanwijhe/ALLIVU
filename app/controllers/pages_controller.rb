@@ -17,12 +17,6 @@ class PagesController < ApplicationController
         image_url: helpers.asset_url("marker.png")
       }
     end
-    params_presence
-  end
-
-  private
-
-  def params_presence
     if params[:query].present?
       sql_query = <<~SQL
         services.name ILIKE :query
@@ -35,4 +29,5 @@ class PagesController < ApplicationController
       @services = Service.all
     end
   end
+
 end

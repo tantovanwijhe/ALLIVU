@@ -1,12 +1,17 @@
 class FavoritesController < ApplicationController
   def create
-    @favorites = Favorite.all.map(&:service)
+    @favorites = Favorite.all.map do |favorite|
+      favorite.service
+    end
     @user = current_user
     @service = Service.find(params[:service_id])
     @favorite = Favorite.new
     @favorite.user = @user
     @favorite.service = @service
-    return @favorite.save! && (redirect_to service_path(@service)) unless @favorites.include?(@service)
+    if !@favorites.include?(@service)
+      @favorite.save!
+      redirect_to service_path(@service)
+    end
   end
 
   def index
@@ -16,6 +21,8 @@ class FavoritesController < ApplicationController
   def destroy
     @service = Service.find(params[:service_id])
     @favorite = Favorite.find(params[:id])
-    redirect_to service_path(@service) if @favorite.destroy
+    if @favorite.destroy
+      redirect_to service_path(@service)
+    end
   end
 end
