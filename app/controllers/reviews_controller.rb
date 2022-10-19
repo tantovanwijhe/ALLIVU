@@ -3,11 +3,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.service = Service.find(params[:service_id])
     @review.booking = Booking.find(params[:booking_id])
-    if @review.save
-      redirect_to user_path
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @review.save ? (redirect_to user_path) : (render :new, status: :unprocessable_entity)
   end
 
   def new

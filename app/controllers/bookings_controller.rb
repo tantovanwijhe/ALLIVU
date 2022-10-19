@@ -3,11 +3,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.service = Service.find(params[:service_id])
     @booking.user = current_user
-    if @booking.save
-      redirect_to bookings_confirmation_path
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @booking.save ? (redirect_to bookings_confirmation_path) : (render :new, status: :unprocessable_entity)
   end
 
   def show
@@ -23,10 +19,6 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.update(booking_params)
     redirect_to booking_path(@booking)
-  end
-
-  def confirm
-
   end
 
   private
