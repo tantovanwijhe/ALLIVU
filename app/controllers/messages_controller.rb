@@ -6,17 +6,21 @@ class MessagesController < ApplicationController
     @message.user = current_user
 
     @message.save
+    broadcast_chatroom
+  end
+
+  private
+
+  def broadcast_chatroom
     ChatroomChannel.broadcast_to(
-    @chatroom,
-    render_to_string(
-      partial: "message",
-      locals: {message: @message}
+      @chatroom,
+      render_to_string(
+        partial: "message",
+        locals: { message: @message }
       )
     )
     head :ok
   end
-
-  private
 
   def message_params
     params.require(:message).permit(:content)

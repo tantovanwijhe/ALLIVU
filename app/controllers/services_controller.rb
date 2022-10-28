@@ -55,10 +55,9 @@ class ServicesController < ApplicationController
   end
 
   def categories
-
     if params[:query].present?
       loc_array = params[:query][:location].split(",")
-      sql_query = "location ILIKE '%#{params[:query][:location]}%'"
+      # sql_query = "location ILIKE '%#{params[:query][:location]}%'"
       services_a = Service.where("location ILIKE '%#{loc_array[0]}%'")
       services_b = Service.where("location ILIKE '%#{loc_array[1]}%'")
       @services = services_a + services_b
@@ -70,7 +69,6 @@ class ServicesController < ApplicationController
     else
       @categories = Service::CATEGORIES
     end
-
   end
 
   def new
